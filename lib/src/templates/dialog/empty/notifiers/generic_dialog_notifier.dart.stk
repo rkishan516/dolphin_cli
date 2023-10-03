@@ -1,0 +1,16 @@
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:{{packageName}}/app/{{featureName}}/state/{{dialogNameSnake}}_dialog_state.dart';
+
+part '{{dialogNameSnake}}_dialog_notifier.g.dart';
+
+@riverpod
+class {{dialogName}}Notifier extends _\${{dialogName}}Notifier {
+  @override
+  {{dialogName}}Model build() {
+    return const {{dialogName}}Model(counter: 0);
+  }
+
+  void update(int counter) {
+    state = state.copyWith(counter: counter);
+  }
+}

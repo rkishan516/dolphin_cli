@@ -1,0 +1,21 @@
+targets:
+  \$default:
+    builders:
+      json_serializable:
+        generate_for:
+          include:
+            - lib/app/**/model/*.dart
+        options:
+          explicit_to_json: true
+      freezed:freezed:
+        generate_for:
+          include:
+            - lib/app/**/model/*.dart
+            - lib/app/*/state/*_state.dart
+      riverpod_generator:
+        generate_for:
+          include:
+            - lib/app/*/notifiers/*.dart
+            - lib/app/*/services/*.dart
+            - lib/app/routes/**/*.dart
+      

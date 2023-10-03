@@ -1,0 +1,42 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:{{packageName}}/app/{{featureName}}/notifiers/{{viewNameSnake}}_notifier.dart';
+
+class {{viewName}} extends ConsumerWidget {
+  const {{viewName}}({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch({{notifierProviderName}});
+    final notifier = ref.watch({{notifierProviderName}}.notifier);
+
+    return Scaffold(
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                'Hello, Dolphin!',
+                style: TextStyle(
+                  fontSize: 35,
+                  fontWeight: FontWeight.w900,
+                ),
+              ),
+              const SizedBox(height: 20),
+              MaterialButton(
+                color: Colors.black,
+                onPressed: notifier.incrementCounter,
+                child: Text(
+                  state.counter.toString(),
+                  style: const TextStyle(color: Colors.white),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

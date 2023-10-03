@@ -1,0 +1,16 @@
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:{{packageName}}/app/{{featureName}}/state/{{sheetNameSnake}}_sheet_state.dart';
+
+part '{{sheetNameSnake}}_sheet_notifier.g.dart';
+
+@riverpod
+class {{sheetName}}Notifier extends _\${{sheetName}}Notifier {
+  @override
+  {{sheetName}}Model build() {
+    return const {{sheetName}}Model(counter: 0);
+  }
+
+  void update(int counter) {
+    state = state.copyWith(counter: counter);
+  }
+}

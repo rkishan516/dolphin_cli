@@ -1,0 +1,19 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+part '{{serviceNameSnake}}_service.g.dart';
+
+@riverpod
+{{serviceName}}Service {{providerName}}Service({{serviceName}}ServiceRef ref) {
+  return {{serviceName}}Service(ref);
+}
+
+class {{serviceName}}Service {
+  final Ref ref;
+  {{serviceName}}Service(this.ref);
+
+  void init() {
+    debugPrint('Service init');
+  }
+}

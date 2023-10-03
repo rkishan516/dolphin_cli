@@ -1,0 +1,37 @@
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:test_app/app/home/presentation/page.dart';
+import 'package:test_app/app/splash/presentation/page.dart';
+
+part 'app_router.g.dart';
+
+@TypedGoRoute<HomePageRoute>(
+  path: HomePageRoute.path,
+  name: 'home',
+  routes: [
+    // Other routes nested under the home route
+  ],
+)
+
+@TypedGoRoute<SplashPageRoute>(
+  path: SplashPageRoute.path,
+  name: 'splash',
+)
+
+class HomePageRoute extends GoRouteData {
+  static const path = '/';
+  static const name = 'home';
+  const HomePageRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) => const HomePage();
+}
+
+class SplashPageRoute extends GoRouteData {
+  static const path = '/splash';
+  static const name = 'splash';
+  const SplashPageRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) => const SplashPage();
+}

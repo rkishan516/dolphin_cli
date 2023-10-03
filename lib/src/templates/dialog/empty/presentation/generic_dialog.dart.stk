@@ -1,0 +1,65 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:supercharged/supercharged.dart';
+import 'package:{{packageName}}/app/{{featureName}}/notifiers/{{dialogNameSnake}}_dialog_notifier.dart';
+
+class {{dialogName}} extends ConsumerWidget {
+  const {{dialogName}}({super.key});
+
+  static Future showDialog({required BuildContext context}) {
+    const backgroundColor = Color(0xFF1D2732);
+    const borderColor = Color(0xFFB9B9B9);
+    final height = MediaQuery.sizeOf(context).height * 0.5;
+    final width = MediaQuery.sizeOf(context).width * 0.9;
+    bool barrierDismissible = true;
+    bool showDecoration = true;
+    return showGeneralDialog(
+      barrierDismissible: barrierDismissible,
+      barrierColor: Colors.black.withOpacity(0.8),
+      barrierLabel: 'Barrier Label',
+      context: context,
+      pageBuilder: (ctx, a1, a2) {
+        return Material(
+          type: MaterialType.transparency,
+          child: Center(
+            child: SizedBox(
+              width: width,
+              height: height,
+              child: Container(
+                clipBehavior: Clip.none,
+                decoration: showDecoration
+                    ? BoxDecoration(
+                        color: backgroundColor,
+                        border: Border.all(
+                          color: borderColor,
+                          width: 1,
+                        ),
+                      )
+                    : null,
+                child: const {{dialogName}}(),
+              ),
+            ),
+          ),
+        );
+      },
+      transitionDuration: 300.milliseconds,
+      transitionBuilder: (ctx, a1, a2, child) {
+        var curve = Curves.easeOutBack.transform(a1.value);
+
+        return Transform.scale(
+          scale: curve,
+          child: child,
+        );
+      },
+    );
+  }
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final counter =
+        ref.watch({{dialogNotifierName}}.select((value) => value.counter));
+    return  Center(
+      child: Text('Hello, Dolphin \$counter!'),
+    );
+  }
+}

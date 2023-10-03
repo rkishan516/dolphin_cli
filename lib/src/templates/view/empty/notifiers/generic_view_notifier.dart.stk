@@ -1,0 +1,16 @@
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:{{packageName}}/app/{{featureName}}/state/{{viewNameSnake}}_state.dart';
+
+part '{{viewNameSnake}}_notifier.g.dart';
+
+@riverpod
+class {{notifierName}} extends _\${{notifierName}} {
+  @override
+  {{viewName}}State build() {
+    return const {{viewName}}State(counter: 0);
+  }
+
+  void incrementCounter() {
+    state = state.copyWith(counter: state.counter + 1);
+  }
+}

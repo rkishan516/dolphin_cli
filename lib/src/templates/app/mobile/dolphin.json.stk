@@ -1,0 +1,9 @@
+{
+    "bottom_sheets_path": "presentation",
+    "dialogs_path": "presentation",
+    "line_length": 80,
+    "services_path": "services",
+    "dolphin_app_file_path": "app/app.dart",
+    "views_path": "presentation",
+    "widgets_path": "presentation"
+}

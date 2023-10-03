@@ -1,0 +1,10 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part '{{dialogNameSnake}}_dialog_state.freezed.dart';
+
+@freezed
+class {{dialogName}}Model with _\${{dialogName}}Model {
+  const factory {{dialogName}}Model({
+    required int counter,
+  }) = _{{dialogName}}Model;
+}

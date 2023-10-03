@@ -1,0 +1,10 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part '{{viewNameSnake}}_state.freezed.dart';
+
+@freezed
+class {{viewName}}State with _\${{viewName}}State {
+  const factory {{viewName}}State({
+    required int counter,
+  }) = _{{viewName}}State;
+}

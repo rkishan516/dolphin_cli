@@ -1,0 +1,10 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part '{{sheetNameSnake}}_sheet_state.freezed.dart';
+
+@freezed
+class {{sheetName}}Model with _\${{sheetName}}Model {
+  const factory {{sheetName}}Model({
+    required int counter,
+  }) = _{{sheetName}}Model;
+}
