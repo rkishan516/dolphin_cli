@@ -17,7 +17,7 @@ GoRouter navigator(NavigatorRef ref) {
   return GoRouter(
     observers: observers,
     navigatorKey: appNavigatorKey,
-    initialLocation: '/splash',
+    initialLocation: SplashPageRoute.path,
     refreshListenable: router,
     routes: router.routes,
     debugLogDiagnostics: kDebugMode,

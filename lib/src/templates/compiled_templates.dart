@@ -1,9 +1,11 @@
 /// NOTE: This is generated code from the compileTemplates command. Do not modify by hand
 ///       This file should be checked into source control.
 
+
 // -------- DolphinJsonStk Template Data ----------
 
-const String kAppMobileTemplateDolphinJsonStkPath = 'dolphin.json.stk';
+const String kAppMobileTemplateDolphinJsonStkPath =
+    'dolphin.json.stk';
 
 const String kAppMobileTemplateDolphinJsonStkContent = '''
 {
@@ -19,9 +21,11 @@ const String kAppMobileTemplateDolphinJsonStkContent = '''
 
 // --------------------------------------------------
 
+
 // -------- BuildYamlStk Template Data ----------
 
-const String kAppMobileTemplateBuildYamlStkPath = 'build.yaml.stk';
+const String kAppMobileTemplateBuildYamlStkPath =
+    'build.yaml.stk';
 
 const String kAppMobileTemplateBuildYamlStkContent = '''
 targets:
@@ -49,9 +53,11 @@ targets:
 
 // --------------------------------------------------
 
+
 // -------- READMEMdStk Template Data ----------
 
-const String kAppMobileTemplateREADMEMdStkPath = 'README.md.stk';
+const String kAppMobileTemplateREADMEMdStkPath =
+    'README.md.stk';
 
 const String kAppMobileTemplateREADMEMdStkContent = '''
 # {{packageName}}
@@ -61,19 +67,38 @@ const String kAppMobileTemplateREADMEMdStkContent = '''
 
 // --------------------------------------------------
 
+
 // -------- Main Template Data ----------
 
-const String kAppMobileTemplateMainPath = 'lib/main.dart.stk';
+const String kAppMobileTemplateMainPath =
+    'lib/main.dart.stk';
 
 const String kAppMobileTemplateMainContent = '''
 import 'package:flutter/material.dart';
-import 'package:{{packageName}}/app/routes/notifiers/app_routes.dart';
+import 'package:{{packageName}}/app/app.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const ProviderScope(child: MainApp()));
 }
+
+
+
+''';
+
+// --------------------------------------------------
+
+
+// -------- App Template Data ----------
+
+const String kAppMobileTemplatelibAppPath =
+    'lib/app/app.dart.stk';
+
+const String kAppMobileTemplatelibAppContent = '''
+import 'package:flutter/material.dart';
+import 'package:{{packageName}}/app/routes/notifiers/app_routes.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class MainApp extends ConsumerWidget {
   const MainApp({super.key});
@@ -85,21 +110,10 @@ class MainApp extends ConsumerWidget {
     );
   }
 }
-
 ''';
 
 // --------------------------------------------------
 
-// -------- App Template Data ----------
-
-const String kAppMobileTemplatelibAppPath = 'lib/app/app.dart.stk';
-
-const String kAppMobileTemplatelibAppContent = '''
-
-
-''';
-
-// --------------------------------------------------
 
 // -------- PageState Template Data ----------
 
@@ -121,6 +135,7 @@ class HomePageState with _\$HomePageState {
 ''';
 
 // --------------------------------------------------
+
 
 // -------- PageNotifier Template Data ----------
 
@@ -148,6 +163,7 @@ class HomePageNotifier extends _\$HomePageNotifier {
 ''';
 
 // --------------------------------------------------
+
 
 // -------- Page Template Data ----------
 
@@ -202,6 +218,7 @@ class HomePage extends ConsumerWidget {
 
 // --------------------------------------------------
 
+
 // -------- PageNotifier Template Data ----------
 
 const String kAppMobileTemplatesplashPageNotifierPath =
@@ -233,6 +250,7 @@ class SplashPageNotifier extends _\$SplashPageNotifier {
 ''';
 
 // --------------------------------------------------
+
 
 // -------- Page Template Data ----------
 
@@ -292,6 +310,7 @@ class _SplashPageState extends ConsumerState<SplashPage> {
 
 // --------------------------------------------------
 
+
 // -------- AppRouter Template Data ----------
 
 const String kAppMobileTemplateroutesAppRouterPath =
@@ -307,17 +326,11 @@ part 'app_router.g.dart';
 
 @TypedGoRoute<HomePageRoute>(
   path: HomePageRoute.path,
-  name: 'home',
+  name: HomePageRoute.name,
   routes: [
     // Other routes nested under the home route
   ],
 )
-
-@TypedGoRoute<SplashPageRoute>(
-  path: SplashPageRoute.path,
-  name: 'splash',
-)
-
 class HomePageRoute extends GoRouteData {
   static const path = '/';
   static const name = 'home';
@@ -327,6 +340,10 @@ class HomePageRoute extends GoRouteData {
   Widget build(BuildContext context, GoRouterState state) => const HomePage();
 }
 
+@TypedGoRoute<SplashPageRoute>(
+  path: SplashPageRoute.path,
+  name: SplashPageRoute.name,
+)
 class SplashPageRoute extends GoRouteData {
   static const path = '/splash';
   static const name = 'splash';
@@ -338,6 +355,7 @@ class SplashPageRoute extends GoRouteData {
 ''';
 
 // --------------------------------------------------
+
 
 // -------- AppRoutes Template Data ----------
 
@@ -364,7 +382,7 @@ GoRouter navigator(NavigatorRef ref) {
   return GoRouter(
     observers: observers,
     navigatorKey: appNavigatorKey,
-    initialLocation: '/splash',
+    initialLocation: SplashPageRoute.path,
     refreshListenable: router,
     routes: router.routes,
     debugLogDiagnostics: kDebugMode,
@@ -388,9 +406,11 @@ class RouterNotifier extends _\$RouterNotifier implements Listenable {
 
 // --------------------------------------------------
 
+
 // -------- PubspecYamlStk Template Data ----------
 
-const String kAppMobileTemplatePubspecYamlStkPath = 'pubspec.yaml.stk';
+const String kAppMobileTemplatePubspecYamlStkPath =
+    'pubspec.yaml.stk';
 
 const String kAppMobileTemplatePubspecYamlStkContent = '''
 name: {{packageName}}
@@ -432,6 +452,7 @@ flutter:
 
 // --------------------------------------------------
 
+
 // -------- SettingsJsonStk Template Data ----------
 
 const String kAppMobileTemplateSettingsJsonStkPath =
@@ -448,6 +469,7 @@ const String kAppMobileTemplateSettingsJsonStkContent = '''
 ''';
 
 // --------------------------------------------------
+
 
 // -------- GenericWidget Template Data ----------
 
@@ -471,6 +493,7 @@ class {{widgetName}} extends ConsumerWidget {
 
 // --------------------------------------------------
 
+
 // -------- GenericDialogState Template Data ----------
 
 const String kDialogEmptyTemplateGenericDialogStatePath =
@@ -491,6 +514,7 @@ class {{dialogName}}Model with _\${{dialogName}}Model {
 ''';
 
 // --------------------------------------------------
+
 
 // -------- GenericDialogNotifier Template Data ----------
 
@@ -518,6 +542,7 @@ class {{dialogName}}Notifier extends _\${{dialogName}}Notifier {
 ''';
 
 // --------------------------------------------------
+
 
 // -------- GenericDialog Template Data ----------
 
@@ -595,6 +620,7 @@ class {{dialogName}} extends ConsumerWidget {
 
 // --------------------------------------------------
 
+
 // -------- GenericViewState Template Data ----------
 
 const String kViewEmptyTemplateGenericViewStatePath =
@@ -615,6 +641,7 @@ class {{viewName}}State with _\${{viewName}}State {
 ''';
 
 // --------------------------------------------------
+
 
 // -------- GenericViewNotifier Template Data ----------
 
@@ -642,6 +669,7 @@ class {{notifierName}} extends _\${{notifierName}} {
 ''';
 
 // --------------------------------------------------
+
 
 // -------- GenericView Template Data ----------
 
@@ -696,6 +724,7 @@ class {{viewName}} extends ConsumerWidget {
 
 // --------------------------------------------------
 
+
 // -------- GenericService Template Data ----------
 
 const String kServiceEmptyTemplateGenericServicePath =
@@ -726,6 +755,7 @@ class {{serviceName}}Service {
 
 // --------------------------------------------------
 
+
 // -------- GenericSheetState Template Data ----------
 
 const String kBottomSheetEmptyTemplateGenericSheetStatePath =
@@ -746,6 +776,7 @@ class {{sheetName}}Model with _\${{sheetName}}Model {
 ''';
 
 // --------------------------------------------------
+
 
 // -------- GenericSheetNotifier Template Data ----------
 
@@ -773,6 +804,7 @@ class {{sheetName}}Notifier extends _\${{sheetName}}Notifier {
 ''';
 
 // --------------------------------------------------
+
 
 // -------- GenericSheet Template Data ----------
 
@@ -828,3 +860,4 @@ class {{sheetName}}Sheet extends ConsumerWidget {
 ''';
 
 // --------------------------------------------------
+

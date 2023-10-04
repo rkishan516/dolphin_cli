@@ -7,17 +7,11 @@ part 'app_router.g.dart';
 
 @TypedGoRoute<HomePageRoute>(
   path: HomePageRoute.path,
-  name: 'home',
+  name: HomePageRoute.name,
   routes: [
     // Other routes nested under the home route
   ],
 )
-
-@TypedGoRoute<SplashPageRoute>(
-  path: SplashPageRoute.path,
-  name: 'splash',
-)
-
 class HomePageRoute extends GoRouteData {
   static const path = '/';
   static const name = 'home';
@@ -27,6 +21,10 @@ class HomePageRoute extends GoRouteData {
   Widget build(BuildContext context, GoRouterState state) => const HomePage();
 }
 
+@TypedGoRoute<SplashPageRoute>(
+  path: SplashPageRoute.path,
+  name: SplashPageRoute.name,
+)
 class SplashPageRoute extends GoRouteData {
   static const path = '/splash';
   static const name = 'splash';

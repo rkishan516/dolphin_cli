@@ -135,8 +135,7 @@ Map<String, Map<String, DolphinTemplate>> kCompiledDolphinTemplates = {
             content: kBottomSheetEmptyTemplateGenericSheetStateContent,
             fileType: FileType.text),
         TemplateFile(
-            relativeOutputPath:
-                kBottomSheetEmptyTemplateGenericSheetNotifierPath,
+            relativeOutputPath: kBottomSheetEmptyTemplateGenericSheetNotifierPath,
             content: kBottomSheetEmptyTemplateGenericSheetNotifierContent,
             fileType: FileType.text),
         TemplateFile(
