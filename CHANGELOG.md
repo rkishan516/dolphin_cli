@@ -1,3 +1,8 @@
+## 0.1.2
+
+* Fix dolphin create app import issues
+* Update pub dependencies to latest version in dolphin app
+
 ## 0.1.1
 
 * Fix dolphin app initial route issue

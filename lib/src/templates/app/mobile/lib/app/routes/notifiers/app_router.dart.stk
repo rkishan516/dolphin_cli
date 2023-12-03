@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:test_app/app/home/presentation/page.dart';
-import 'package:test_app/app/splash/presentation/page.dart';
+import 'package:{{packageName}}/app/home/presentation/page.dart';
+import 'package:{{packageName}}/app/splash/presentation/page.dart';
 
 part 'app_router.g.dart';
 

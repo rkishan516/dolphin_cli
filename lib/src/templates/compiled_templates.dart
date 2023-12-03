@@ -144,7 +144,7 @@ const String kAppMobileTemplatehomePageNotifierPath =
 
 const String kAppMobileTemplatehomePageNotifierContent = '''
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:test_app/app/home/state/page_state.dart';
+import 'package:{{packageName}}/app/home/state/page_state.dart';
 
 part 'page_notifier.g.dart';
 
@@ -319,8 +319,8 @@ const String kAppMobileTemplateroutesAppRouterPath =
 const String kAppMobileTemplateroutesAppRouterContent = '''
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:test_app/app/home/presentation/page.dart';
-import 'package:test_app/app/splash/presentation/page.dart';
+import 'package:{{packageName}}/app/home/presentation/page.dart';
+import 'package:{{packageName}}/app/splash/presentation/page.dart';
 
 part 'app_router.g.dart';
 
@@ -427,7 +427,7 @@ dependencies:
     sdk: flutter
   flutter_riverpod: ^2.4.0
   freezed_annotation: ^2.4.1
-  go_router: ^11.1.2
+  go_router: ^12.1.1
   json_annotation: ^4.8.1
   riverpod_annotation: ^2.1.5
   supercharged: ^2.1.1
@@ -437,7 +437,7 @@ dev_dependencies:
   build_runner: ^2.4.6
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.1
   freezed: ^2.4.1
   go_router_builder: ^2.3.2
   json_serializable: ^6.7.1
