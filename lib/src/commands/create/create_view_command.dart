@@ -74,7 +74,6 @@ class CreateViewCommand extends DolphinCommand with ProjectStructureValidator {
       // Determine which template to use with the following rules:
       // 1. If the template is supplied we use that template
       // 2. If the template is null use config web to decide
-      print('templateType:$templateType');
       templateType ??= 'empty';
 
       await templateService.renderTemplate(
