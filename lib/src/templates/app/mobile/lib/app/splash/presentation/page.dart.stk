@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:{{packageName}}/app/splash/notifiers/page_notifier.dart';
 
 class SplashPage extends ConsumerStatefulWidget {
-  const SplashPage({Key? key}) : super(key: key);
+  const SplashPage({super.key});
 
   @override
   ConsumerState<SplashPage> createState() => _SplashPageState();

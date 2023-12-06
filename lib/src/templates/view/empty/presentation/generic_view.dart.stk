@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:{{packageName}}/app/{{featureName}}/notifiers/{{viewNameSnake}}_notifier.dart';
 
 class {{viewName}} extends ConsumerWidget {
-  const {{viewName}}({Key? key}) : super(key: key);
+  const {{viewName}}({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

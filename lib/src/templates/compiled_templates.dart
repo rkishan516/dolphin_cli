@@ -176,7 +176,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:{{packageName}}/app/home/notifiers/page_notifier.dart';
 
 class HomePage extends ConsumerWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -264,7 +264,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:{{packageName}}/app/splash/notifiers/page_notifier.dart';
 
 class SplashPage extends ConsumerStatefulWidget {
-  const SplashPage({Key? key}) : super(key: key);
+  const SplashPage({super.key});
 
   @override
   ConsumerState<SplashPage> createState() => _SplashPageState();
@@ -682,7 +682,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:{{packageName}}/app/{{featureName}}/notifiers/{{viewNameSnake}}_notifier.dart';
 
 class {{viewName}} extends ConsumerWidget {
-  const {{viewName}}({Key? key}) : super(key: key);
+  const {{viewName}}({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
