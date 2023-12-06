@@ -1,3 +1,8 @@
+## 0.1.3
+
+* Add super key constructor for widgets
+* Remove template type print in create view
+
 ## 0.1.2
 
 * Fix dolphin create app import issues
