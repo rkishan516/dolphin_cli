@@ -124,9 +124,10 @@ class _$ConfigCopyWithImpl<$Res, $Val extends Config>
 }
 
 /// @nodoc
-abstract class _$$_ConfigCopyWith<$Res> implements $ConfigCopyWith<$Res> {
-  factory _$$_ConfigCopyWith(_$_Config value, $Res Function(_$_Config) then) =
-      __$$_ConfigCopyWithImpl<$Res>;
+abstract class _$$ConfigImplCopyWith<$Res> implements $ConfigCopyWith<$Res> {
+  factory _$$ConfigImplCopyWith(
+          _$ConfigImpl value, $Res Function(_$ConfigImpl) then) =
+      __$$ConfigImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -140,10 +141,11 @@ abstract class _$$_ConfigCopyWith<$Res> implements $ConfigCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ConfigCopyWithImpl<$Res>
-    extends _$ConfigCopyWithImpl<$Res, _$_Config>
-    implements _$$_ConfigCopyWith<$Res> {
-  __$$_ConfigCopyWithImpl(_$_Config _value, $Res Function(_$_Config) _then)
+class __$$ConfigImplCopyWithImpl<$Res>
+    extends _$ConfigCopyWithImpl<$Res, _$ConfigImpl>
+    implements _$$ConfigImplCopyWith<$Res> {
+  __$$ConfigImplCopyWithImpl(
+      _$ConfigImpl _value, $Res Function(_$ConfigImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -157,7 +159,7 @@ class __$$_ConfigCopyWithImpl<$Res>
     Object? dolphinAppFilePath = null,
     Object? lineLength = null,
   }) {
-    return _then(_$_Config(
+    return _then(_$ConfigImpl(
       viewsPath: null == viewsPath
           ? _value.viewsPath
           : viewsPath // ignore: cast_nullable_to_non_nullable
@@ -192,8 +194,8 @@ class __$$_ConfigCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Config implements _Config {
-  _$_Config(
+class _$ConfigImpl implements _Config {
+  _$ConfigImpl(
       {@JsonKey(name: 'views_path') this.viewsPath = 'presentation',
       @JsonKey(name: 'services_path') this.servicesPath = 'services',
       @JsonKey(name: 'widgets_path') this.widgetsPath = 'presentation',
@@ -204,8 +206,8 @@ class _$_Config implements _Config {
       this.dolphinAppFilePath = 'app/app.dart',
       @JsonKey(name: 'line_length') this.lineLength = 80});
 
-  factory _$_Config.fromJson(Map<String, dynamic> json) =>
-      _$$_ConfigFromJson(json);
+  factory _$ConfigImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ConfigImplFromJson(json);
 
   /// Path where views and viewmodels will be genereated.
   @override
@@ -249,10 +251,10 @@ class _$_Config implements _Config {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Config &&
+            other is _$ConfigImpl &&
             (identical(other.viewsPath, viewsPath) ||
                 other.viewsPath == viewsPath) &&
             (identical(other.servicesPath, servicesPath) ||
@@ -284,12 +286,12 @@ class _$_Config implements _Config {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ConfigCopyWith<_$_Config> get copyWith =>
-      __$$_ConfigCopyWithImpl<_$_Config>(this, _$identity);
+  _$$ConfigImplCopyWith<_$ConfigImpl> get copyWith =>
+      __$$ConfigImplCopyWithImpl<_$ConfigImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ConfigToJson(
+    return _$$ConfigImplToJson(
       this,
     );
   }
@@ -303,9 +305,9 @@ abstract class _Config implements Config {
       @JsonKey(name: 'bottom_sheets_path') final String bottomSheetsPath,
       @JsonKey(name: 'dialogs_path') final String dialogsPath,
       @JsonKey(name: 'dolphin_app_file_path') final String dolphinAppFilePath,
-      @JsonKey(name: 'line_length') final int lineLength}) = _$_Config;
+      @JsonKey(name: 'line_length') final int lineLength}) = _$ConfigImpl;
 
-  factory _Config.fromJson(Map<String, dynamic> json) = _$_Config.fromJson;
+  factory _Config.fromJson(Map<String, dynamic> json) = _$ConfigImpl.fromJson;
 
   @override
 
@@ -345,6 +347,6 @@ abstract class _Config implements Config {
   int get lineLength;
   @override
   @JsonKey(ignore: true)
-  _$$_ConfigCopyWith<_$_Config> get copyWith =>
+  _$$ConfigImplCopyWith<_$ConfigImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

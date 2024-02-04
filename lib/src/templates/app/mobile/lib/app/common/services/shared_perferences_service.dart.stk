@@ -1,0 +1,9 @@
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+part 'shared_perferences_service.g.dart';
+
+@riverpod
+SharedPreferences sharedPerferencesService(SharedPerferencesServiceRef ref) {
+  throw UnimplementedError();
+}

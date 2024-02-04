@@ -76,11 +76,21 @@ const String kAppMobileTemplateMainPath =
 const String kAppMobileTemplateMainContent = '''
 import 'package:flutter/material.dart';
 import 'package:{{packageName}}/app/app.dart';
+import 'package:{{packageName}}/app/common/services/shared_perferences_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const ProviderScope(child: MainApp()));
+  final sharedPreferences = await SharedPreferences.getInstance();
+  runApp(
+    ProviderScope(
+      overrides: [
+        sharedPerferencesServiceProvider.overrideWithValue(sharedPreferences)
+      ],
+      child: const MainApp(),
+    ),
+  );
 }
 
 
@@ -311,6 +321,27 @@ class _SplashPageState extends ConsumerState<SplashPage> {
 // --------------------------------------------------
 
 
+// -------- SharedPerferencesService Template Data ----------
+
+const String kAppMobileTemplatecommonSharedPerferencesServicePath =
+    'lib/app/common/services/shared_perferences_service.dart.stk';
+
+const String kAppMobileTemplatecommonSharedPerferencesServiceContent = '''
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+part 'shared_perferences_service.g.dart';
+
+@riverpod
+SharedPreferences sharedPerferencesService(SharedPerferencesServiceRef ref) {
+  throw UnimplementedError();
+}
+
+''';
+
+// --------------------------------------------------
+
+
 // -------- AppRouter Template Data ----------
 
 const String kAppMobileTemplateroutesAppRouterPath =
@@ -427,11 +458,12 @@ dependencies:
     sdk: flutter
   flutter_riverpod: ^2.4.0
   freezed_annotation: ^2.4.1
-  go_router: ^12.1.1
+  go_router: ^13.1.0
   json_annotation: ^4.8.1
   riverpod_annotation: ^2.1.5
+  shared_preferences: ^2.2.2
   supercharged: ^2.1.1
-  talker_flutter: ^3.3.0
+  talker_flutter: ^4.0.0
 
 dev_dependencies:
   build_runner: ^2.4.6

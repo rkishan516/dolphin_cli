@@ -1,3 +1,8 @@
+## 0.1.4
+
+* Add Shared Preference service
+* Migrate talker flutter to v4 and Go Router to v13
+
 ## 0.1.3
 
 * Add super key constructor for widgets
