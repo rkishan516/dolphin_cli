@@ -1,3 +1,10 @@
+## 0.1.5
+
+* Add logger service support
+* Add developer menu support
+* Add logger view in developer menu as first page
+* Update pub dependencies to latest version in dolphin app
+
 ## 0.1.4
 
 * Add Shared Preference service
