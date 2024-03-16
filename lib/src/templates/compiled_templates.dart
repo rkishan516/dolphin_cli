@@ -456,26 +456,26 @@ dependencies:
   equatable: ^2.0.5
   flutter:
     sdk: flutter
-  flutter_riverpod: ^2.4.0
+  flutter_riverpod: ^2.5.1
   freezed_annotation: ^2.4.1
-  go_router: ^13.1.0
+  go_router: ^13.2.1
   json_annotation: ^4.8.1
-  riverpod_annotation: ^2.1.5
+  riverpod_annotation: ^2.3.5
   shared_preferences: ^2.2.2
   supercharged: ^2.1.1
-  talker_flutter: ^4.0.0
+  talker_flutter: ^4.0.3
 
 dev_dependencies:
-  build_runner: ^2.4.6
+  build_runner: ^2.4.8
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.1
-  freezed: ^2.4.1
-  go_router_builder: ^2.3.2
+  freezed: ^2.4.7
+  go_router_builder: ^2.4.1
   json_serializable: ^6.7.1
-  mockito: ^5.4.1
-  riverpod_generator: ^2.3.2
-  riverpod_lint: ^2.0.4
+  mockito: ^5.4.4
+  riverpod_generator: ^2.4.0
+  riverpod_lint: ^2.3.10
 
 flutter:
   uses-material-design: true
