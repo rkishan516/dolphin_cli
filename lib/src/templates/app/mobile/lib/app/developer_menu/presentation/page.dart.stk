@@ -1,0 +1,24 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:{{packageName}}/app/common/presentation/logger_view.dart';
+
+class DeveloperMenuPage extends ConsumerWidget {
+  const DeveloperMenuPage({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      appBar: AppBar(
+        title: const Text(
+          'Developer Menu',
+        ),
+      ),
+      body: PageView(
+        children: const [
+          LoggerView(),
+        ],
+      ),
+    );
+  }
+}

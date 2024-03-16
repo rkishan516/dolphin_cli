@@ -48,6 +48,18 @@ Map<String, Map<String, DolphinTemplate>> kCompiledDolphinTemplates = {
             content: kAppMobileTemplatesplashPageContent,
             fileType: FileType.text),
         TemplateFile(
+            relativeOutputPath: kAppMobileTemplatedeveloper_menuPagePath,
+            content: kAppMobileTemplatedeveloper_menuPageContent,
+            fileType: FileType.text),
+        TemplateFile(
+            relativeOutputPath: kAppMobileTemplatecommonLoggerViewPath,
+            content: kAppMobileTemplatecommonLoggerViewContent,
+            fileType: FileType.text),
+        TemplateFile(
+            relativeOutputPath: kAppMobileTemplatecommonLoggerServicePath,
+            content: kAppMobileTemplatecommonLoggerServiceContent,
+            fileType: FileType.text),
+        TemplateFile(
             relativeOutputPath: kAppMobileTemplatecommonSharedPerferencesServicePath,
             content: kAppMobileTemplatecommonSharedPerferencesServiceContent,
             fileType: FileType.text),

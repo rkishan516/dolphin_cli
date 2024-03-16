@@ -1,11 +1,11 @@
 /// NOTE: This is generated code from the compileTemplates command. Do not modify by hand
 ///       This file should be checked into source control.
 
-
 // -------- DolphinJsonStk Template Data ----------
 
-const String kAppMobileTemplateDolphinJsonStkPath =
-    'dolphin.json.stk';
+// ignore_for_file: constant_identifier_names
+
+const String kAppMobileTemplateDolphinJsonStkPath = 'dolphin.json.stk';
 
 const String kAppMobileTemplateDolphinJsonStkContent = '''
 {
@@ -21,11 +21,9 @@ const String kAppMobileTemplateDolphinJsonStkContent = '''
 
 // --------------------------------------------------
 
-
 // -------- BuildYamlStk Template Data ----------
 
-const String kAppMobileTemplateBuildYamlStkPath =
-    'build.yaml.stk';
+const String kAppMobileTemplateBuildYamlStkPath = 'build.yaml.stk';
 
 const String kAppMobileTemplateBuildYamlStkContent = '''
 targets:
@@ -53,11 +51,9 @@ targets:
 
 // --------------------------------------------------
 
-
 // -------- READMEMdStk Template Data ----------
 
-const String kAppMobileTemplateREADMEMdStkPath =
-    'README.md.stk';
+const String kAppMobileTemplateREADMEMdStkPath = 'README.md.stk';
 
 const String kAppMobileTemplateREADMEMdStkContent = '''
 # {{packageName}}
@@ -67,11 +63,9 @@ const String kAppMobileTemplateREADMEMdStkContent = '''
 
 // --------------------------------------------------
 
-
 // -------- Main Template Data ----------
 
-const String kAppMobileTemplateMainPath =
-    'lib/main.dart.stk';
+const String kAppMobileTemplateMainPath = 'lib/main.dart.stk';
 
 const String kAppMobileTemplateMainContent = '''
 import 'package:flutter/material.dart';
@@ -99,14 +93,15 @@ Future<void> main() async {
 
 // --------------------------------------------------
 
-
 // -------- App Template Data ----------
 
-const String kAppMobileTemplatelibAppPath =
-    'lib/app/app.dart.stk';
+const String kAppMobileTemplatelibAppPath = 'lib/app/app.dart.stk';
 
 const String kAppMobileTemplatelibAppContent = '''
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:{{packageName}}/app/routes/notifiers/app_router.dart';
 import 'package:{{packageName}}/app/routes/notifiers/app_routes.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -117,13 +112,77 @@ class MainApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp.router(
       routerConfig: ref.watch(navigatorProvider),
+      builder: (context, child) {
+        return _VersionOverlay(
+          child: child!,
+        );
+      },
     );
   }
 }
+
+class _VersionOverlay extends ConsumerWidget {
+  final Widget child;
+
+  const _VersionOverlay({
+    required this.child,
+  });
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Stack(
+      children: [
+        child,
+        if (kDebugMode)
+          SafeArea(
+            child: Align(
+              alignment: const Alignment(1, -0.95),
+              child: Material(
+                color: Colors.transparent,
+                child: InkWell(
+                  onTap: () {
+                    final router = ref.read(navigatorProvider);
+                    final lastMatch =
+                        router.routerDelegate.currentConfiguration.last;
+                    final matchList = lastMatch is ImperativeRouteMatch
+                        ? lastMatch.matches
+                        : router.routerDelegate.currentConfiguration;
+                    final String location = matchList.uri.toString();
+                    if (!location.contains(DeveloperMenuPageRoute.name)) {
+                      router.pushNamed(DeveloperMenuPageRoute.name);
+                    }
+                  },
+                  child: const Padding(
+                    padding: EdgeInsets.only(left: 5, bottom: 10),
+                    child: RotatedBox(
+                      quarterTurns: 1,
+                      child: ColoredBox(
+                        color: Colors.black,
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 5,
+                            vertical: 1,
+                          ),
+                          child: Text(
+                            'Dev',
+                            style: TextStyle(fontSize: 11),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+      ],
+    );
+  }
+}
+
 ''';
 
 // --------------------------------------------------
-
 
 // -------- PageState Template Data ----------
 
@@ -145,7 +204,6 @@ class HomePageState with _\$HomePageState {
 ''';
 
 // --------------------------------------------------
-
 
 // -------- PageNotifier Template Data ----------
 
@@ -173,7 +231,6 @@ class HomePageNotifier extends _\$HomePageNotifier {
 ''';
 
 // --------------------------------------------------
-
 
 // -------- Page Template Data ----------
 
@@ -228,7 +285,6 @@ class HomePage extends ConsumerWidget {
 
 // --------------------------------------------------
 
-
 // -------- PageNotifier Template Data ----------
 
 const String kAppMobileTemplatesplashPageNotifierPath =
@@ -260,7 +316,6 @@ class SplashPageNotifier extends _\$SplashPageNotifier {
 ''';
 
 // --------------------------------------------------
-
 
 // -------- Page Template Data ----------
 
@@ -320,6 +375,144 @@ class _SplashPageState extends ConsumerState<SplashPage> {
 
 // --------------------------------------------------
 
+// -------- Page Template Data ----------
+
+const String kAppMobileTemplatedeveloper_menuPagePath =
+    'lib/app/developer_menu/presentation/page.dart.stk';
+
+const String kAppMobileTemplatedeveloper_menuPageContent = '''
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:{{packageName}}/app/common/presentation/logger_view.dart';
+
+class DeveloperMenuPage extends ConsumerWidget {
+  const DeveloperMenuPage({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      appBar: AppBar(
+        title: const Text(
+          'Developer Menu',
+        ),
+      ),
+      body: PageView(
+        children: const [
+          LoggerView(),
+        ],
+      ),
+    );
+  }
+}
+
+''';
+
+// --------------------------------------------------
+
+// -------- LoggerView Template Data ----------
+
+const String kAppMobileTemplatecommonLoggerViewPath =
+    'lib/app/common/presentation/logger_view.dart.stk';
+
+const String kAppMobileTemplatecommonLoggerViewContent = '''
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:talker_flutter/talker_flutter.dart';
+import 'package:{{packageName}}/app/common/services/logger_service.dart';
+
+class LoggerView extends ConsumerWidget {
+  const LoggerView({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final logger = ref.watch(loggerServiceProvider);
+    return TalkerScreen(
+      talker: logger,
+      theme: const TalkerScreenTheme(
+        backgroundColor: Colors.transparent,
+      ),
+      itemsBuilder: (context, data) {
+        return TalkerDataCard(
+          data: data,
+          color: {
+            LogLevel.critical: Colors.red,
+            LogLevel.error: Colors.redAccent,
+            LogLevel.info: Colors.cyan,
+            LogLevel.warning: Colors.yellow,
+            LogLevel.debug: Colors.blue,
+            LogLevel.verbose: Colors.grey,
+          }[data.logLevel]!,
+        );
+      },
+      appBarTitle: 'Logs',
+    );
+  }
+}
+
+''';
+
+// --------------------------------------------------
+
+// -------- LoggerService Template Data ----------
+
+const String kAppMobileTemplatecommonLoggerServicePath =
+    'lib/app/common/services/logger_service.dart.stk';
+
+const String kAppMobileTemplatecommonLoggerServiceContent = '''
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:talker_flutter/talker_flutter.dart';
+
+part 'logger_service.g.dart';
+
+@Riverpod(keepAlive: true)
+Talker loggerService(LoggerServiceRef ref) {
+  return TalkerFlutter.init(
+    logger: TalkerLogger(
+      filter: const LogLevelTalkerLoggerFilter(LogLevel.debug),
+      formatter: const ColoredLoggerFormatter(),
+      settings: TalkerLoggerSettings(
+        maxLineWidth: 20,
+        colors: {
+          LogLevel.critical: AnsiPen()..red(),
+          LogLevel.error: AnsiPen()..magenta(),
+          LogLevel.info: AnsiPen()..cyan(),
+          LogLevel.warning: AnsiPen()..yellow(),
+          LogLevel.debug: AnsiPen()..blue(),
+          LogLevel.verbose: AnsiPen()..gray(),
+        },
+        enableColors: true,
+      ),
+    ),
+  );
+}
+
+class LogLevelTalkerLoggerFilter implements LoggerFilter {
+  const LogLevelTalkerLoggerFilter(this.logLevel);
+
+  final LogLevel logLevel;
+
+  /// List of levels sorted by priority
+  final logLevelPriorityList = const [
+    LogLevel.critical,
+    LogLevel.error,
+    LogLevel.warning,
+    LogLevel.info,
+    LogLevel.debug,
+    LogLevel.verbose,
+  ];
+
+  @override
+  bool shouldLog(dynamic msg, LogLevel level) {
+    final currLogLevelIndex = logLevelPriorityList.indexOf(logLevel);
+    final msgLogLevelIndex = logLevelPriorityList.indexOf(level);
+    return currLogLevelIndex >= msgLogLevelIndex;
+  }
+}
+
+''';
+
+// --------------------------------------------------
 
 // -------- SharedPerferencesService Template Data ----------
 
@@ -341,7 +534,6 @@ SharedPreferences sharedPerferencesService(SharedPerferencesServiceRef ref) {
 
 // --------------------------------------------------
 
-
 // -------- AppRouter Template Data ----------
 
 const String kAppMobileTemplateroutesAppRouterPath =
@@ -350,6 +542,7 @@ const String kAppMobileTemplateroutesAppRouterPath =
 const String kAppMobileTemplateroutesAppRouterContent = '''
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:{{packageName}}/app/developer_menu/presentation/page.dart';
 import 'package:{{packageName}}/app/home/presentation/page.dart';
 import 'package:{{packageName}}/app/splash/presentation/page.dart';
 
@@ -383,10 +576,24 @@ class SplashPageRoute extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) => const SplashPage();
 }
+
+@TypedGoRoute<DeveloperMenuPageRoute>(
+  path: DeveloperMenuPageRoute.path,
+  name: DeveloperMenuPageRoute.name,
+)
+class DeveloperMenuPageRoute extends GoRouteData {
+  static const path = '/developerMenu';
+  static const name = 'developerMenu';
+  const DeveloperMenuPageRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      const DeveloperMenuPage();
+}
+
 ''';
 
 // --------------------------------------------------
-
 
 // -------- AppRoutes Template Data ----------
 
@@ -437,11 +644,9 @@ class RouterNotifier extends _\$RouterNotifier implements Listenable {
 
 // --------------------------------------------------
 
-
 // -------- PubspecYamlStk Template Data ----------
 
-const String kAppMobileTemplatePubspecYamlStkPath =
-    'pubspec.yaml.stk';
+const String kAppMobileTemplatePubspecYamlStkPath = 'pubspec.yaml.stk';
 
 const String kAppMobileTemplatePubspecYamlStkContent = '''
 name: {{packageName}}
@@ -484,7 +689,6 @@ flutter:
 
 // --------------------------------------------------
 
-
 // -------- SettingsJsonStk Template Data ----------
 
 const String kAppMobileTemplateSettingsJsonStkPath =
@@ -501,7 +705,6 @@ const String kAppMobileTemplateSettingsJsonStkContent = '''
 ''';
 
 // --------------------------------------------------
-
 
 // -------- GenericWidget Template Data ----------
 
@@ -525,7 +728,6 @@ class {{widgetName}} extends ConsumerWidget {
 
 // --------------------------------------------------
 
-
 // -------- GenericDialogState Template Data ----------
 
 const String kDialogEmptyTemplateGenericDialogStatePath =
@@ -546,7 +748,6 @@ class {{dialogName}}Model with _\${{dialogName}}Model {
 ''';
 
 // --------------------------------------------------
-
 
 // -------- GenericDialogNotifier Template Data ----------
 
@@ -574,7 +775,6 @@ class {{dialogName}}Notifier extends _\${{dialogName}}Notifier {
 ''';
 
 // --------------------------------------------------
-
 
 // -------- GenericDialog Template Data ----------
 
@@ -652,7 +852,6 @@ class {{dialogName}} extends ConsumerWidget {
 
 // --------------------------------------------------
 
-
 // -------- GenericViewState Template Data ----------
 
 const String kViewEmptyTemplateGenericViewStatePath =
@@ -673,7 +872,6 @@ class {{viewName}}State with _\${{viewName}}State {
 ''';
 
 // --------------------------------------------------
-
 
 // -------- GenericViewNotifier Template Data ----------
 
@@ -701,7 +899,6 @@ class {{notifierName}} extends _\${{notifierName}} {
 ''';
 
 // --------------------------------------------------
-
 
 // -------- GenericView Template Data ----------
 
@@ -756,7 +953,6 @@ class {{viewName}} extends ConsumerWidget {
 
 // --------------------------------------------------
 
-
 // -------- GenericService Template Data ----------
 
 const String kServiceEmptyTemplateGenericServicePath =
@@ -787,7 +983,6 @@ class {{serviceName}}Service {
 
 // --------------------------------------------------
 
-
 // -------- GenericSheetState Template Data ----------
 
 const String kBottomSheetEmptyTemplateGenericSheetStatePath =
@@ -808,7 +1003,6 @@ class {{sheetName}}Model with _\${{sheetName}}Model {
 ''';
 
 // --------------------------------------------------
-
 
 // -------- GenericSheetNotifier Template Data ----------
 
@@ -836,7 +1030,6 @@ class {{sheetName}}Notifier extends _\${{sheetName}}Notifier {
 ''';
 
 // --------------------------------------------------
-
 
 // -------- GenericSheet Template Data ----------
 

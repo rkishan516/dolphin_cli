@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:{{packageName}}/app/developer_menu/presentation/page.dart';
 import 'package:{{packageName}}/app/home/presentation/page.dart';
 import 'package:{{packageName}}/app/splash/presentation/page.dart';
 
@@ -32,4 +33,18 @@ class SplashPageRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) => const SplashPage();
+}
+
+@TypedGoRoute<DeveloperMenuPageRoute>(
+  path: DeveloperMenuPageRoute.path,
+  name: DeveloperMenuPageRoute.name,
+)
+class DeveloperMenuPageRoute extends GoRouteData {
+  static const path = '/developerMenu';
+  static const name = 'developerMenu';
+  const DeveloperMenuPageRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      const DeveloperMenuPage();
 }
