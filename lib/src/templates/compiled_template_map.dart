@@ -56,6 +56,10 @@ Map<String, Map<String, DolphinTemplate>> kCompiledDolphinTemplates = {
             content: kAppMobileTemplatecommonLoggerViewContent,
             fileType: FileType.text),
         TemplateFile(
+            relativeOutputPath: kAppMobileTemplatecommonPackageInfoServicePath,
+            content: kAppMobileTemplatecommonPackageInfoServiceContent,
+            fileType: FileType.text),
+        TemplateFile(
             relativeOutputPath: kAppMobileTemplatecommonLoggerServicePath,
             content: kAppMobileTemplatecommonLoggerServiceContent,
             fileType: FileType.text),

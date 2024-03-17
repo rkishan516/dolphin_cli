@@ -69,7 +69,9 @@ const String kAppMobileTemplateMainPath = 'lib/main.dart.stk';
 
 const String kAppMobileTemplateMainContent = '''
 import 'package:flutter/material.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:{{packageName}}/app/app.dart';
+import 'package:{{packageName}}/app/common/services/package_info_service.dart';
 import 'package:{{packageName}}/app/common/services/shared_perferences_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -77,10 +79,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final sharedPreferences = await SharedPreferences.getInstance();
+  final packageInfo = await PackageInfo.fromPlatform();
   runApp(
     ProviderScope(
       overrides: [
-        sharedPerferencesServiceProvider.overrideWithValue(sharedPreferences)
+        sharedPerferencesServiceProvider.overrideWithValue(sharedPreferences),
+        packageInfoProvider.overrideWithValue(packageInfo),
       ],
       child: const MainApp(),
     ),
@@ -429,9 +433,6 @@ class LoggerView extends ConsumerWidget {
     final logger = ref.watch(loggerServiceProvider);
     return TalkerScreen(
       talker: logger,
-      theme: const TalkerScreenTheme(
-        backgroundColor: Colors.transparent,
-      ),
       itemsBuilder: (context, data) {
         return TalkerDataCard(
           data: data,
@@ -449,6 +450,24 @@ class LoggerView extends ConsumerWidget {
     );
   }
 }
+
+''';
+
+// --------------------------------------------------
+
+// -------- PackageInfoService Template Data ----------
+
+const String kAppMobileTemplatecommonPackageInfoServicePath =
+    'lib/app/common/services/package_info_service.dart.stk';
+
+const String kAppMobileTemplatecommonPackageInfoServiceContent = '''
+import 'package:package_info_plus/package_info_plus.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+part 'package_info_service.g.dart';
+
+@Riverpod(keepAlive: true)
+PackageInfo packageInfo(PackageInfoRef _) => throw UnimplementedError();
 
 ''';
 
@@ -525,7 +544,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 part 'shared_perferences_service.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 SharedPreferences sharedPerferencesService(SharedPerferencesServiceRef ref) {
   throw UnimplementedError();
 }
@@ -665,6 +684,7 @@ dependencies:
   freezed_annotation: ^2.4.1
   go_router: ^13.2.1
   json_annotation: ^4.8.1
+  package_info_plus: ^4.2.0
   riverpod_annotation: ^2.3.5
   shared_preferences: ^2.2.2
   supercharged: ^2.1.1

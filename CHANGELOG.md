@@ -1,3 +1,7 @@
+## 0.1.6
+
+* Add package info service support
+
 ## 0.1.5
 
 * Add logger service support

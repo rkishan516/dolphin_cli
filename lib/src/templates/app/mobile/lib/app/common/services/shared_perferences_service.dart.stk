@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 part 'shared_perferences_service.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 SharedPreferences sharedPerferencesService(SharedPerferencesServiceRef ref) {
   throw UnimplementedError();
 }

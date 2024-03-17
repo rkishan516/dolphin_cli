@@ -14,6 +14,7 @@ dependencies:
   freezed_annotation: ^2.4.1
   go_router: ^13.2.1
   json_annotation: ^4.8.1
+  package_info_plus: ^4.2.0
   riverpod_annotation: ^2.3.5
   shared_preferences: ^2.2.2
   supercharged: ^2.1.1
