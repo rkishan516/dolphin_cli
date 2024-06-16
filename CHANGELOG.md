@@ -1,3 +1,8 @@
+## 0.1.7
+
+* Update pub dependencies to latest version in dolphin app
+* Add analytics navigator observer
+
 ## 0.1.6
 
 * Add package info service support

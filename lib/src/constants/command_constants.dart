@@ -1,5 +1,4 @@
 /// Stores all the commands used throughout the app that
-
 const String ksDart = 'dart';
 const String ksFlutter = 'flutter';
 const String ksCreate = 'create';

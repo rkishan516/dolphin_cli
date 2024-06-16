@@ -1,5 +1,5 @@
-/// NOTE: This is generated code from the compileTemplates command. Do not modify by hand
-///       This file should be checked into source control.
+// NOTE: This is generated code from the compileTemplates command. Do not modify by hand
+//       This file should be checked into source control.
 
 // -------- DolphinJsonStk Template Data ----------
 
@@ -625,6 +625,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:{{packageName}}/app/routes/notifiers/app_router.dart';
+import 'package:{{packageName}}/app/routes/observers/analytics_observer.dart';
 
 part 'app_routes.g.dart';
 
@@ -634,7 +635,9 @@ final GlobalKey<NavigatorState> appNavigatorKey = GlobalKey<NavigatorState>();
 GoRouter navigator(NavigatorRef ref) {
   final router = ref.watch(routerNotifierProvider.notifier);
 
-  List<NavigatorObserver>? observers = [];
+  List<NavigatorObserver>? observers = [
+    DolphinAnalyticsNavigatorObserver(),
+  ];
 
   return GoRouter(
     observers: observers,
@@ -663,6 +666,38 @@ class RouterNotifier extends _\$RouterNotifier implements Listenable {
 
 // --------------------------------------------------
 
+// -------- AnalyticsObserver Template Data ----------
+
+const String kAppMobileTemplateroutesAnalyticsObserverPath =
+    'lib/app/routes/observers/analytics_observer.dart.stk';
+
+const String kAppMobileTemplateroutesAnalyticsObserverContent = '''
+import 'package:flutter/material.dart';
+
+class DolphinAnalyticsNavigatorObserver extends NavigatorObserver {
+  void screenChanged(Route route) {
+      if (route.settings.name == null) return;
+      Map<String, Object>? parameters;
+      if (route.settings.arguments is Map<String, Object>?) {
+        parameters = route.settings.arguments as Map<String, Object>?;
+      }
+      // TODO(dev): Track page analytics here
+  }
+
+  @override
+  void didPop(Route route, Route? previousRoute) {
+    screenChanged(route);
+  }
+
+  @override
+  void didPush(Route route, Route? previousRoute) {
+    screenChanged(route);
+  }
+}
+''';
+
+// --------------------------------------------------
+
 // -------- PubspecYamlStk Template Data ----------
 
 const String kAppMobileTemplatePubspecYamlStkPath = 'pubspec.yaml.stk';
@@ -682,22 +717,22 @@ dependencies:
     sdk: flutter
   flutter_riverpod: ^2.5.1
   freezed_annotation: ^2.4.1
-  go_router: ^13.2.1
-  json_annotation: ^4.8.1
-  package_info_plus: ^4.2.0
+  go_router: ^14.1.4
+  json_annotation: ^4.9.0
+  package_info_plus: ^8.0.0
   riverpod_annotation: ^2.3.5
-  shared_preferences: ^2.2.2
+  shared_preferences: ^2.2.3
   supercharged: ^2.1.1
-  talker_flutter: ^4.0.3
+  talker_flutter: ^4.2.4
 
 dev_dependencies:
-  build_runner: ^2.4.8
+  build_runner: ^2.4.11
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.1
-  freezed: ^2.4.7
-  go_router_builder: ^2.4.1
-  json_serializable: ^6.7.1
+  flutter_lints: ^4.0.0
+  freezed: ^2.5.2
+  go_router_builder: ^2.7.0
+  json_serializable: ^6.8.0
   mockito: ^5.4.4
   riverpod_generator: ^2.4.0
   riverpod_lint: ^2.3.10
@@ -1105,4 +1140,3 @@ class {{sheetName}}Sheet extends ConsumerWidget {
 ''';
 
 // --------------------------------------------------
-

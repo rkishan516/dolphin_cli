@@ -64,7 +64,8 @@ Map<String, Map<String, DolphinTemplate>> kCompiledDolphinTemplates = {
             content: kAppMobileTemplatecommonLoggerServiceContent,
             fileType: FileType.text),
         TemplateFile(
-            relativeOutputPath: kAppMobileTemplatecommonSharedPerferencesServicePath,
+            relativeOutputPath:
+                kAppMobileTemplatecommonSharedPerferencesServicePath,
             content: kAppMobileTemplatecommonSharedPerferencesServiceContent,
             fileType: FileType.text),
         TemplateFile(
@@ -74,6 +75,10 @@ Map<String, Map<String, DolphinTemplate>> kCompiledDolphinTemplates = {
         TemplateFile(
             relativeOutputPath: kAppMobileTemplateroutesAppRoutesPath,
             content: kAppMobileTemplateroutesAppRoutesContent,
+            fileType: FileType.text),
+        TemplateFile(
+            relativeOutputPath: kAppMobileTemplateroutesAnalyticsObserverPath,
+            content: kAppMobileTemplateroutesAnalyticsObserverContent,
             fileType: FileType.text),
         TemplateFile(
             relativeOutputPath: kAppMobileTemplatePubspecYamlStkPath,
@@ -155,7 +160,8 @@ Map<String, Map<String, DolphinTemplate>> kCompiledDolphinTemplates = {
             content: kBottomSheetEmptyTemplateGenericSheetStateContent,
             fileType: FileType.text),
         TemplateFile(
-            relativeOutputPath: kBottomSheetEmptyTemplateGenericSheetNotifierPath,
+            relativeOutputPath:
+                kBottomSheetEmptyTemplateGenericSheetNotifierPath,
             content: kBottomSheetEmptyTemplateGenericSheetNotifierContent,
             fileType: FileType.text),
         TemplateFile(

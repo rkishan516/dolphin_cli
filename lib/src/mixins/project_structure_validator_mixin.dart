@@ -2,9 +2,11 @@ import 'dart:io';
 
 import 'package:dolphin_cli/src/exceptions/invalid_dolphin_structure_exception.dart';
 import 'package:dolphin_cli/src/services/config_service.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:path/path.dart' as path;
 import 'package:dolphin_cli/src/constants/message_constants.dart';
 
+@internal
 mixin ProjectStructureValidator {
   /// Returns true if the cli is running from the root of a flutter
   /// or dart project

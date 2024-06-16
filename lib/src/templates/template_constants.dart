@@ -90,8 +90,8 @@ const String kTemplatePropertyWidgetName = 'widgetName';
 // -------- Compiled Template Structure ---------
 
 const String kTemplateDataStructure = '''
-/// NOTE: This is generated code from the compileTemplates command. Do not modify by hand
-///       This file should be checked into source control.
+// NOTE: This is generated code from the compileTemplates command. Do not modify by hand
+//       This file should be checked into source control.
 
 {{#templateItems}}
 
@@ -145,9 +145,9 @@ Map<String, Map<String, DolphinTemplate>> kCompiledDolphinTemplates = {
 ''';
 
 const String kTemplateTypesMap = '''
-/// NOTE: This is generated code from the compileTemplates command. Do not 
-///       modify by hand.
-///       This file should be checked into source control.
+// NOTE: This is generated code from the compileTemplates command. Do not 
+//       modify by hand.
+//       This file should be checked into source control.
 
 Map<String, List<String>> kCompiledTemplateTypes = {
   {{#dolphinTemplates}}
