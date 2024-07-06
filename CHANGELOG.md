@@ -1,6 +1,7 @@
 ## 0.2.0
 
 * Add theme based color and text styles
+* Update pub dependencies
 
 ## 0.1.7
 
