@@ -17,20 +17,17 @@ class HomePage extends ConsumerWidget {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
+              Text(
                 'Hello, Dolphin!',
-                style: TextStyle(
-                  fontSize: 35,
-                  fontWeight: FontWeight.w900,
-                ),
+                style: Theme.of(context).textTheme.titleLarge,
               ),
               const SizedBox(height: 20),
               MaterialButton(
-                color: Colors.black,
+                color: Theme.of(context).buttonTheme.colorScheme?.onPrimary,
                 onPressed: notifier.incrementCounter,
                 child: Text(
                   homePageState.counter.toString(),
-                  style: const TextStyle(color: Colors.white),
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
               ),
             ],

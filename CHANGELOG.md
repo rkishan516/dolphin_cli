@@ -1,3 +1,7 @@
+## 0.2.0
+
+* Add theme based color and text styles
+
 ## 0.1.7
 
 * Update pub dependencies to latest version in dolphin app

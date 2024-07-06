@@ -261,20 +261,17 @@ class HomePage extends ConsumerWidget {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
+              Text(
                 'Hello, Dolphin!',
-                style: TextStyle(
-                  fontSize: 35,
-                  fontWeight: FontWeight.w900,
-                ),
+                style: Theme.of(context).textTheme.titleLarge,
               ),
               const SizedBox(height: 20),
               MaterialButton(
-                color: Colors.black,
+                color: Theme.of(context).buttonTheme.colorScheme?.onPrimary,
                 onPressed: notifier.incrementCounter,
                 child: Text(
                   homePageState.counter.toString(),
-                  style: const TextStyle(color: Colors.white),
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
               ),
             ],
@@ -350,23 +347,14 @@ class _SplashPageState extends ConsumerState<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 25.0),
+          padding: const EdgeInsets.symmetric(horizontal: 25.0),
           child: Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Hello, Dolphin!',
-                  style: TextStyle(
-                    fontSize: 35,
-                    fontWeight: FontWeight.w900,
-                  ),
-                ),
-              ],
+            child: Text(
+              'Hello, Dolphin!',
+              style: Theme.of(context).textTheme.titleLarge,
             ),
           ),
         ),
@@ -397,8 +385,9 @@ class DeveloperMenuPage extends ConsumerWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           'Developer Menu',
+          style: Theme.of(context).appBarTheme.titleTextStyle,
         ),
       ),
       body: PageView(
@@ -980,20 +969,17 @@ class {{viewName}} extends ConsumerWidget {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
+              Text(
                 'Hello, Dolphin!',
-                style: TextStyle(
-                  fontSize: 35,
-                  fontWeight: FontWeight.w900,
-                ),
+                style: Theme.of(context).textTheme.titleLarge,
               ),
               const SizedBox(height: 20),
               MaterialButton(
-                color: Colors.black,
+                color: Theme.of(context).buttonTheme.colorScheme?.onPrimary,
                 onPressed: notifier.incrementCounter,
                 child: Text(
                   state.counter.toString(),
-                  style: const TextStyle(color: Colors.white),
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
               ),
             ],
