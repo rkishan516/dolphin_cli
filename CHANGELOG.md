@@ -1,3 +1,8 @@
+## 0.3.0
+
+* Add theme mode notifier
+* Add flex color scheme for themes
+
 ## 0.2.1
 
 * Update riverpod architecture link

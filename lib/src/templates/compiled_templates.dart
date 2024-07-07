@@ -102,6 +102,7 @@ Future<void> main() async {
 const String kAppMobileTemplatelibAppPath = 'lib/app/app.dart.stk';
 
 const String kAppMobileTemplatelibAppContent = '''
+import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -116,6 +117,14 @@ class MainApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp.router(
+      theme: FlexThemeData.light(
+        scheme: FlexScheme.blueM3,
+        useMaterial3: true,
+      ),
+      darkTheme: FlexThemeData.dark(
+        scheme: FlexScheme.blueM3,
+        useMaterial3: true,
+      ),
       themeMode: ref.watch(themeModeNotifierProvider),
       routerConfig: ref.watch(navigatorProvider),
       builder: (context, child) {
@@ -744,6 +753,7 @@ environment:
 
 dependencies:
   equatable: ^2.0.5
+  flex_color_scheme: ^7.3.1
   flutter:
     sdk: flutter
   flutter_riverpod: ^2.5.1
