@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:{{packageName}}/app/common/notifiers/theme_mode_notifier.dart';
 import 'package:{{packageName}}/app/routes/notifiers/app_router.dart';
 import 'package:{{packageName}}/app/routes/notifiers/app_routes.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -11,6 +12,7 @@ class MainApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp.router(
+      themeMode: ref.watch(themeModeNotifierProvider),
       routerConfig: ref.watch(navigatorProvider),
       builder: (context, child) {
         return _VersionOverlay(

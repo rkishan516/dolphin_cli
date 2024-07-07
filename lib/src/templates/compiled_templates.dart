@@ -105,6 +105,7 @@ const String kAppMobileTemplatelibAppContent = '''
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:{{packageName}}/app/common/notifiers/theme_mode_notifier.dart';
 import 'package:{{packageName}}/app/routes/notifiers/app_router.dart';
 import 'package:{{packageName}}/app/routes/notifiers/app_routes.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -115,6 +116,7 @@ class MainApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp.router(
+      themeMode: ref.watch(themeModeNotifierProvider),
       routerConfig: ref.watch(navigatorProvider),
       builder: (context, child) {
         return _VersionOverlay(
@@ -396,6 +398,46 @@ class DeveloperMenuPage extends ConsumerWidget {
         ],
       ),
     );
+  }
+}
+
+''';
+
+// --------------------------------------------------
+
+// -------- ThemeModeNotifier Template Data ----------
+
+const String kAppMobileTemplatecommonThemeModeNotifierPath =
+    'lib/app/common/notifiers/theme_mode_notifier.dart.stk';
+
+const String kAppMobileTemplatecommonThemeModeNotifierContent = '''
+import 'package:flutter/material.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:{{packageName}}/app/common/services/shared_perferences_service.dart';
+
+part 'theme_mode_notifier.g.dart';
+
+@riverpod
+class ThemeModeNotifier extends _\$ThemeModeNotifier {
+  final _sharedPrefKey = 'theme_mode';
+
+  @override
+  ThemeMode build() {
+    final savedTheme =
+        ref.read(sharedPerferencesServiceProvider).getString(_sharedPrefKey);
+    try {
+      if (savedTheme == null) return ThemeMode.system;
+      return ThemeMode.values.byName(savedTheme);
+    } catch (e) {
+      return ThemeMode.system;
+    }
+  }
+
+  void updateThemeMode(ThemeMode mode) {
+    state = mode;
+    ref
+        .read(sharedPerferencesServiceProvider)
+        .setString(_sharedPrefKey, mode.name);
   }
 }
 
