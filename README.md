@@ -134,4 +134,4 @@ Run "dolphin help" to see global options.
 
 ## Architecture
 
-Dolphin follow [riverpod achitecture](https://sostronk.ghost.io/best-folder-structure-for-flutter-app-with-riverpod/) inspired by [Andrea Bizzotto's riverpod architecture](https://codewithandrea.com/articles/flutter-app-architecture-riverpod-introduction/).
+Dolphin follow [riverpod achitecture](https://medium.com/p/ba72ceb780b3) inspired by [Andrea Bizzotto's riverpod architecture](https://codewithandrea.com/articles/flutter-app-architecture-riverpod-introduction/).

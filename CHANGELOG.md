@@ -1,3 +1,7 @@
+## 0.2.1
+
+* Update riverpod architecture link
+
 ## 0.2.0
 
 * Add theme based color and text styles
