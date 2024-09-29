@@ -1,6 +1,6 @@
 name: dolphin_cli
 description: The official dev tools Command Line Interface for the Dolphin Framework for Flutter.
-version: 0.3.0
+version: 0.3.1
 homepage: https://github.com/rkishan516/dolphin_cli
 repository: https://github.com/rkishan516/dolphin_cli
 topics: [cli, codegen, template, boilerplate]
@@ -18,9 +18,9 @@ dependencies:
   recase: ^4.0.0
   json_annotation: ^4.9.0
   xdg_directories: ^1.0.4
-  pub_updater: ^0.4.0
-  mason_logger: ^0.2.15
-  cli_completion: ^0.5.0
+  pub_updater: ^0.5.0
+  mason_logger: ^0.3.1
+  cli_completion: ^0.5.1
   scoped_zone: ^0.1.0+1
 
 dev_dependencies:

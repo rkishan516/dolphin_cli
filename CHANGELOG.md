@@ -1,3 +1,7 @@
+## 0.3.1
+
+* Update flutter lints to v5
+
 ## 0.3.0
 
 * Add theme mode notifier
