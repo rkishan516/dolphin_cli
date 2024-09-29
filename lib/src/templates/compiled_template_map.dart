@@ -64,6 +64,11 @@ Map<String, Map<String, DolphinTemplate>> kCompiledDolphinTemplates = {
             content: kAppMobileTemplatecommonPackageInfoServiceContent,
             fileType: FileType.text),
         TemplateFile(
+            relativeOutputPath:
+                kAppMobileTemplatecommonEnvironmentConfigServicePath,
+            content: kAppMobileTemplatecommonEnvironmentConfigServiceContent,
+            fileType: FileType.text),
+        TemplateFile(
             relativeOutputPath: kAppMobileTemplatecommonLoggerServicePath,
             content: kAppMobileTemplatecommonLoggerServiceContent,
             fileType: FileType.text),
@@ -143,6 +148,27 @@ Map<String, Map<String, DolphinTemplate>> kCompiledDolphinTemplates = {
             fileType: FileType.text),
       ],
       modificationFiles: [],
+    ),
+  },
+  'appwrite': {
+    'mini': DolphinTemplate(
+      templateFiles: [
+        TemplateFile(
+            relativeOutputPath: kAppwriteMiniTemplateAppwriteServicePath,
+            content: kAppwriteMiniTemplateAppwriteServiceContent,
+            fileType: FileType.text),
+      ],
+      modificationFiles: [
+        ModificationFile(
+          relativeModificationPath: 'environment_config_service.dart',
+          modificationIdentifier: '// EnvironmentConfigService - variables',
+          modificationTemplate:
+              '''final appwriteEndpoint = String.fromEnvironment('APPWRITE_ENDPOINT', defaultValue: 'https://localhost/v1'); final appWriteProjectId = String.fromEnvironment('APPWRITE_PROJECT_ID',);''',
+          modificationProblemError:
+              'The environment config generation failed for app write',
+          modificationName: 'Add appwrite environemnt config',
+        ),
+      ],
     ),
   },
   'service': {

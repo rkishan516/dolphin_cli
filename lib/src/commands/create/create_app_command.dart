@@ -9,6 +9,7 @@ import 'package:dolphin_cli/src/services/config_service.dart';
 import 'package:dolphin_cli/src/services/file_service.dart';
 import 'package:dolphin_cli/src/services/logger.dart';
 import 'package:dolphin_cli/src/services/process_service.dart';
+import 'package:dolphin_cli/src/services/pubspec_service.dart';
 import 'package:dolphin_cli/src/services/template_service.dart';
 import 'package:dolphin_cli/src/templates/compiled_constants.dart';
 import 'package:dolphin_cli/src/templates/template_constants.dart';
@@ -57,6 +58,11 @@ class CreateAppCommand extends DolphinCommand {
         abbr: 'l',
         help: kCommandHelpLineLength,
         valueHelp: '80',
+      )
+      ..addFlag(
+        ksEnableAppwrite,
+        help: kCommandHelpEnableAppWrite,
+        defaultsTo: false,
       );
   }
 
@@ -70,6 +76,7 @@ class CreateAppCommand extends DolphinCommand {
       final workingDirectory = argResults!.rest.first;
       final appName = workingDirectory.split('/').last;
       final templateType = argResults![ksTemplateType];
+      final enableAppwrite = argResults![ksEnableAppwrite] as bool;
 
       processService.formattingLineLength = argResults![ksLineLength];
       await processService.runCreateApp(
@@ -92,9 +99,26 @@ class CreateAppCommand extends DolphinCommand {
         outputPath: workingDirectory,
         templateType: templateType,
       );
-
       _replaceConfigFile(appName: workingDirectory);
       await processService.runPubGet(appName: workingDirectory);
+
+      if (enableAppwrite) {
+        await pubspecService.initialise(workingDirectory: workingDirectory);
+        const packageName = 'appwrite';
+        await processService.runPubAdd(
+          appName: workingDirectory,
+          packageName: packageName,
+        );
+        await templateService.renderTemplate(
+          templateName: kTemplateNameAppWrite,
+          name: packageName,
+          outputPath:
+              Directory('$workingDirectory/lib/app/common/services/').path,
+          verbose: true,
+          templateType: kCompiledTemplateTypes[kTemplateNameAppWrite]!.first,
+        );
+      }
+
       await processService.runBuildRunner(workingDirectory: workingDirectory);
       await processService.runFormat(appName: workingDirectory);
       await _clean(workingDirectory: workingDirectory);

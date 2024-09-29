@@ -1,0 +1,8 @@
+{
+    "description": "When appwrite is generated we require appwrite project ID and endpoint, this task ensure addition of environment variables in environment config service",
+    "path": "environment_config_service.dart",
+    "identifier": "// EnvironmentConfigService - variables",
+    "template": "final appwriteEndpoint = String.fromEnvironment('APPWRITE_ENDPOINT', defaultValue: 'https://localhost/v1'); final appWriteProjectId = String.fromEnvironment('APPWRITE_PROJECT_ID',);",
+    "error": "The environment config generation failed for app write",
+    "name": "Add appwrite environemnt config"
+}

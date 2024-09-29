@@ -80,6 +80,12 @@ Map<String, RenderFunction> renderFunctions = {
       kTemplatePropertyWidgetName: value.pascalCase,
     };
   },
+  kTemplateNameAppWrite: (
+    ReCase value, {
+    String? featureName,
+  }) {
+    return {};
+  },
 };
 
 /// Returns file path of the [builder]

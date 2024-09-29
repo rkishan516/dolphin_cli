@@ -1,3 +1,7 @@
+## 0.4.0
+
+* Add support for appwrite on app creation
+
 ## 0.3.1
 
 * Update flutter lints to v5

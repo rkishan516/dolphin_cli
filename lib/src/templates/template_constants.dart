@@ -6,6 +6,7 @@ const String kTemplateNameGenerate = 'generate';
 const String kTemplateNameService = 'service';
 const String kTemplateNameView = 'view';
 const String kTemplateNameWidget = 'widget';
+const String kTemplateNameAppWrite = 'appwrite';
 
 // ------- Template Types --------
 const String kTemplateTypeEmpty = 'empty';

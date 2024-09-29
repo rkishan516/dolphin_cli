@@ -15,6 +15,9 @@ Map<String, List<String>> kCompiledTemplateTypes = {
   'view': [
     'empty',
   ],
+  'appwrite': [
+    'mini',
+  ],
   'service': [
     'empty',
   ],

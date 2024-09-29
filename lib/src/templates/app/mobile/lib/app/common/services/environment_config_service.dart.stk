@@ -1,0 +1,12 @@
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+part 'environment_config_service.g.dart';
+
+@Riverpod(keepAlive: true)
+EnvironmentConfigService environmentConfig(EnvironmentConfigRef ref) {
+  return EnvironmentConfigService();
+}
+
+class EnvironmentConfigService {
+  // EnvironmentConfigService - variables
+}

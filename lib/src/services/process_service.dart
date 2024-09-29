@@ -84,6 +84,14 @@ class ProcessService {
     );
   }
 
+  Future<void> runPubAdd({String? appName, required String packageName}) async {
+    await _runProcess(
+      programName: ksFlutter,
+      arguments: [...pubAddArguments, packageName],
+      workingDirectory: appName,
+    );
+  }
+
   /// Runs the dart format . command on the app's source code.
   ///
   /// Args:
@@ -153,8 +161,8 @@ class ProcessService {
     Future<void> Function(List<String> lines)? handleOutput,
   }) async {
     Progress? progress;
+    final hasWorkingDirectory = workingDirectory != null;
     if (verbose) {
-      final hasWorkingDirectory = workingDirectory != null;
       progress = logger.progress(
           'Running $programName ${arguments.join(' ')} ${hasWorkingDirectory ? 'in $workingDirectory/' : ''}...');
     }

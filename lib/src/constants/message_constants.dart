@@ -52,6 +52,9 @@ const String kCommandHelpFeature =
 const String kCommandHelpLineLength =
     'When a number is provided, it will be used as the line length for formatting code.';
 
+const String kCommandHelpEnableAppWrite =
+    'When enabled, it will be used creating appwrite services.';
+
 const String kCommandHelpCreateAppTemplate =
     'Selects the type of starter template to use when creating a new app. One oriented for mobile first or web first.';
 

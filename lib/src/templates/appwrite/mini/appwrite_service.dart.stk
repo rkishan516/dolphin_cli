@@ -1,0 +1,44 @@
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:appwrite/appwrite.dart';
+import 'package:test_magic_app/app/common/services/environment_config_service.dart';
+
+part 'appwrite_service.g.dart';
+
+class EnvironmentConfigService {
+  final appwriteEndpoint = String.fromEnvironment(
+    'APPWRITE_ENDPOINT',
+    defaultValue: 'https://localhost/v1',
+  );
+
+  final appWriteProjectId = String.fromEnvironment(
+    'APPWRITE_PROJECT_ID',
+  );
+}
+
+@Riverpod(keepAlive: true)
+Client appwriteClient(AppwriteClientRef ref) {
+  final envConfig = ref.read(environmentConfigProvider);
+  return Client()
+      .setEndpoint(envConfig.appwriteEndpoint)
+      .setProject(envConfig.appWriteProjectId);
+}
+
+@Riverpod(keepAlive: true)
+Account appwriteAccount(AppwriteAccountRef ref) {
+  return Account(ref.watch(appwriteClientProvider));
+}
+
+@Riverpod(keepAlive: true)
+Databases appwriteDatabase(AppwriteDatabaseRef ref) {
+  return Databases(ref.watch(appwriteClientProvider));
+}
+
+@Riverpod(keepAlive: true)
+Storage appwriteStorage(AppwriteStorageRef ref) {
+  return Storage(ref.watch(appwriteClientProvider));
+}
+
+@Riverpod(keepAlive: true)
+Functions appwriteFunctions(AppwriteFunctionsRef ref) {
+  return Functions(ref.watch(appwriteClientProvider));
+}

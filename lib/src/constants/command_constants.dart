@@ -5,6 +5,7 @@ const String ksCreate = 'create';
 const String ksRun = 'run';
 const String ksPub = 'pub';
 const String ksGet = 'get';
+const String ksAdd = 'add';
 const String ksFormat = 'format';
 const String ksBuild = 'build';
 const String ksBuildRunner = 'build_runner';
@@ -33,6 +34,7 @@ const String ksAppMinimalTemplate = 'empty';
 const String ksAppDescription = 'description';
 const String ksAppOrganization = 'org';
 const String ksAppPlatforms = 'platforms';
+const String ksEnableAppwrite = 'enable-appwrite';
 
 /// A list of strings that are used to run the run build_runner
 /// [build or watch] --delete-conflicting-outputs command.
@@ -43,6 +45,8 @@ const List<String> buildRunnerArguments = [
 
 /// A list of strings that are used to run the pub get command.
 const List<String> pubGetArguments = [ksPub, ksGet];
+
+const List<String> pubAddArguments = [ksPub, ksAdd];
 
 /// A list of strings that are used to run the pub global list command.
 const List<String> pubGlobalListArguments = [

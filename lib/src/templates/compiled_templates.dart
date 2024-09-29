@@ -513,6 +513,29 @@ PackageInfo packageInfo(PackageInfoRef _) => throw UnimplementedError();
 
 // --------------------------------------------------
 
+// -------- EnvironmentConfigService Template Data ----------
+
+const String kAppMobileTemplatecommonEnvironmentConfigServicePath =
+    'lib/app/common/services/environment_config_service.dart.stk';
+
+const String kAppMobileTemplatecommonEnvironmentConfigServiceContent = '''
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+part 'environment_config_service.g.dart';
+
+@Riverpod(keepAlive: true)
+EnvironmentConfigService environmentConfig(EnvironmentConfigRef ref) {
+  return EnvironmentConfigService();
+}
+
+class EnvironmentConfigService {
+  // EnvironmentConfigService - variables
+}
+
+''';
+
+// --------------------------------------------------
+
 // -------- LoggerService Template Data ----------
 
 const String kAppMobileTemplatecommonLoggerServicePath =
@@ -749,7 +772,7 @@ publish_to: 'none'
 version: 0.1.0
 
 environment:
-  sdk: '>=3.0.3 <4.0.0'
+  sdk: '>=3.4.0 <4.0.0'
 
 dependencies:
   equatable: ^2.0.5
@@ -1040,6 +1063,61 @@ class {{viewName}} extends ConsumerWidget {
       ),
     );
   }
+}
+
+''';
+
+// --------------------------------------------------
+
+// -------- AppwriteService Template Data ----------
+
+const String kAppwriteMiniTemplateAppwriteServicePath =
+    'appwrite_service.dart.stk';
+
+const String kAppwriteMiniTemplateAppwriteServiceContent = '''
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:appwrite/appwrite.dart';
+import 'package:test_magic_app/app/common/services/environment_config_service.dart';
+
+part 'appwrite_service.g.dart';
+
+class EnvironmentConfigService {
+  final appwriteEndpoint = String.fromEnvironment(
+    'APPWRITE_ENDPOINT',
+    defaultValue: 'https://localhost/v1',
+  );
+
+  final appWriteProjectId = String.fromEnvironment(
+    'APPWRITE_PROJECT_ID',
+  );
+}
+
+@Riverpod(keepAlive: true)
+Client appwriteClient(AppwriteClientRef ref) {
+  final envConfig = ref.read(environmentConfigProvider);
+  return Client()
+      .setEndpoint(envConfig.appwriteEndpoint)
+      .setProject(envConfig.appWriteProjectId);
+}
+
+@Riverpod(keepAlive: true)
+Account appwriteAccount(AppwriteAccountRef ref) {
+  return Account(ref.watch(appwriteClientProvider));
+}
+
+@Riverpod(keepAlive: true)
+Databases appwriteDatabase(AppwriteDatabaseRef ref) {
+  return Databases(ref.watch(appwriteClientProvider));
+}
+
+@Riverpod(keepAlive: true)
+Storage appwriteStorage(AppwriteStorageRef ref) {
+  return Storage(ref.watch(appwriteClientProvider));
+}
+
+@Riverpod(keepAlive: true)
+Functions appwriteFunctions(AppwriteFunctionsRef ref) {
+  return Functions(ref.watch(appwriteClientProvider));
 }
 
 ''';
