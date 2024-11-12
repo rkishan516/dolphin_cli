@@ -147,7 +147,40 @@ Map<String, Map<String, DolphinTemplate>> kCompiledDolphinTemplates = {
             content: kViewEmptyTemplateGenericViewContent,
             fileType: FileType.text),
       ],
-      modificationFiles: [],
+      modificationFiles: [
+        ModificationFile(
+          relativeModificationPath: '../routes/notifiers/app_router.dart',
+          modificationIdentifier: '// Other routes nested under the home route',
+          modificationTemplate: '''TypedGoRoute<{{viewName}}PageRoute>(
+path: {{viewName}}PageRoute.path,
+name: {{viewName}}PageRoute.name,
+),''',
+          modificationProblemError: 'Adding view to route failed',
+          modificationName: 'Add view to route',
+        ),
+        ModificationFile(
+          relativeModificationPath: '../routes/notifiers/app_router.dart',
+          modificationIdentifier: '// Other routes definations',
+          modificationTemplate:
+              '''class {{viewName}}PageRoute extends GoRouteData {
+static const path = '{{viewName}}';
+static const name = '{{viewName}}';
+const {{viewName}}PageRoute();
+@override
+Widget build(BuildContext context, GoRouterState state) => const {{viewName}}();
+}''',
+          modificationProblemError: 'Adding route defination for view failed',
+          modificationName: 'Add route defination for view',
+        ),
+        ModificationFile(
+          relativeModificationPath: '../routes/notifiers/app_router.dart',
+          modificationIdentifier: '// View routes imports',
+          modificationTemplate:
+              '''import 'package:{{packageName}}/app/{{featureName}}/presentation/{{viewNameSnake}}.dart';''',
+          modificationProblemError: 'Import for view in app routes failed',
+          modificationName: 'Add import for view in app routes',
+        ),
+      ],
     ),
   },
   'appwrite': {

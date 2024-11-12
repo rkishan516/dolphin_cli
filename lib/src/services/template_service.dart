@@ -29,14 +29,6 @@ TemplateService get templateService => read(templateServiceRef);
 /// Given the data that points to templates it writes out those templates
 /// using the same file paths
 class TemplateService {
-  /// List of templates that can be appended.
-  static const List<String> templatesToAppend = [
-    'lib/ui/setup/setup_bottom_sheet_ui.dart.stk',
-    'lib/enums/bottom_sheet_type.dart.stk',
-    'lib/ui/setup/setup_dialog_ui.dart.stk',
-    'lib/enums/dialog_type.dart.stk',
-  ];
-
   /// Reads the template folder and creates the dart code that will be used to
   /// generate the templates
   Future<void> compileTemplateInformation() async {
@@ -176,6 +168,7 @@ class TemplateService {
       templateName: templateName,
       name: name,
       outputPath: outputPath,
+      featureName: featureName,
     );
   }
 
@@ -232,14 +225,14 @@ class TemplateService {
         await fileService.writeStringFile(
           file: File(templateFileOutputPath),
           fileContent: templateContent as String,
-          forceAppend: shouldAppendTemplate(templateFile.relativeOutputPath),
+          forceAppend: false,
           verbose: true,
         );
       } else {
         await fileService.writeDataFile(
           file: File(templateFileOutputPath),
           fileContent: templateContent as Uint8List,
-          forceAppend: shouldAppendTemplate(templateFile.relativeOutputPath),
+          forceAppend: false,
           verbose: true,
         );
       }
@@ -339,6 +332,7 @@ class TemplateService {
     required String templateName,
     required String name,
     String? outputPath,
+    String? featureName,
   }) async {
     final hasOutputPath = outputPath != null;
     for (final fileToModify in template.modificationFiles) {
@@ -374,12 +368,14 @@ class TemplateService {
         modificationTemplate: fileToModify.modificationTemplate,
         name: name,
         templateName: templateName,
+        featureName: featureName,
       );
 
       final verboseMessage = templateModificationName(
         modificationName: fileToModify.modificationName,
         name: name,
         templateName: templateName,
+        featureName: featureName,
       );
 
       // Write the file back that was modified
@@ -401,6 +397,7 @@ class TemplateService {
     required String modificationName,
     required String name,
     required String templateName,
+    String? featureName,
   }) {
     final template = Template(
       modificationName,
@@ -410,6 +407,7 @@ class TemplateService {
     final templateRenderData = getTemplateRenderData(
       templateName: templateName,
       name: name,
+      featureName: featureName,
     );
 
     final renderedTemplate = template.renderString(templateRenderData);
@@ -422,6 +420,7 @@ class TemplateService {
     required String modificationIdentifier,
     required String name,
     required String templateName,
+    String? featureName,
   }) {
     final template = Template(
       modificationTemplate,
@@ -431,6 +430,7 @@ class TemplateService {
     final templateRenderData = getTemplateRenderData(
       templateName: templateName,
       name: name,
+      featureName: featureName,
     );
 
     final renderedTemplate = template.renderString(templateRenderData);
@@ -439,14 +439,8 @@ class TemplateService {
     // plus the identifier so we can do the same thing again later.
     return fileContent.replaceFirst(
       modificationIdentifier,
-      '$renderedTemplate\n$modificationIdentifier',
+      '$modificationIdentifier\n$renderedTemplate',
     );
-  }
-
-  /// Determines if a template with [relativeOutputPath] should be written using
-  /// append as their FileModificationType or not.
-  bool shouldAppendTemplate(String relativeOutputPath) {
-    return templatesToAppend.any((template) => template == relativeOutputPath);
   }
 
   /// Creates `kCompiledTemplateTypes` on `compiled_constants.dart` file.

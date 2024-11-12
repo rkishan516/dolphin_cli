@@ -1,5 +1,6 @@
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:appwrite/appwrite.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:test_magic_app/app/common/services/environment_config_service.dart';
 
 part 'appwrite_service.g.dart';
@@ -16,7 +17,7 @@ class EnvironmentConfigService {
 }
 
 @Riverpod(keepAlive: true)
-Client appwriteClient(AppwriteClientRef ref) {
+Client appwriteClient(Ref ref) {
   final envConfig = ref.read(environmentConfigProvider);
   return Client()
       .setEndpoint(envConfig.appwriteEndpoint)
@@ -24,21 +25,21 @@ Client appwriteClient(AppwriteClientRef ref) {
 }
 
 @Riverpod(keepAlive: true)
-Account appwriteAccount(AppwriteAccountRef ref) {
+Account appwriteAccount(Ref ref) {
   return Account(ref.watch(appwriteClientProvider));
 }
 
 @Riverpod(keepAlive: true)
-Databases appwriteDatabase(AppwriteDatabaseRef ref) {
+Databases appwriteDatabase(Ref ref) {
   return Databases(ref.watch(appwriteClientProvider));
 }
 
 @Riverpod(keepAlive: true)
-Storage appwriteStorage(AppwriteStorageRef ref) {
+Storage appwriteStorage(Ref ref) {
   return Storage(ref.watch(appwriteClientProvider));
 }
 
 @Riverpod(keepAlive: true)
-Functions appwriteFunctions(AppwriteFunctionsRef ref) {
+Functions appwriteFunctions(Ref ref) {
   return Functions(ref.watch(appwriteClientProvider));
 }

@@ -1,0 +1,8 @@
+{
+    "name": "Add view to route",
+    "description": "When view is generated we require it to be added in route, this task ensure addition of route in navigator service",
+    "path": "../routes/notifiers/app_router.dart",
+    "identifier": "// Other routes nested under the home route",
+    "template": "TypedGoRoute<{{viewName}}PageRoute>(\npath: {{viewName}}PageRoute.path,\nname: {{viewName}}PageRoute.name,\n),",
+    "error": "Adding view to route failed"
+}

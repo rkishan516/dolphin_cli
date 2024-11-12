@@ -5,7 +5,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part '{{serviceNameSnake}}_service.g.dart';
 
 @riverpod
-{{serviceName}}Service {{providerName}}Service({{serviceName}}ServiceRef ref) {
+{{serviceName}}Service {{providerName}}Service(Ref ref) {
   return {{serviceName}}Service(ref);
 }
 

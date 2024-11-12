@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:{{packageName}}/app/routes/notifiers/app_router.dart';
@@ -10,7 +11,7 @@ part 'app_routes.g.dart';
 final GlobalKey<NavigatorState> appNavigatorKey = GlobalKey<NavigatorState>();
 
 @riverpod
-GoRouter navigator(NavigatorRef ref) {
+GoRouter navigator(Ref ref) {
   final router = ref.watch(routerNotifierProvider.notifier);
 
   List<NavigatorObserver>? observers = [

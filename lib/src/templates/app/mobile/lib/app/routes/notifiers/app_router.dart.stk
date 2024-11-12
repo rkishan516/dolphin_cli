@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
+// View routes imports
 import 'package:{{packageName}}/app/developer_menu/presentation/page.dart';
 import 'package:{{packageName}}/app/home/presentation/page.dart';
 import 'package:{{packageName}}/app/splash/presentation/page.dart';
+
 
 part 'app_router.g.dart';
 
@@ -21,6 +24,8 @@ class HomePageRoute extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) => const HomePage();
 }
+
+// Other routes definations
 
 @TypedGoRoute<SplashPageRoute>(
   path: SplashPageRoute.path,

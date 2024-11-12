@@ -1,3 +1,9 @@
+## 1.0.0
+
+* Add documentation with starlight
+* Update pub dependencies
+* Add routes for view by default
+
 ## 0.4.0
 
 * Add support for appwrite on app creation

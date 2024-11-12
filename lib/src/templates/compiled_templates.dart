@@ -501,13 +501,14 @@ const String kAppMobileTemplatecommonPackageInfoServicePath =
     'lib/app/common/services/package_info_service.dart.stk';
 
 const String kAppMobileTemplatecommonPackageInfoServiceContent = '''
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'package_info_service.g.dart';
 
 @Riverpod(keepAlive: true)
-PackageInfo packageInfo(PackageInfoRef _) => throw UnimplementedError();
+PackageInfo packageInfo(Ref _) => throw UnimplementedError();
 
 ''';
 
@@ -519,12 +520,13 @@ const String kAppMobileTemplatecommonEnvironmentConfigServicePath =
     'lib/app/common/services/environment_config_service.dart.stk';
 
 const String kAppMobileTemplatecommonEnvironmentConfigServiceContent = '''
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'environment_config_service.g.dart';
 
 @Riverpod(keepAlive: true)
-EnvironmentConfigService environmentConfig(EnvironmentConfigRef ref) {
+EnvironmentConfigService environmentConfig(Ref ref) {
   return EnvironmentConfigService();
 }
 
@@ -542,13 +544,14 @@ const String kAppMobileTemplatecommonLoggerServicePath =
     'lib/app/common/services/logger_service.dart.stk';
 
 const String kAppMobileTemplatecommonLoggerServiceContent = '''
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
 part 'logger_service.g.dart';
 
 @Riverpod(keepAlive: true)
-Talker loggerService(LoggerServiceRef ref) {
+Talker loggerService(Ref ref) {
   return TalkerFlutter.init(
     logger: TalkerLogger(
       filter: const LogLevelTalkerLoggerFilter(LogLevel.debug),
@@ -602,13 +605,14 @@ const String kAppMobileTemplatecommonSharedPerferencesServicePath =
     'lib/app/common/services/shared_perferences_service.dart.stk';
 
 const String kAppMobileTemplatecommonSharedPerferencesServiceContent = '''
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 part 'shared_perferences_service.g.dart';
 
 @Riverpod(keepAlive: true)
-SharedPreferences sharedPerferencesService(SharedPerferencesServiceRef ref) {
+SharedPreferences sharedPerferencesService(Ref ref) {
   throw UnimplementedError();
 }
 
@@ -624,9 +628,12 @@ const String kAppMobileTemplateroutesAppRouterPath =
 const String kAppMobileTemplateroutesAppRouterContent = '''
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
+// View routes imports
 import 'package:{{packageName}}/app/developer_menu/presentation/page.dart';
 import 'package:{{packageName}}/app/home/presentation/page.dart';
 import 'package:{{packageName}}/app/splash/presentation/page.dart';
+
 
 part 'app_router.g.dart';
 
@@ -645,6 +652,8 @@ class HomePageRoute extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) => const HomePage();
 }
+
+// Other routes definations
 
 @TypedGoRoute<SplashPageRoute>(
   path: SplashPageRoute.path,
@@ -685,6 +694,7 @@ const String kAppMobileTemplateroutesAppRoutesPath =
 const String kAppMobileTemplateroutesAppRoutesContent = '''
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:{{packageName}}/app/routes/notifiers/app_router.dart';
@@ -695,7 +705,7 @@ part 'app_routes.g.dart';
 final GlobalKey<NavigatorState> appNavigatorKey = GlobalKey<NavigatorState>();
 
 @riverpod
-GoRouter navigator(NavigatorRef ref) {
+GoRouter navigator(Ref ref) {
   final router = ref.watch(routerNotifierProvider.notifier);
 
   List<NavigatorObserver>? observers = [
@@ -776,30 +786,30 @@ environment:
 
 dependencies:
   equatable: ^2.0.5
-  flex_color_scheme: ^7.3.1
+  flex_color_scheme: ^8.0.0
   flutter:
     sdk: flutter
-  flutter_riverpod: ^2.5.1
-  freezed_annotation: ^2.4.1
-  go_router: ^14.1.4
+  flutter_riverpod: ^2.6.1
+  freezed_annotation: ^2.4.4
+  go_router: ^14.4.1
   json_annotation: ^4.9.0
-  package_info_plus: ^8.0.0
-  riverpod_annotation: ^2.3.5
-  shared_preferences: ^2.2.3
+  package_info_plus: ^8.1.1
+  riverpod_annotation: ^2.6.1
+  shared_preferences: ^2.3.3
   supercharged: ^2.1.1
-  talker_flutter: ^4.2.4
+  talker_flutter: ^4.4.1
 
 dev_dependencies:
-  build_runner: ^2.4.11
+  build_runner: ^2.4.13
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
-  freezed: ^2.5.2
-  go_router_builder: ^2.7.0
+  freezed: ^2.5.7
+  go_router_builder: ^2.7.1
   json_serializable: ^6.8.0
   mockito: ^5.4.4
-  riverpod_generator: ^2.4.0
-  riverpod_lint: ^2.3.10
+  riverpod_generator: ^2.6.2
+  riverpod_lint: ^2.6.2
 
 flutter:
   uses-material-design: true
@@ -1075,8 +1085,9 @@ const String kAppwriteMiniTemplateAppwriteServicePath =
     'appwrite_service.dart.stk';
 
 const String kAppwriteMiniTemplateAppwriteServiceContent = '''
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:appwrite/appwrite.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:test_magic_app/app/common/services/environment_config_service.dart';
 
 part 'appwrite_service.g.dart';
@@ -1093,7 +1104,7 @@ class EnvironmentConfigService {
 }
 
 @Riverpod(keepAlive: true)
-Client appwriteClient(AppwriteClientRef ref) {
+Client appwriteClient(Ref ref) {
   final envConfig = ref.read(environmentConfigProvider);
   return Client()
       .setEndpoint(envConfig.appwriteEndpoint)
@@ -1101,22 +1112,22 @@ Client appwriteClient(AppwriteClientRef ref) {
 }
 
 @Riverpod(keepAlive: true)
-Account appwriteAccount(AppwriteAccountRef ref) {
+Account appwriteAccount(Ref ref) {
   return Account(ref.watch(appwriteClientProvider));
 }
 
 @Riverpod(keepAlive: true)
-Databases appwriteDatabase(AppwriteDatabaseRef ref) {
+Databases appwriteDatabase(Ref ref) {
   return Databases(ref.watch(appwriteClientProvider));
 }
 
 @Riverpod(keepAlive: true)
-Storage appwriteStorage(AppwriteStorageRef ref) {
+Storage appwriteStorage(Ref ref) {
   return Storage(ref.watch(appwriteClientProvider));
 }
 
 @Riverpod(keepAlive: true)
-Functions appwriteFunctions(AppwriteFunctionsRef ref) {
+Functions appwriteFunctions(Ref ref) {
   return Functions(ref.watch(appwriteClientProvider));
 }
 
@@ -1137,7 +1148,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part '{{serviceNameSnake}}_service.g.dart';
 
 @riverpod
-{{serviceName}}Service {{providerName}}Service({{serviceName}}ServiceRef ref) {
+{{serviceName}}Service {{providerName}}Service(Ref ref) {
   return {{serviceName}}Service(ref);
 }
 
