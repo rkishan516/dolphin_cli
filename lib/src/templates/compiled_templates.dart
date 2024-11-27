@@ -1092,17 +1092,6 @@ import 'package:test_magic_app/app/common/services/environment_config_service.da
 
 part 'appwrite_service.g.dart';
 
-class EnvironmentConfigService {
-  final appwriteEndpoint = String.fromEnvironment(
-    'APPWRITE_ENDPOINT',
-    defaultValue: 'https://localhost/v1',
-  );
-
-  final appWriteProjectId = String.fromEnvironment(
-    'APPWRITE_PROJECT_ID',
-  );
-}
-
 @Riverpod(keepAlive: true)
 Client appwriteClient(Ref ref) {
   final envConfig = ref.read(environmentConfigProvider);

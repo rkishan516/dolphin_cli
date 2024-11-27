@@ -1,3 +1,9 @@
+## 1.0.0+1
+
+* Update homepage link for pub.dev
+* Update Readme file
+* Remove appwrite environment config from appwrite service
+
 ## 1.0.0
 
 * Add documentation with starlight
