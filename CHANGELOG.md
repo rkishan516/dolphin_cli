@@ -1,3 +1,8 @@
+## 1.0.1
+
+* Fix environment config for appwrite
+* Update pub dependencies
+
 ## 1.0.0+1
 
 * Update homepage link for pub.dev

@@ -1,6 +1,6 @@
 name: dolphin_cli
 description: The official command-line interface for the Dolphin framework, tailored for Flutter developers.
-version: 1.0.0+1
+version: 1.0.1
 homepage: https://dolphincli.netlify.app/
 repository: https://github.com/rkishan516/dolphin_cli
 topics: [cli, codegen, template, boilerplate]
@@ -24,12 +24,12 @@ dependencies:
   scoped_zone: ^0.1.0+1
 
 dev_dependencies:
-  lints: ^4.0.0
-  test: ^1.25.8
+  lints: ^5.0.0
+  test: ^1.25.9
 
   build_runner: ^2.4.13
   freezed: ^2.5.7
-  json_serializable: ^6.8.0
+  json_serializable: ^6.9.0
 
 executables:
   dolphin:

@@ -196,7 +196,7 @@ Widget build(BuildContext context, GoRouterState state) => const {{viewName}}();
           relativeModificationPath: 'environment_config_service.dart',
           modificationIdentifier: '// EnvironmentConfigService - variables',
           modificationTemplate:
-              '''final appwriteEndpoint = String.fromEnvironment('APPWRITE_ENDPOINT', defaultValue: 'https://localhost/v1'); final appWriteProjectId = String.fromEnvironment('APPWRITE_PROJECT_ID',);''',
+              '''final appwriteEndpoint = const String.fromEnvironment('APPWRITE_ENDPOINT', defaultValue: 'https://localhost/v1'); final appWriteProjectId = const String.fromEnvironment('APPWRITE_PROJECT_ID',);''',
           modificationProblemError:
               'The environment config generation failed for app write',
           modificationName: 'Add appwrite environemnt config',
