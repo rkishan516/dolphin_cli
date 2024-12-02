@@ -59,10 +59,10 @@ class CreateAppCommand extends DolphinCommand {
         help: kCommandHelpLineLength,
         valueHelp: '80',
       )
-      ..addFlag(
-        ksEnableAppwrite,
-        help: kCommandHelpEnableAppWrite,
-        defaultsTo: false,
+      ..addOption(
+        ksBackend,
+        help: kCommandHelpBackend,
+        allowed: ['firebase', 'supabase', 'appwrite'],
       );
   }
 
@@ -76,7 +76,7 @@ class CreateAppCommand extends DolphinCommand {
       final workingDirectory = argResults!.rest.first;
       final appName = workingDirectory.split('/').last;
       final templateType = argResults![ksTemplateType];
-      final enableAppwrite = argResults![ksEnableAppwrite] as bool;
+      final backend = argResults![ksBackend] as String?;
 
       processService.formattingLineLength = argResults![ksLineLength];
       await processService.runCreateApp(
@@ -102,21 +102,71 @@ class CreateAppCommand extends DolphinCommand {
       _replaceConfigFile(appName: workingDirectory);
       await processService.runPubGet(appName: workingDirectory);
 
-      if (enableAppwrite) {
-        await pubspecService.initialise(workingDirectory: workingDirectory);
-        const packageName = 'appwrite';
-        await processService.runPubAdd(
-          appName: workingDirectory,
-          packageName: packageName,
-        );
-        await templateService.renderTemplate(
-          templateName: kTemplateNameAppWrite,
-          name: packageName,
-          outputPath:
-              Directory('$workingDirectory/lib/app/common/services/').path,
-          verbose: true,
-          templateType: kCompiledTemplateTypes[kTemplateNameAppWrite]!.first,
-        );
+      await pubspecService.initialise(workingDirectory: workingDirectory);
+      switch (backend) {
+        case 'appwrite':
+          {
+            const packageName = 'appwrite';
+            await processService.runPubAdd(
+              appName: workingDirectory,
+              packageName: packageName,
+            );
+            await templateService.renderTemplate(
+              templateName: kTemplateNameAppWrite,
+              name: packageName,
+              outputPath:
+                  Directory('$workingDirectory/lib/app/common/services/').path,
+              verbose: true,
+              templateType:
+                  kCompiledTemplateTypes[kTemplateNameAppWrite]!.first,
+            );
+            break;
+          }
+        case 'firebase':
+          {
+            await processService.runPubAdd(
+              packageName: 'firebase_core',
+              additionalPackages: [
+                'cloud_firestore',
+                'cloud_functions',
+                'firebase_auth',
+                'firebase_storage'
+              ],
+            );
+
+            await templateService.renderTemplate(
+              templateName: kTemplateNameFirebase,
+              name: 'firebase',
+              outputPath:
+                  Directory('$workingDirectory/lib/app/common/services/').path,
+              verbose: true,
+              templateType:
+                  kCompiledTemplateTypes[kTemplateNameFirebase]!.first,
+            );
+
+            break;
+          }
+        case 'supabase':
+          {
+            const packageName = 'supabase_flutter';
+
+            await processService.runPubAdd(
+              appName: workingDirectory,
+              packageName: packageName,
+            );
+
+            await templateService.renderTemplate(
+              templateName: kTemplateNameSupabase,
+              name: 'supabase',
+              outputPath:
+                  Directory('$workingDirectory/lib/app/common/services/').path,
+              verbose: true,
+              templateType:
+                  kCompiledTemplateTypes[kTemplateNameSupabase]!.first,
+            );
+            break;
+          }
+        default:
       }
 
       await processService.runBuildRunner(workingDirectory: workingDirectory);

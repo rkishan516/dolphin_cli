@@ -9,8 +9,14 @@ Map<String, List<String>> kCompiledTemplateTypes = {
   'widget': [
     'empty',
   ],
+  'supabase': [
+    'mini',
+  ],
   'dialog': [
     'empty',
+  ],
+  'firebase': [
+    'mini',
   ],
   'view': [
     'empty',

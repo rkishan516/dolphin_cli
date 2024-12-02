@@ -1,3 +1,11 @@
+## 1.1.0
+
+* Add support for firebase with app initialisation
+* Add support for supabase with app initialisation
+* Add vscode launch configurations
+* Add environment variable file for integration environemnt
+
+
 ## 1.0.1
 
 * Fix environment config for appwrite

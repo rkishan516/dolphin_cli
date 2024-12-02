@@ -34,7 +34,7 @@ const String ksAppMinimalTemplate = 'empty';
 const String ksAppDescription = 'description';
 const String ksAppOrganization = 'org';
 const String ksAppPlatforms = 'platforms';
-const String ksEnableAppwrite = 'enable-appwrite';
+const String ksBackend = 'backend';
 
 /// A list of strings that are used to run the run build_runner
 /// [build or watch] --delete-conflicting-outputs command.

@@ -86,6 +86,18 @@ Map<String, RenderFunction> renderFunctions = {
   }) {
     return {};
   },
+  kTemplateNameFirebase: (
+    ReCase value, {
+    String? featureName,
+  }) {
+    return {};
+  },
+  kTemplateNameSupabase: (
+    ReCase value, {
+    String? featureName,
+  }) {
+    return {};
+  },
 };
 
 /// Returns file path of the [builder]

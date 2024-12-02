@@ -1,0 +1,8 @@
+{
+    "description": "When supabase is generated we require supabase url and anon key, this task ensure addition of environment variables in environment config service",
+    "path": "environment_config_service.dart",
+    "identifier": "// EnvironmentConfigService - variables",
+    "template": "final supabaseUrl = const String.fromEnvironment('SUPABASE_URL'); final supabaseAnonKey = const String.fromEnvironment('SUPABASE_ANON_KEY');",
+    "error": "The environment config generation failed for supabase",
+    "name": "Add supabase environemnt config"
+}

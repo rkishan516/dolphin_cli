@@ -84,10 +84,14 @@ class ProcessService {
     );
   }
 
-  Future<void> runPubAdd({String? appName, required String packageName}) async {
+  Future<void> runPubAdd({
+    String? appName,
+    required String packageName,
+    List<String> additionalPackages = const [],
+  }) async {
     await _runProcess(
       programName: ksFlutter,
-      arguments: [...pubAddArguments, packageName],
+      arguments: [...pubAddArguments, packageName, ...additionalPackages],
       workingDirectory: appName,
     );
   }

@@ -16,6 +16,10 @@ Map<String, Map<String, DolphinTemplate>> kCompiledDolphinTemplates = {
             content: kAppMobileTemplateBuildYamlStkContent,
             fileType: FileType.text),
         TemplateFile(
+            relativeOutputPath: kAppMobileTemplateIntJsonStkPath,
+            content: kAppMobileTemplateIntJsonStkContent,
+            fileType: FileType.text),
+        TemplateFile(
             relativeOutputPath: kAppMobileTemplateREADMEMdStkPath,
             content: kAppMobileTemplateREADMEMdStkContent,
             fileType: FileType.text),
@@ -97,6 +101,10 @@ Map<String, Map<String, DolphinTemplate>> kCompiledDolphinTemplates = {
             relativeOutputPath: kAppMobileTemplateSettingsJsonStkPath,
             content: kAppMobileTemplateSettingsJsonStkContent,
             fileType: FileType.text),
+        TemplateFile(
+            relativeOutputPath: kAppMobileTemplateLaunchJsonStkPath,
+            content: kAppMobileTemplateLaunchJsonStkContent,
+            fileType: FileType.text),
       ],
       modificationFiles: [],
     ),
@@ -110,6 +118,47 @@ Map<String, Map<String, DolphinTemplate>> kCompiledDolphinTemplates = {
             fileType: FileType.text),
       ],
       modificationFiles: [],
+    ),
+  },
+  'supabase': {
+    'mini': DolphinTemplate(
+      templateFiles: [
+        TemplateFile(
+            relativeOutputPath: kSupabaseMiniTemplateSupabaseServicePath,
+            content: kSupabaseMiniTemplateSupabaseServiceContent,
+            fileType: FileType.text),
+      ],
+      modificationFiles: [
+        ModificationFile(
+          relativeModificationPath: '../../../main.dart',
+          modificationIdentifier: 'WidgetsFlutterBinding.ensureInitialized();',
+          modificationTemplate:
+              '''final environment = EnvironmentConfigService();
+await Supabase.initialize(url: environment.supabaseUrl, anonKey: environment.supabaseAnonKey,);''',
+          modificationProblemError:
+              'Initialisation code addition failed for supabase',
+          modificationName: 'Add supabase initialisation code',
+        ),
+        ModificationFile(
+          relativeModificationPath: 'environment_config_service.dart',
+          modificationIdentifier: '// EnvironmentConfigService - variables',
+          modificationTemplate:
+              '''final supabaseUrl = const String.fromEnvironment('SUPABASE_URL'); final supabaseAnonKey = const String.fromEnvironment('SUPABASE_ANON_KEY');''',
+          modificationProblemError:
+              'The environment config generation failed for supabase',
+          modificationName: 'Add supabase environemnt config',
+        ),
+        ModificationFile(
+          relativeModificationPath: '../../../main.dart',
+          modificationIdentifier: '// Do not remove or change this comment',
+          modificationTemplate:
+              '''import 'package:{{packageName}}/app/common/services/environment_config_service.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';''',
+          modificationProblemError:
+              'Initialisation code addition failed for supabase',
+          modificationName: 'Add supabase initialisation code',
+        ),
+      ],
     ),
   },
   'dialog': {
@@ -126,6 +175,17 @@ Map<String, Map<String, DolphinTemplate>> kCompiledDolphinTemplates = {
         TemplateFile(
             relativeOutputPath: kDialogEmptyTemplateGenericDialogPath,
             content: kDialogEmptyTemplateGenericDialogContent,
+            fileType: FileType.text),
+      ],
+      modificationFiles: [],
+    ),
+  },
+  'firebase': {
+    'mini': DolphinTemplate(
+      templateFiles: [
+        TemplateFile(
+            relativeOutputPath: kFirebaseMiniTemplateFirebaseServicePath,
+            content: kFirebaseMiniTemplateFirebaseServiceContent,
             fileType: FileType.text),
       ],
       modificationFiles: [],

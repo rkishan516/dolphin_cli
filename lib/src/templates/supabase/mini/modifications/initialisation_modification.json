@@ -1,0 +1,8 @@
+{
+    "description": "When supabase is added to project, we need to initialise it inside main method, this task ensures addition of init method in main",
+    "path": "../../../main.dart",
+    "identifier": "WidgetsFlutterBinding.ensureInitialized();",
+    "template": "final environment = EnvironmentConfigService();\nawait Supabase.initialize(url: environment.supabaseUrl, anonKey: environment.supabaseAnonKey,);",
+    "error": "Initialisation code addition failed for supabase",
+    "name": "Add supabase initialisation code"
+}

@@ -1,0 +1,8 @@
+{
+    "description": "When supabase is added to project, we need to initialise it inside main method, this task ensures addition of init method in main",
+    "path": "../../../main.dart",
+    "identifier": "// Do not remove or change this comment",
+    "template": "import 'package:{{packageName}}/app/common/services/environment_config_service.dart';\nimport 'package:supabase_flutter/supabase_flutter.dart';",
+    "error": "Initialisation code addition failed for supabase",
+    "name": "Add supabase initialisation code"
+}

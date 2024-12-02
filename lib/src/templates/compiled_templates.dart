@@ -51,6 +51,19 @@ targets:
 
 // --------------------------------------------------
 
+// -------- IntJsonStk Template Data ----------
+
+const String kAppMobileTemplateIntJsonStkPath = '.env/int.json.stk';
+
+const String kAppMobileTemplateIntJsonStkContent = '''
+{
+  "PROD": false
+}
+
+''';
+
+// --------------------------------------------------
+
 // -------- READMEMdStk Template Data ----------
 
 const String kAppMobileTemplateREADMEMdStkPath = 'README.md.stk';
@@ -68,6 +81,7 @@ const String kAppMobileTemplateREADMEMdStkContent = '''
 const String kAppMobileTemplateMainPath = 'lib/main.dart.stk';
 
 const String kAppMobileTemplateMainContent = '''
+// Do not remove or change this comment
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:{{packageName}}/app/app.dart';
@@ -835,6 +849,45 @@ const String kAppMobileTemplateSettingsJsonStkContent = '''
 
 // --------------------------------------------------
 
+// -------- LaunchJsonStk Template Data ----------
+
+const String kAppMobileTemplateLaunchJsonStkPath = '.vscode/launch.json.stk';
+
+const String kAppMobileTemplateLaunchJsonStkContent = '''
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "debug",
+            "program": "lib/main.dart",
+            "args": [
+                "--dart-define-from-file",
+                ".env/int.json"
+            ]
+        },
+        {
+            "name": "Profile",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile",
+            "program": "lib/main.dart",
+            "args": [
+                "--dart-define-from-file",
+                ".env/int.json"
+            ]
+        },
+    ]
+}
+''';
+
+// --------------------------------------------------
+
 // -------- GenericWidget Template Data ----------
 
 const String kWidgetEmptyTemplateGenericWidgetPath =
@@ -851,6 +904,47 @@ class {{widgetName}} extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return const SizedBox.shrink();
   }
+}
+
+''';
+
+// --------------------------------------------------
+
+// -------- SupabaseService Template Data ----------
+
+const String kSupabaseMiniTemplateSupabaseServicePath =
+    'supabase_service.dart.stk';
+
+const String kSupabaseMiniTemplateSupabaseServiceContent = '''
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
+part 'supabase_service.g.dart';
+
+@Riverpod(keepAlive: true)
+SupabaseClient supbaseClient(Ref ref) {
+  return Supabase.instance.client;
+}
+
+@Riverpod(keepAlive: true)
+GoTrueClient supabaseAccount(Ref ref) {
+  return ref.watch(supbaseClientProvider).auth;
+}
+
+@riverpod
+SupabaseQueryBuilder supabaseDatabase(Ref ref, {required String tableName}) {
+  return ref.watch(supbaseClientProvider).from(tableName);
+}
+
+@Riverpod(keepAlive: true)
+SupabaseStorageClient supabaseStorage(Ref ref) {
+  return ref.watch(supbaseClientProvider).storage;
+}
+
+@Riverpod(keepAlive: true)
+FunctionsClient supabaseFunctions(Ref ref) {
+  return ref.watch(supbaseClientProvider).functions;
 }
 
 ''';
@@ -975,6 +1069,45 @@ class {{dialogName}} extends ConsumerWidget {
       child: Text('Hello, Dolphin \$counter!'),
     );
   }
+}
+
+''';
+
+// --------------------------------------------------
+
+// -------- FirebaseService Template Data ----------
+
+const String kFirebaseMiniTemplateFirebaseServicePath =
+    'firebase_service.dart.stk';
+
+const String kFirebaseMiniTemplateFirebaseServiceContent = '''
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+part 'firebase_service.g.dart';
+
+@Riverpod(keepAlive: true)
+FirebaseAuth firebaseAccount(Ref ref) {
+  return FirebaseAuth.instance;
+}
+
+@Riverpod(keepAlive: true)
+FirebaseFirestore firebaseDatabase(Ref ref) {
+  return FirebaseFirestore.instance;
+}
+
+@Riverpod(keepAlive: true)
+FirebaseStorage firebaseStorage(Ref ref) {
+  return FirebaseStorage.instance;
+}
+
+@Riverpod(keepAlive: true)
+FirebaseFunctions firebaseFunctions(Ref ref) {
+  return FirebaseFunctions.instance;
 }
 
 ''';

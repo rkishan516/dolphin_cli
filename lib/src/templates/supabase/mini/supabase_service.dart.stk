@@ -1,0 +1,30 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
+part 'supabase_service.g.dart';
+
+@Riverpod(keepAlive: true)
+SupabaseClient supbaseClient(Ref ref) {
+  return Supabase.instance.client;
+}
+
+@Riverpod(keepAlive: true)
+GoTrueClient supabaseAccount(Ref ref) {
+  return ref.watch(supbaseClientProvider).auth;
+}
+
+@riverpod
+SupabaseQueryBuilder supabaseDatabase(Ref ref, {required String tableName}) {
+  return ref.watch(supbaseClientProvider).from(tableName);
+}
+
+@Riverpod(keepAlive: true)
+SupabaseStorageClient supabaseStorage(Ref ref) {
+  return ref.watch(supbaseClientProvider).storage;
+}
+
+@Riverpod(keepAlive: true)
+FunctionsClient supabaseFunctions(Ref ref) {
+  return ref.watch(supbaseClientProvider).functions;
+}

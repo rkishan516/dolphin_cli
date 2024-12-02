@@ -29,7 +29,7 @@ Run "dolphin help" to see global options.
 dolphin create app my_app
 
 # Create a new Dolphin app named my_app with a custom org
-dolphin create app my_app --descritption "My new Flutter app" --org "com.custom.org"
+dolphin create app my_app --descritption "My new Flutter app" --org "com.custom.org" --backend=firebase
 
 # Create a new view named my_view (In common features)
 dolphin create view my_view
