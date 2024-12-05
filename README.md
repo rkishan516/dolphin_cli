@@ -4,7 +4,7 @@
 <a href="https://pub.dev/packages/dolphin_cli" target="_blank">
     <img src="https://img.shields.io/pub/v/dolphin_cli.svg?style=for-the-badge&label=pub&logo=dart"/> 
 </a>
-<a href="https://dolphincli.netlify.app/" target="_blank">
+<a href="https://dolphin.goflutter.in/" target="_blank">
     <img src="https://img.shields.io/badge/starlight-d.svg?style=for-the-badge&label=Documentation&color=8f0595"/>
 </a>
 <a href="https://pub.dev/packages/dolphin_cli/score" target="_blank">
@@ -29,4 +29,4 @@ dart pub global activate dolphin_cli
 
 ### Documentation 📝
 
-For official documentation, please visit [dolphin](https://dolphincli.netlify.app/).
+For official documentation, please visit [docs](https://dolphin.goflutter.in/).

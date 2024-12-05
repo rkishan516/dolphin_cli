@@ -1,3 +1,8 @@
+## 1.1.1
+
+* Update netlify links with goflutter
+* Update pub dependency for cli
+
 ## 1.1.0
 
 * Add support for firebase with app initialisation
