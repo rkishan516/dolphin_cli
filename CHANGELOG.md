@@ -1,3 +1,7 @@
+## 1.3.0
+
+* Add dolphin cli executable as dev dependency
+
 ## 1.2.0
 
 * Add bootstrap command
