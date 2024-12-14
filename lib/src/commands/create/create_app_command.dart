@@ -1,16 +1,11 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:dolphin_cli/src/commands/dolphin_command.dart';
 import 'package:dolphin_cli/src/constants/command_constants.dart';
-import 'package:dolphin_cli/src/constants/config_constants.dart';
 import 'package:dolphin_cli/src/constants/message_constants.dart';
-import 'package:dolphin_cli/src/services/config_service.dart';
 import 'package:dolphin_cli/src/services/file_service.dart';
 import 'package:dolphin_cli/src/services/logger.dart';
 import 'package:dolphin_cli/src/services/process_service.dart';
-import 'package:dolphin_cli/src/services/pubspec_service.dart';
-import 'package:dolphin_cli/src/services/template_service.dart';
 import 'package:dolphin_cli/src/templates/compiled_constants.dart';
 import 'package:dolphin_cli/src/templates/template_constants.dart';
 import 'package:dolphin_cli/src/templates/template_helper.dart';
@@ -69,14 +64,7 @@ class CreateAppCommand extends DolphinCommand {
   @override
   Future<int> run() async {
     try {
-      await configService.findAndLoadConfigFile(
-        configFilePath: argResults![ksConfigPath],
-      );
-
       final workingDirectory = argResults!.rest.first;
-      final appName = workingDirectory.split('/').last;
-      final templateType = argResults![ksTemplateType];
-      final backend = argResults![ksBackend] as String?;
 
       processService.formattingLineLength = argResults![ksLineLength];
       await processService.runCreateApp(
@@ -86,91 +74,18 @@ class CreateAppCommand extends DolphinCommand {
         platforms: argResults![ksAppPlatforms],
       );
 
-      logger.info('Add Dolphin Magic ... ');
-
       if (argResults![ksAppDescription] != null) {
         templateHelper.packageDescription = argResults![ksAppDescription];
       }
 
-      await templateService.renderTemplate(
-        templateName: name,
-        name: appName,
-        verbose: true,
-        outputPath: workingDirectory,
-        templateType: templateType,
-      );
-      _replaceConfigFile(appName: workingDirectory);
-      await processService.runPubGet(appName: workingDirectory);
+      final bootstrapResponse =
+          await runner?.run([kTemplateNameBootstrap, ...argResults!.arguments]);
 
-      await pubspecService.initialise(workingDirectory: workingDirectory);
-      switch (backend) {
-        case 'appwrite':
-          {
-            const packageName = 'appwrite';
-            await processService.runPubAdd(
-              appName: workingDirectory,
-              packageName: packageName,
-            );
-            await templateService.renderTemplate(
-              templateName: kTemplateNameAppWrite,
-              name: packageName,
-              outputPath:
-                  Directory('$workingDirectory/lib/app/common/services/').path,
-              verbose: true,
-              templateType:
-                  kCompiledTemplateTypes[kTemplateNameAppWrite]!.first,
-            );
-            break;
-          }
-        case 'firebase':
-          {
-            await processService.runPubAdd(
-              packageName: 'firebase_core',
-              additionalPackages: [
-                'cloud_firestore',
-                'cloud_functions',
-                'firebase_auth',
-                'firebase_storage'
-              ],
-            );
-
-            await templateService.renderTemplate(
-              templateName: kTemplateNameFirebase,
-              name: 'firebase',
-              outputPath:
-                  Directory('$workingDirectory/lib/app/common/services/').path,
-              verbose: true,
-              templateType:
-                  kCompiledTemplateTypes[kTemplateNameFirebase]!.first,
-            );
-
-            break;
-          }
-        case 'supabase':
-          {
-            const packageName = 'supabase_flutter';
-
-            await processService.runPubAdd(
-              appName: workingDirectory,
-              packageName: packageName,
-            );
-
-            await templateService.renderTemplate(
-              templateName: kTemplateNameSupabase,
-              name: 'supabase',
-              outputPath:
-                  Directory('$workingDirectory/lib/app/common/services/').path,
-              verbose: true,
-              templateType:
-                  kCompiledTemplateTypes[kTemplateNameSupabase]!.first,
-            );
-            break;
-          }
-        default:
+      if (bootstrapResponse != null &&
+          bootstrapResponse != ExitCode.success.code) {
+        return bootstrapResponse;
       }
 
-      await processService.runBuildRunner(workingDirectory: workingDirectory);
-      await processService.runFormat(appName: workingDirectory);
       await _clean(workingDirectory: workingDirectory);
     } catch (e) {
       logger.err(e.toString());
@@ -184,7 +99,7 @@ class CreateAppCommand extends DolphinCommand {
   ///   - Deletes widget_test.dart file
   ///   - Removes unused imports
   Future<void> _clean({required String workingDirectory}) async {
-    logger.info('Cleaning project...');
+    final progress = logger.progress('Cleaning project...');
 
     // Removes `widget_test` file to avoid failing unit tests on created app
     if (await fileService.fileExists(
@@ -210,17 +125,6 @@ class CreateAppCommand extends DolphinCommand {
       );
     }
 
-    logger.info('Project cleaned.');
-  }
-
-  /// Replaces configuration file in the project created.
-  ///
-  /// If has NO custom config, does nothing.
-  void _replaceConfigFile({required String appName}) {
-    if (!configService.hasCustomConfig) return;
-
-    File('$appName/$kConfigFileName').writeAsStringSync(
-      configService.exportConfig(),
-    );
+    progress.complete('Project cleaned.');
   }
 }

@@ -1,3 +1,8 @@
+## 1.2.0
+
+* Add bootstrap command
+* Update logs for app initialisation
+
 ## 1.1.1
 
 * Update netlify links with goflutter

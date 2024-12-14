@@ -32,7 +32,7 @@ class ProcessService {
   ///   shouldUseMinimalTempalte (bool): Uses minimal app template.
   ///   description (String): The description to use for your new Flutter project.
   ///   organization (String): The organization responsible for your new Flutter project.
-  ///   platforms (List<String>): The platforms supported by this project.
+  ///   platforms ([List<String>]): The platforms supported by this project.
   Future<void> runCreateApp({
     required String name,
     String? description,
@@ -153,7 +153,7 @@ class ProcessService {
   ///
   /// Args:
   ///   programName (String): The name of the program to run.
-  ///   arguments (List<String>): The arguments to pass to the program. Defaults to const []
+  ///   arguments ([List<String>]): The arguments to pass to the program. Defaults to const []
   ///   workingDirectory (String): The directory to run the command in.
   ///   verbose (bool): Determine when to log the output to the console.
   ///   handleOutput (Function): Function passed to handle the output.

@@ -9,6 +9,7 @@ const String kTemplateNameWidget = 'widget';
 const String kTemplateNameAppWrite = 'appwrite';
 const String kTemplateNameFirebase = 'firebase';
 const String kTemplateNameSupabase = 'supabase';
+const String kTemplateNameBootstrap = 'bootstrap';
 
 // ------- Template Types --------
 const String kTemplateTypeEmpty = 'empty';

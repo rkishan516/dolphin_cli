@@ -71,7 +71,7 @@ class ConfigService {
     } on ConfigFileNotFoundException catch (e) {
       if (e.shouldHaltCommand) rethrow;
 
-      logger.warn(e.message);
+      logger.detail(e.message);
     } catch (e) {
       logger.err(e.toString());
     }

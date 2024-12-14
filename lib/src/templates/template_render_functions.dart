@@ -3,7 +3,7 @@ import 'package:recase/recase.dart';
 import 'package:dolphin_cli/src/services/config_service.dart';
 import 'package:dolphin_cli/src/templates/template_constants.dart';
 
-/// Definition of a function that when executed returns a Map<String, String>
+/// Definition of a function that when executed returns a [Map<String, String>]
 typedef RenderFunction = Map<String, String> Function(ReCase value,
     {String? featureName});
 

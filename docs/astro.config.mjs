@@ -24,6 +24,7 @@ export default defineConfig({
               label: "CLI Commands",
               items: [
                 { label: "Create", slug: "cli/commands/create" },
+                { label: "Bootstrap", slug: "cli/commands/bootstrap" },
                 { label: "Delete", slug: "cli/commands/delete" },
                 { label: "Generate", slug: "cli/commands/generate" },
                 { label: "Update", slug: "cli/commands/update" },

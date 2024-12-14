@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:args/args.dart';
 import 'package:cli_completion/cli_completion.dart';
+import 'package:dolphin_cli/src/commands/bootstrap/bootstrap_command.dart';
 import 'package:dolphin_cli/src/commands/compile/compile_command.dart';
 import 'package:dolphin_cli/src/commands/create/create_command.dart';
 import 'package:dolphin_cli/src/commands/delete/delete_command.dart';
@@ -35,6 +36,7 @@ class DolphinCliCommandRunner extends CompletionCommandRunner<int> {
       },
     );
     addCommand(CreateCommand());
+    addCommand(BootstrapCommand());
     addCommand(DeleteCommand());
     addCommand(CompileCommand());
     addCommand(GenerateCommand());
