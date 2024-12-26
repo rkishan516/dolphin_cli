@@ -8,28 +8,24 @@ Map<String, Map<String, DolphinTemplate>> kCompiledDolphinTemplates = {
     'mobile': DolphinTemplate(
       templateFiles: [
         TemplateFile(
-            relativeOutputPath: kAppMobileTemplateDolphinJsonStkPath,
-            content: kAppMobileTemplateDolphinJsonStkContent,
+            relativeOutputPath: kAppMobileTemplatePubspecYamlStubPath,
+            content: kAppMobileTemplatePubspecYamlStubContent,
             fileType: FileType.text),
         TemplateFile(
-            relativeOutputPath: kAppMobileTemplateBuildYamlStkPath,
-            content: kAppMobileTemplateBuildYamlStkContent,
+            relativeOutputPath: kAppMobileTemplateREADMEMdStubPath,
+            content: kAppMobileTemplateREADMEMdStubContent,
             fileType: FileType.text),
         TemplateFile(
-            relativeOutputPath: kAppMobileTemplateIntJsonStkPath,
-            content: kAppMobileTemplateIntJsonStkContent,
+            relativeOutputPath: kAppMobileTemplateDolphinJsonStubPath,
+            content: kAppMobileTemplateDolphinJsonStubContent,
             fileType: FileType.text),
         TemplateFile(
-            relativeOutputPath: kAppMobileTemplateREADMEMdStkPath,
-            content: kAppMobileTemplateREADMEMdStkContent,
+            relativeOutputPath: kAppMobileTemplateIntJsonStubPath,
+            content: kAppMobileTemplateIntJsonStubContent,
             fileType: FileType.text),
         TemplateFile(
             relativeOutputPath: kAppMobileTemplateMainPath,
             content: kAppMobileTemplateMainContent,
-            fileType: FileType.text),
-        TemplateFile(
-            relativeOutputPath: kAppMobileTemplatelibAppPath,
-            content: kAppMobileTemplatelibAppContent,
             fileType: FileType.text),
         TemplateFile(
             relativeOutputPath: kAppMobileTemplatehomePageStatePath,
@@ -64,6 +60,10 @@ Map<String, Map<String, DolphinTemplate>> kCompiledDolphinTemplates = {
             content: kAppMobileTemplatecommonLoggerViewContent,
             fileType: FileType.text),
         TemplateFile(
+            relativeOutputPath: kAppMobileTemplatecommonLoggerServicePath,
+            content: kAppMobileTemplatecommonLoggerServiceContent,
+            fileType: FileType.text),
+        TemplateFile(
             relativeOutputPath: kAppMobileTemplatecommonPackageInfoServicePath,
             content: kAppMobileTemplatecommonPackageInfoServiceContent,
             fileType: FileType.text),
@@ -73,37 +73,37 @@ Map<String, Map<String, DolphinTemplate>> kCompiledDolphinTemplates = {
             content: kAppMobileTemplatecommonEnvironmentConfigServiceContent,
             fileType: FileType.text),
         TemplateFile(
-            relativeOutputPath: kAppMobileTemplatecommonLoggerServicePath,
-            content: kAppMobileTemplatecommonLoggerServiceContent,
-            fileType: FileType.text),
-        TemplateFile(
             relativeOutputPath:
                 kAppMobileTemplatecommonSharedPerferencesServicePath,
             content: kAppMobileTemplatecommonSharedPerferencesServiceContent,
             fileType: FileType.text),
         TemplateFile(
-            relativeOutputPath: kAppMobileTemplateroutesAppRouterPath,
-            content: kAppMobileTemplateroutesAppRouterContent,
+            relativeOutputPath: kAppMobileTemplatelibAppPath,
+            content: kAppMobileTemplatelibAppContent,
             fileType: FileType.text),
         TemplateFile(
             relativeOutputPath: kAppMobileTemplateroutesAppRoutesPath,
             content: kAppMobileTemplateroutesAppRoutesContent,
             fileType: FileType.text),
         TemplateFile(
+            relativeOutputPath: kAppMobileTemplateroutesAppRouterPath,
+            content: kAppMobileTemplateroutesAppRouterContent,
+            fileType: FileType.text),
+        TemplateFile(
             relativeOutputPath: kAppMobileTemplateroutesAnalyticsObserverPath,
             content: kAppMobileTemplateroutesAnalyticsObserverContent,
             fileType: FileType.text),
         TemplateFile(
-            relativeOutputPath: kAppMobileTemplatePubspecYamlStkPath,
-            content: kAppMobileTemplatePubspecYamlStkContent,
+            relativeOutputPath: kAppMobileTemplateBuildYamlStubPath,
+            content: kAppMobileTemplateBuildYamlStubContent,
             fileType: FileType.text),
         TemplateFile(
-            relativeOutputPath: kAppMobileTemplateSettingsJsonStkPath,
-            content: kAppMobileTemplateSettingsJsonStkContent,
+            relativeOutputPath: kAppMobileTemplateLaunchJsonStubPath,
+            content: kAppMobileTemplateLaunchJsonStubContent,
             fileType: FileType.text),
         TemplateFile(
-            relativeOutputPath: kAppMobileTemplateLaunchJsonStkPath,
-            content: kAppMobileTemplateLaunchJsonStkContent,
+            relativeOutputPath: kAppMobileTemplateSettingsJsonStubPath,
+            content: kAppMobileTemplateSettingsJsonStubContent,
             fileType: FileType.text),
       ],
       modificationFiles: [],

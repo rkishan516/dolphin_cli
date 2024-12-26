@@ -19,7 +19,7 @@ class TemplateHelper {
 
   String get templatesPath => pathService.templatesPath;
 
-  /// Returns files that end in .stk extensions (which is how we indicate templates in this project)
+  /// Returns files that end in .stub extensions (which is how we indicate templates in this project)
   List<FileSystemEntity> getFilesWithExtension({
     required List<FileSystemEntity> filePaths,
     required String extension,
@@ -40,7 +40,9 @@ class TemplateHelper {
   /// Returns the name of the template file without the extensions
   String getTemplateFileNameOnly(
           {required FileSystemEntity templateFilePath}) =>
-      pathService.basename(templateFilePath.path).replaceFirst('.dart.stk', '');
+      pathService
+          .basename(templateFilePath.path)
+          .replaceFirst('.dart.stub', '');
 
   /// Returns the name of the feature folder
   String getTemplateFeatureName({required FileSystemEntity templateFilePath}) {
@@ -65,7 +67,7 @@ class TemplateHelper {
   Future<List<FileSystemEntity>> getFilesForTemplate({
     required String templateName,
     required String templateType,
-    String extension = 'stk',
+    String extension = 'stub',
   }) async {
     final allFilesInTemplateDirectory = await fileService.getFilesInDirectory(
       directoryPath: pathService.join(

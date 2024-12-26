@@ -194,7 +194,7 @@ class TemplateService {
           continue;
         }
 
-        if (templateFile.relativeOutputPath.contains('_use_model.dart.stk')) {
+        if (templateFile.relativeOutputPath.contains('_use_model.dart.stub')) {
           template.templateFiles[i + 2] = TemplateFile(
             relativeOutputPath:
                 template.templateFiles[i + 2].relativeOutputPath,
@@ -253,7 +253,7 @@ class TemplateService {
           'generic',
           recaseName.snakeCase,
         )
-        .replaceFirst('.stk', '');
+        .replaceFirst('.stub', '');
 
     if (hasOutputFolder) {
       return path.join(outputFolder, modifiedOutputPath);
