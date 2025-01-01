@@ -1,4 +1,3 @@
-
 ### Dolphin CLI
 
 <a href="https://pub.dev/packages/dolphin_cli" target="_blank">
@@ -14,6 +13,8 @@
 <a href="https://github.com/rkishan516/dolphin_cli/stargazers" target="_blank">
   <img src="https://img.shields.io/github/stars/rkishan516/dolphin_cli.svg?style=for-the-badge&label=GitHub Stars&color=gold"/>
 </a>
+
+[![codecov](https://codecov.io/gh/rkishan516/dolphin_cli/graph/badge.svg?token=Y43OR1569D)](https://codecov.io/gh/rkishan516/dolphin_cli)
 
 The official CLI (Command Line Interface) dev tools for working with the Dolphin framework. Dolphin is a framework built in Flutter for production teams. It is built for maintenance, readability, and scaleability. 
   

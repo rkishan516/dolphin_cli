@@ -16,12 +16,11 @@ class PubspecService {
   /// Reads the pubpec and caches the value locally
   Future<void> initialise({String? workingDirectory}) async {
     final bool hasWorkingDirectory = workingDirectory != null;
-    // stdout.writeln('PubspecService - initialise from pubspec.yaml');
+
     final pubspecYamlContent = await File(
             '${hasWorkingDirectory ? '$workingDirectory/' : ''}pubspec.yaml')
         .readAsString();
     pubspecYaml = pubspecYamlContent.toPubspecYaml();
-    // stdout.writeln('PubspecService - initialise complete');
   }
 
   String get getPackageName => pubspecYaml.name;

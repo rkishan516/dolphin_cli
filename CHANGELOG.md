@@ -1,3 +1,8 @@
+## 1.4.0
+
+* Add unit tests
+* Update stub files
+
 ## 1.3.0
 
 * Add dolphin cli executable as dev dependency

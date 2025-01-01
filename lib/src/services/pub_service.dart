@@ -7,14 +7,15 @@ import 'package:pub_updater/pub_updater.dart';
 import 'package:scoped_zone/scoped_zone.dart';
 
 /// A reference to a [PubService] instance.
-final pubServiceRef = create(PubService.new);
+final pubServiceRef = create(() => PubService(PubUpdater()));
 
 /// The [PubService] instance available in the current zone.
 PubService get pubService => read(pubServiceRef);
 
 /// Provides functionality to interact with pacakges
 class PubService {
-  final _pubUpdater = PubUpdater();
+  const PubService(this._pubUpdater);
+  final PubUpdater _pubUpdater;
 
   /// Returns current `dolphin_cli` version installed on the system.
   Future<String> getCurrentVersion() async {

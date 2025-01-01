@@ -1,0 +1,45 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3.1.0
+        with:
+          fetch-depth: 2
+      - uses: dart-lang/setup-dart@v1
+        with:
+          channel: stable
+      - name: Add pub cache bin to PATH
+        run: echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
+      - name: Add pub cache to PATH
+        run: echo "PUB_CACHE="$HOME/.pub-cache"" >> $GITHUB_ENV
+      - name: Install dependencies
+        run: dart pub get
+      - name: Check format
+        run: dart format --set-exit-if-changed .
+      - name: Analyze
+        run: dart analyze
+      - name: Run tests
+        run: |
+            dart pub global activate coverage
+            dart pub global activate remove_from_coverage
+            dart test --coverage=coverage
+            dart pub global run coverage:format_coverage --lcov --in=coverage --out=coverage/lcov.info --packages=.dart_tool/package_config.json --check-ignore
+            remove_from_coverage -f coverage/lcov.info -r 'commands/'
+            remove_from_coverage -f coverage/lcov.info -r 'templates/'
+            remove_from_coverage -f coverage/lcov.info -r 'process_service.dart'
+            remove_from_coverage -f coverage/lcov.info -r 'template_models.dart'
+            remove_from_coverage -f coverage/lcov.info -r 'template_models.g.dart'
+      - uses: codecov/codecov-action@v5
+        with:
+            fail_ci_if_error: true
+            files: coverage/locv.info
+            token: ${{ secrets.CODECOV_TOKEN }}
+            verbose: true

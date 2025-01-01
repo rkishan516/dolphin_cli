@@ -193,17 +193,6 @@ class TemplateService {
         if (!hasModel && templateFile.relativeOutputPath.contains('model')) {
           continue;
         }
-
-        if (templateFile.relativeOutputPath.contains('_use_model.dart.stub')) {
-          template.templateFiles[i + 2] = TemplateFile(
-            relativeOutputPath:
-                template.templateFiles[i + 2].relativeOutputPath,
-            content: templateFile.content,
-            fileType: FileType.text,
-          );
-
-          continue;
-        }
       }
 
       final templateContent = templateFile.fileType == FileType.text

@@ -63,7 +63,7 @@ class FileService {
     );
 
     if (verbose) {
-      logger.detail(verboseMessage ?? '$file operated with $type');
+      logger.detail(verboseMessage ?? '$file operated with ${type.name}');
     }
   }
 
@@ -133,12 +133,7 @@ class FileService {
     String type = kTemplateNameView,
   }) async {
     final recaseName = ReCase('$removedContent $type');
-    if (type == kTemplateNameService) {
-      await removeTestHelperFunctionFromFile(
-        filePath: filePath,
-        serviceName: recaseName.pascalCase,
-      );
-    }
+
     List<String> fileLines = await readFileAsLines(filePath: filePath);
     fileLines.removeWhere((line) => line.contains('/${recaseName.snakeCase}'));
     fileLines.removeWhere((line) => line.contains(' ${recaseName.pascalCase}'));
@@ -165,26 +160,6 @@ class FileService {
     await writeStringFile(
       file: File(filePath),
       fileContent: fileLines.join('\n'),
-      type: FileModificationType.Modify,
-    );
-  }
-
-  Future<void> removeTestHelperFunctionFromFile({
-    required String filePath,
-    required String serviceName,
-  }) async {
-    String fileString = await readFileAsString(filePath: filePath);
-    fileString = fileString.replaceAll(
-        RegExp(
-          "Mock$serviceName getAndRegister$serviceName[(][)] {.*?}",
-          caseSensitive: false,
-          dotAll: true,
-          multiLine: true,
-        ),
-        '');
-    await writeStringFile(
-      file: File(filePath),
-      fileContent: fileString,
       type: FileModificationType.Modify,
     );
   }

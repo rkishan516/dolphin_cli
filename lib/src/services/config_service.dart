@@ -93,8 +93,6 @@ class ConfigService {
       await loadConfig(configPath);
     } on ConfigFileNotFoundException catch (e) {
       if (e.shouldHaltCommand) rethrow;
-
-      logger.warn(e.message);
     } catch (e) {
       logger.err(e.toString());
     }
@@ -175,10 +173,6 @@ class ConfigService {
       _customConfig = Config.fromJson(jsonDecode(data));
       _hasCustomConfig = true;
       _sanitizeCustomConfig();
-    } on ConfigFileNotFoundException catch (e) {
-      if (e.shouldHaltCommand) rethrow;
-
-      logger.warn(e.message);
     } on FormatException {
       logger.warn(kConfigFileMalformed);
     } catch (e) {
@@ -237,20 +231,6 @@ class ConfigService {
     logger.warn(kDeprecatedPaths);
 
     _customConfig = sanitizedConfig;
-  }
-
-  /// Returns file path of test helpers and mock services relative to [path].
-  @visibleForTesting
-  String getFilePathToHelpersAndMocks(String path) {
-    String fileToImport = '';
-    final pathSegments =
-        path.split('/').where((element) => !element.contains('.'));
-
-    for (var i = 0; i < pathSegments.length; i++) {
-      fileToImport = '../$fileToImport';
-    }
-
-    return fileToImport;
   }
 
   /// Exports custom config as a formatted Json String.

@@ -93,7 +93,7 @@ class DolphinCliCommandRunner extends CompletionCommandRunner<int> {
 
     // Run the command or show version
     final int? exitCode;
-    if (topLevelResults['version'] == true) {
+    if (topLevelResults[ksVersion] == true) {
       exitCode = ExitCode.success.code;
     } else {
       exitCode = await super.runCommand(topLevelResults);
