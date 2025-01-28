@@ -657,59 +657,6 @@ const String kAppMobileTemplateroutesAppRoutesPath =
     'lib/app/routes/notifiers/app_routes.dart.stub';
 
 const String kAppMobileTemplateroutesAppRoutesContent = '''
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:{{packageName}}/app/routes/notifiers/app_router.dart';
-import 'package:{{packageName}}/app/routes/observers/analytics_observer.dart';
-
-part 'app_routes.g.dart';
-
-final GlobalKey<NavigatorState> appNavigatorKey = GlobalKey<NavigatorState>();
-
-@riverpod
-GoRouter navigator(Ref ref) {
-  final router = ref.watch(routerNotifierProvider.notifier);
-
-  List<NavigatorObserver>? observers = [
-    DolphinAnalyticsNavigatorObserver(),
-  ];
-
-  return GoRouter(
-    observers: observers,
-    navigatorKey: appNavigatorKey,
-    initialLocation: SplashPageRoute.path,
-    refreshListenable: router,
-    routes: router.routes,
-    debugLogDiagnostics: kDebugMode,
-  );
-}
-
-@riverpod
-class RouterNotifier extends _\$RouterNotifier implements Listenable {
-  List<RouteBase> get routes => \$appRoutes;
-
-  @override
-  void build() {}
-
-  @override
-  void addListener(VoidCallback listener) {}
-
-  @override
-  void removeListener(VoidCallback listener) {}
-}
-''';
-
-// --------------------------------------------------
-
-// -------- AppRouter Template Data ----------
-
-const String kAppMobileTemplateroutesAppRouterPath =
-    'lib/app/routes/notifiers/app_router.dart.stub';
-
-const String kAppMobileTemplateroutesAppRouterContent = '''
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -766,6 +713,59 @@ class DeveloperMenuPageRoute extends GoRouteData {
       const DeveloperMenuPage();
 }
 
+''';
+
+// --------------------------------------------------
+
+// -------- AppRouter Template Data ----------
+
+const String kAppMobileTemplateroutesAppRouterPath =
+    'lib/app/routes/notifiers/app_router.dart.stub';
+
+const String kAppMobileTemplateroutesAppRouterContent = '''
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:{{packageName}}/app/routes/notifiers/app_router.dart';
+import 'package:{{packageName}}/app/routes/observers/analytics_observer.dart';
+
+part 'app_routes.g.dart';
+
+final GlobalKey<NavigatorState> appNavigatorKey = GlobalKey<NavigatorState>();
+
+@riverpod
+GoRouter navigator(Ref ref) {
+  final router = ref.watch(routerNotifierProvider.notifier);
+
+  List<NavigatorObserver>? observers = [
+    DolphinAnalyticsNavigatorObserver(),
+  ];
+
+  return GoRouter(
+    observers: observers,
+    navigatorKey: appNavigatorKey,
+    initialLocation: SplashPageRoute.path,
+    refreshListenable: router,
+    routes: router.routes,
+    debugLogDiagnostics: kDebugMode,
+  );
+}
+
+@riverpod
+class RouterNotifier extends _\$RouterNotifier implements Listenable {
+  List<RouteBase> get routes => \$appRoutes;
+
+  @override
+  void build() {}
+
+  @override
+  void addListener(VoidCallback listener) {}
+
+  @override
+  void removeListener(VoidCallback listener) {}
+}
 ''';
 
 // --------------------------------------------------

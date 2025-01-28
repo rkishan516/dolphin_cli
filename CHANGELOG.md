@@ -1,3 +1,12 @@
+## 1.4.2
+
+* Update pub dependencies
+* Fix create app command with org and description
+
+## 1.4.1
+
+* Fix app route files naming
+
 ## 1.4.0
 
 * Add unit tests

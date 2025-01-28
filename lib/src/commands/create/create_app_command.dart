@@ -78,8 +78,14 @@ class CreateAppCommand extends DolphinCommand {
         templateHelper.packageDescription = argResults![ksAppDescription];
       }
 
-      final bootstrapResponse =
-          await runner?.run([kTemplateNameBootstrap, ...argResults!.arguments]);
+      final bootstrapResponse = await runner?.run([
+        kTemplateNameBootstrap,
+        ...argResults!.arguments.where(
+          (arg) =>
+              !arg.contains(ksAppOrganization) &&
+              !arg.contains(ksAppDescription),
+        ),
+      ]);
 
       if (bootstrapResponse != null &&
           bootstrapResponse != ExitCode.success.code) {

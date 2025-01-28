@@ -1,55 +1,43 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:{{packageName}}/app/routes/notifiers/app_router.dart';
+import 'package:{{packageName}}/app/routes/observers/analytics_observer.dart';
 
-// View routes imports
-import 'package:{{packageName}}/app/developer_menu/presentation/page.dart';
-import 'package:{{packageName}}/app/home/presentation/page.dart';
-import 'package:{{packageName}}/app/splash/presentation/page.dart';
+part 'app_routes.g.dart';
 
+final GlobalKey<NavigatorState> appNavigatorKey = GlobalKey<NavigatorState>();
 
-part 'app_router.g.dart';
+@riverpod
+GoRouter navigator(Ref ref) {
+  final router = ref.watch(routerNotifierProvider.notifier);
 
-@TypedGoRoute<HomePageRoute>(
-  path: HomePageRoute.path,
-  name: HomePageRoute.name,
-  routes: [
-    // Other routes nested under the home route
-  ],
-)
-class HomePageRoute extends GoRouteData {
-  static const path = '/';
-  static const name = 'home';
-  const HomePageRoute();
+  List<NavigatorObserver>? observers = [
+    DolphinAnalyticsNavigatorObserver(),
+  ];
 
-  @override
-  Widget build(BuildContext context, GoRouterState state) => const HomePage();
+  return GoRouter(
+    observers: observers,
+    navigatorKey: appNavigatorKey,
+    initialLocation: SplashPageRoute.path,
+    refreshListenable: router,
+    routes: router.routes,
+    debugLogDiagnostics: kDebugMode,
+  );
 }
 
-// Other routes definations
-
-@TypedGoRoute<SplashPageRoute>(
-  path: SplashPageRoute.path,
-  name: SplashPageRoute.name,
-)
-class SplashPageRoute extends GoRouteData {
-  static const path = '/splash';
-  static const name = 'splash';
-  const SplashPageRoute();
+@riverpod
+class RouterNotifier extends _\$RouterNotifier implements Listenable {
+  List<RouteBase> get routes => \$appRoutes;
 
   @override
-  Widget build(BuildContext context, GoRouterState state) => const SplashPage();
-}
-
-@TypedGoRoute<DeveloperMenuPageRoute>(
-  path: DeveloperMenuPageRoute.path,
-  name: DeveloperMenuPageRoute.name,
-)
-class DeveloperMenuPageRoute extends GoRouteData {
-  static const path = '/developerMenu';
-  static const name = 'developerMenu';
-  const DeveloperMenuPageRoute();
+  void build() {}
 
   @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const DeveloperMenuPage();
+  void addListener(VoidCallback listener) {}
+
+  @override
+  void removeListener(VoidCallback listener) {}
 }
