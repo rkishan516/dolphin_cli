@@ -1,3 +1,7 @@
+## 1.4.1
+
+* Fix app route files naming
+
 ## 1.4.0
 
 * Add unit tests
