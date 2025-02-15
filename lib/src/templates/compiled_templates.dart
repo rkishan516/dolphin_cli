@@ -728,7 +728,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:{{packageName}}/app/routes/notifiers/app_router.dart';
+import 'package:{{packageName}}/app/routes/notifiers/app_routes.dart';
 import 'package:{{packageName}}/app/routes/observers/analytics_observer.dart';
 
 part 'app_router.g.dart';

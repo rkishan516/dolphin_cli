@@ -1,3 +1,7 @@
+## 1.4.2+2
+
+* Update import for splash page route
+
 ## 1.4.2+1
 
 * Update part files for app routes
