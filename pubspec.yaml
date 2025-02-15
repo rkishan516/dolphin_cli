@@ -1,6 +1,6 @@
 name: dolphin_cli
 description: The official command-line interface for the Dolphin framework, tailored for Flutter developers.
-version: 1.4.2+2
+version: 1.4.2+3
 homepage: https://dolphin.goflutter.in/
 repository: https://github.com/rkishan516/dolphin_cli
 topics: [cli, codegen, template, boilerplate]

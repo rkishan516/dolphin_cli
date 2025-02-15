@@ -228,7 +228,7 @@ void main() {
         when(() => configService.serviceImportPath).thenReturn('services');
         when(() => configService.viewImportPath).thenReturn('presentation');
         when(() => configService.replaceCustomPaths(any()))
-            .thenReturn('./routes/notifiers/app_router.dart');
+            .thenReturn('./routes/notifiers/app_routes.dart');
         when(() => fileService.fileExists(filePath: any(named: 'filePath')))
             .thenAnswer((i) async => true);
         when(
@@ -247,7 +247,7 @@ void main() {
         ).thenAnswer((i) async => '');
       });
       testWithOverrides(
-          'Given the view template with a modification file for routes/notifiers/app_router.dart\n'
+          'Given the view template with a modification file for routes/notifiers/app_routes.dart\n'
           'should check if the file exists\n'
           'should get file data if it exist', () async {
         await templateService.modifyExistingFiles(
@@ -259,7 +259,7 @@ void main() {
 
         verify(
           () => fileService.fileExists(
-              filePath: './routes/notifiers/app_router.dart'),
+              filePath: './routes/notifiers/app_routes.dart'),
         ).called(3);
 
         verify(() =>
@@ -268,7 +268,7 @@ void main() {
       });
 
       testWithOverrides(
-          'given the view template with a modification file for routes/notifiers/app_router.dart and outputPath test, should check if the file exists in test',
+          'given the view template with a modification file for routes/notifiers/app_routes.dart and outputPath test, should check if the file exists in test',
           () async {
         await templateService.modifyExistingFiles(
           template: kCompiledDolphinTemplates[kTemplateNameView]![
@@ -279,7 +279,7 @@ void main() {
         );
         verify(
           () => fileService.fileExists(
-            filePath: 'test/./routes/notifiers/app_router.dart',
+            filePath: 'test/./routes/notifiers/app_routes.dart',
           ),
         ).called(3);
       });
@@ -314,7 +314,7 @@ void main() {
         when(() => configService.serviceImportPath).thenReturn('services');
         when(() => configService.viewImportPath).thenReturn('presentation');
         when(() => configService.replaceCustomPaths(any()))
-            .thenReturn('routes/notifiers/app_router.dart');
+            .thenReturn('routes/notifiers/app_routes.dart');
         when(() => fileService.fileExists(filePath: any(named: 'filePath')))
             .thenAnswer((i) async => true);
         when(

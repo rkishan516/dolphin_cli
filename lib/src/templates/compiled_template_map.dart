@@ -209,7 +209,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';''',
       ],
       modificationFiles: [
         ModificationFile(
-          relativeModificationPath: '../routes/notifiers/app_router.dart',
+          relativeModificationPath: '../routes/notifiers/app_routes.dart',
           modificationIdentifier: '// Other routes nested under the home route',
           modificationTemplate: '''TypedGoRoute<{{viewName}}PageRoute>(
 path: {{viewName}}PageRoute.path,
@@ -219,7 +219,7 @@ name: {{viewName}}PageRoute.name,
           modificationName: 'Add view to route',
         ),
         ModificationFile(
-          relativeModificationPath: '../routes/notifiers/app_router.dart',
+          relativeModificationPath: '../routes/notifiers/app_routes.dart',
           modificationIdentifier: '// Other routes definations',
           modificationTemplate:
               '''class {{viewName}}PageRoute extends GoRouteData {
@@ -233,7 +233,7 @@ Widget build(BuildContext context, GoRouterState state) => const {{viewName}}();
           modificationName: 'Add route defination for view',
         ),
         ModificationFile(
-          relativeModificationPath: '../routes/notifiers/app_router.dart',
+          relativeModificationPath: '../routes/notifiers/app_routes.dart',
           modificationIdentifier: '// View routes imports',
           modificationTemplate:
               '''import 'package:{{packageName}}/app/{{featureName}}/presentation/{{viewNameSnake}}.dart';''',

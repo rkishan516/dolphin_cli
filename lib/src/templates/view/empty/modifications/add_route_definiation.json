@@ -1,7 +1,7 @@
 {
     "name": "Add route defination for view",
     "description": "When view is generated we require a route defination to navigation to it, this task ensure addition of route defination for go router",
-    "path": "../routes/notifiers/app_router.dart",
+    "path": "../routes/notifiers/app_routes.dart",
     "identifier": "// Other routes definations",
     "template": "class {{viewName}}PageRoute extends GoRouteData {\nstatic const path = '{{viewName}}';\nstatic const name = '{{viewName}}';\nconst {{viewName}}PageRoute();\n@override\nWidget build(BuildContext context, GoRouterState state) => const {{viewName}}();\n}",
     "error": "Adding route defination for view failed"

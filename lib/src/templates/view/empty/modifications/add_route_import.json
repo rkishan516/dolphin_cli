@@ -1,7 +1,7 @@
 {
     "name": "Add import for view in app routes",
     "description": "When view is generated we require to add route for that and this imports view in app routes",
-    "path": "../routes/notifiers/app_router.dart",
+    "path": "../routes/notifiers/app_routes.dart",
     "identifier": "// View routes imports",
     "template": "import 'package:{{packageName}}/app/{{featureName}}/presentation/{{viewNameSnake}}.dart';",
     "error": "Import for view in app routes failed"
