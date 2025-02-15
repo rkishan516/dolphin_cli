@@ -1,3 +1,8 @@
+## 1.4.2+1
+
+* Update part files for app routes
+* Fix create app command with platforms params
+
 ## 1.4.2
 
 * Update pub dependencies

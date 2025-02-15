@@ -7,7 +7,7 @@ import 'package:{{packageName}}/app/home/presentation/page.dart';
 import 'package:{{packageName}}/app/splash/presentation/page.dart';
 
 
-part 'app_router.g.dart';
+part 'app_routes.g.dart';
 
 @TypedGoRoute<HomePageRoute>(
   path: HomePageRoute.path,

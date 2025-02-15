@@ -666,7 +666,7 @@ import 'package:{{packageName}}/app/home/presentation/page.dart';
 import 'package:{{packageName}}/app/splash/presentation/page.dart';
 
 
-part 'app_router.g.dart';
+part 'app_routes.g.dart';
 
 @TypedGoRoute<HomePageRoute>(
   path: HomePageRoute.path,
@@ -731,7 +731,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:{{packageName}}/app/routes/notifiers/app_router.dart';
 import 'package:{{packageName}}/app/routes/observers/analytics_observer.dart';
 
-part 'app_routes.g.dart';
+part 'app_router.g.dart';
 
 final GlobalKey<NavigatorState> appNavigatorKey = GlobalKey<NavigatorState>();
 

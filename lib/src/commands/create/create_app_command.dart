@@ -83,7 +83,8 @@ class CreateAppCommand extends DolphinCommand {
         ...argResults!.arguments.where(
           (arg) =>
               !arg.contains(ksAppOrganization) &&
-              !arg.contains(ksAppDescription),
+              !arg.contains(ksAppDescription) &&
+              !arg.contains(ksAppPlatforms),
         ),
       ]);
 
