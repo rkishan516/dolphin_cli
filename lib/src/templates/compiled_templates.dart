@@ -22,7 +22,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_riverpod: ^2.6.1
-  freezed_annotation: ^2.4.4
+  freezed_annotation: ^3.0.0
   go_router: ^14.4.1
   json_annotation: ^4.9.0
   package_info_plus: ^8.1.1
@@ -36,12 +36,12 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
-  freezed: ^2.5.7
+  freezed: ^3.0.4
   go_router_builder: ^2.7.1
   json_serializable: ^6.8.0
   mockito: ^5.4.4
-  riverpod_generator: ^2.6.2
-  riverpod_lint: ^2.6.2
+  riverpod_generator: ^2.6.5
+  riverpod_lint: ^2.6.5
 
 flutter:
   uses-material-design: true
@@ -139,7 +139,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'page_state.freezed.dart';
 
 @freezed
-class HomePageState with _\$HomePageState {
+abstract class HomePageState with _\$HomePageState {
   const factory HomePageState({
     required int counter,
   }) = _HomePageState;
@@ -962,7 +962,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part '{{dialogNameSnake}}_dialog_state.freezed.dart';
 
 @freezed
-class {{dialogName}}Model with _\${{dialogName}}Model {
+abstract class {{dialogName}}Model with _\${{dialogName}}Model {
   const factory {{dialogName}}Model({
     required int counter,
   }) = _{{dialogName}}Model;
@@ -1125,7 +1125,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part '{{viewNameSnake}}_state.freezed.dart';
 
 @freezed
-class {{viewName}}State with _\${{viewName}}State {
+abstract class {{viewName}}State with _\${{viewName}}State {
   const factory {{viewName}}State({
     required int counter,
   }) = _{{viewName}}State;
@@ -1298,7 +1298,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part '{{sheetNameSnake}}_sheet_state.freezed.dart';
 
 @freezed
-class {{sheetName}}Model with _\${{sheetName}}Model {
+abstract class {{sheetName}}Model with _\${{sheetName}}Model {
   const factory {{sheetName}}Model({
     required int counter,
   }) = _{{sheetName}}Model;

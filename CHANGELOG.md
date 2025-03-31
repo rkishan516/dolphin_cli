@@ -1,3 +1,8 @@
+## 1.5.0
+
+* Update freezed to v3
+* Update pub dependencies
+
 ## 1.4.2+3
 
 * Update app routes file modifications
