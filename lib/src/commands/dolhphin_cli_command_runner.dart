@@ -15,7 +15,6 @@ import 'package:dolphin_cli/src/services/pub_service.dart';
 import 'package:mason_logger/mason_logger.dart';
 
 const executableName = 'dolphin';
-const packageName = 'dolhpin_cli';
 const description = 'The dolphin command-line tool';
 
 class DolphinCliCommandRunner extends CompletionCommandRunner<int> {

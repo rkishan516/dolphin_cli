@@ -1,5 +1,5 @@
 ---
-title: Example Guide
+title: Generate Command
 description: A guide to use dolphin generate.
 ---
 
