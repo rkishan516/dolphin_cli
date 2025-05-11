@@ -17,29 +17,29 @@ environment:
   sdk: '>=3.4.0 <4.0.0'
 
 dependencies:
-  equatable: ^2.0.5
-  flex_color_scheme: ^8.0.0
+  equatable: ^2.0.7
+  flex_color_scheme: ^8.2.0
   flutter:
     sdk: flutter
   flutter_riverpod: ^2.6.1
   freezed_annotation: ^3.0.0
-  go_router: ^14.4.1
+  go_router: ^15.1.2
   json_annotation: ^4.9.0
-  package_info_plus: ^8.1.1
+  package_info_plus: ^8.3.0
   riverpod_annotation: ^2.6.1
-  shared_preferences: ^2.3.3
+  shared_preferences: ^2.5.3
   supercharged: ^2.1.1
-  talker_flutter: ^4.4.1
+  talker_flutter: ^4.7.6
 
 dev_dependencies:
-  build_runner: ^2.4.13
+  build_runner: ^2.4.15
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
-  freezed: ^3.0.4
-  go_router_builder: ^2.7.1
-  json_serializable: ^6.8.0
-  mockito: ^5.4.4
+  freezed: ^3.0.6
+  go_router_builder: ^2.9.0
+  json_serializable: ^6.9.5
+  mockito: ^5.4.5
   riverpod_generator: ^2.6.5
   riverpod_lint: ^2.6.5
 
