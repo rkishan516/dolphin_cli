@@ -62,7 +62,7 @@ class ProcessService {
     bool shouldDeleteConflictingOutputs = true,
   }) async {
     await _runProcess(
-      programName: ksDart,
+      programName: ksFlutter,
       arguments: [
         ...buildRunnerArguments,
         shouldWatch ? ksWatch : ksBuild,

@@ -14,7 +14,7 @@ publish_to: 'none'
 version: 0.1.0
 
 environment:
-  sdk: '>=3.4.0 <4.0.0'
+  sdk: '>=3.8.0 <4.0.0'
 
 dependencies:
   equatable: ^2.0.7
@@ -35,7 +35,7 @@ dev_dependencies:
   build_runner: ^2.4.15
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
   freezed: ^3.0.6
   go_router_builder: ^2.9.0
   json_serializable: ^6.9.5
@@ -76,6 +76,20 @@ const String kAppMobileTemplateDolphinJsonStubContent = '''
     "views_path": "presentation",
     "widgets_path": "presentation"
 }
+''';
+
+// --------------------------------------------------
+
+// -------- AnalysisOptionsYamlStub Template Data ----------
+
+const String kAppMobileTemplateAnalysisOptionsYamlStubPath =
+    'analysis_options.yaml.stub';
+
+const String kAppMobileTemplateAnalysisOptionsYamlStubContent = '''
+include: package:flutter_lints/flutter.yaml
+
+formatter:
+  trailing_commas: preserve
 ''';
 
 // --------------------------------------------------

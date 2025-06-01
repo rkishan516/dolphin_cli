@@ -20,6 +20,10 @@ Map<String, Map<String, DolphinTemplate>> kCompiledDolphinTemplates = {
             content: kAppMobileTemplateDolphinJsonStubContent,
             fileType: FileType.text),
         TemplateFile(
+            relativeOutputPath: kAppMobileTemplateAnalysisOptionsYamlStubPath,
+            content: kAppMobileTemplateAnalysisOptionsYamlStubContent,
+            fileType: FileType.text),
+        TemplateFile(
             relativeOutputPath: kAppMobileTemplateIntJsonStubPath,
             content: kAppMobileTemplateIntJsonStubContent,
             fileType: FileType.text),

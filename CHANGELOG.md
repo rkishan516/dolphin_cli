@@ -1,3 +1,9 @@
+## 1.5.2
+- Update pub dependencies
+- Update `dolphin generate` to use flutter instead of dart
+- Update flutter_lints to v6
+- Preserve trailing commas in Dart 3.8
+
 ## 1.5.1
 
 - Update pub dependencies
