@@ -62,7 +62,7 @@ class ProcessService {
     bool shouldDeleteConflictingOutputs = true,
   }) async {
     await _runProcess(
-      programName: ksFlutter,
+      programName: ksDart,
       arguments: [
         ...buildRunnerArguments,
         shouldWatch ? ksWatch : ksBuild,
@@ -180,7 +180,7 @@ class ProcessService {
       );
 
       final lines = <String>[];
-      final lineSplitter = LineSplitter();
+      final lineSplitter = const LineSplitter();
       await process.stdout.transform(utf8.decoder).forEach((output) {
         if (verbose) logger.detail(output);
 

@@ -235,7 +235,7 @@ class ConfigService {
 
   /// Exports custom config as a formatted Json String.
   String exportConfig() {
-    return JsonEncoder.withIndent("    ").convert(_customConfig.toJson());
+    return const JsonEncoder.withIndent('    ').convert(_customConfig.toJson());
   }
 
   /// Overrides [widgets_path] value on configuration.

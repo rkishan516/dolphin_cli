@@ -4,7 +4,7 @@ part 'template_models.freezed.dart';
 part 'template_models.g.dart';
 
 @freezed
-class CompliledTemplateFile with _$CompliledTemplateFile {
+abstract class CompliledTemplateFile with _$CompliledTemplateFile {
   factory CompliledTemplateFile({
     /// Pascal case name of the template this file belongs too
     required String name,
@@ -39,7 +39,7 @@ enum FileType {
 }
 
 @freezed
-class CompiledCreateCommand with _$CompiledCreateCommand {
+abstract class CompiledCreateCommand with _$CompiledCreateCommand {
   factory CompiledCreateCommand({
     required String name,
     required List<CompiledTemplate> templates,
@@ -50,7 +50,7 @@ class CompiledCreateCommand with _$CompiledCreateCommand {
 }
 
 @freezed
-class CompiledTemplate with _$CompiledTemplate {
+abstract class CompiledTemplate with _$CompiledTemplate {
   factory CompiledTemplate({
     required String type,
     required List<CompliledTemplateFile> files,
@@ -62,7 +62,7 @@ class CompiledTemplate with _$CompiledTemplate {
 }
 
 @freezed
-class CompiledFileModification with _$CompiledFileModification {
+abstract class CompiledFileModification with _$CompiledFileModification {
   factory CompiledFileModification({
     /// A short description for what this modiciation does
     required String description,

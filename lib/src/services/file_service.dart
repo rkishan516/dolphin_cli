@@ -142,7 +142,7 @@ class FileService {
       fileContent: fileLines.join('\n'),
       type: FileModificationType.Modify,
       verbose: true,
-      verboseMessage: "Removed ${recaseName.pascalCase} from $filePath",
+      verboseMessage: 'Removed ${recaseName.pascalCase} from $filePath',
     );
   }
 

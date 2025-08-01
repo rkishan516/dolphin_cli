@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,125 +10,78 @@ part of 'template_models.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-CompliledTemplateFile _$CompliledTemplateFileFromJson(
-    Map<String, dynamic> json) {
-  return _CompliledTemplateFile.fromJson(json);
-}
 
 /// @nodoc
 mixin _$CompliledTemplateFile {
   /// Pascal case name of the template this file belongs too
-  String get name => throw _privateConstructorUsedError;
+  String get name;
 
   /// Pascal case name of the template type this file belongs too,
-  String get templateType => throw _privateConstructorUsedError;
+  String get templateType;
 
   /// Pascal case name of the file without the extension
-  String get fileName => throw _privateConstructorUsedError;
+  String get fileName;
 
   /// Relative file path from the template in the templates folder
   /// .i.e. from we don't include template/view/
-  String get path => throw _privateConstructorUsedError;
+  String get path;
 
   /// The content as is from the file that was read
-  String get content => throw _privateConstructorUsedError;
+  String get content;
 
   /// The type of file to determine how we'll store it
-  String get fileType => throw _privateConstructorUsedError;
+  String get fileType;
 
   /// The identifier to use to determine location of modifications
-  String get featureName => throw _privateConstructorUsedError;
+  String get featureName;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $CompliledTemplateFileCopyWith<CompliledTemplateFile> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $CompliledTemplateFileCopyWith<$Res> {
-  factory $CompliledTemplateFileCopyWith(CompliledTemplateFile value,
-          $Res Function(CompliledTemplateFile) then) =
-      _$CompliledTemplateFileCopyWithImpl<$Res, CompliledTemplateFile>;
-  @useResult
-  $Res call(
-      {String name,
-      String templateType,
-      String fileName,
-      String path,
-      String content,
-      String fileType,
-      String featureName});
-}
-
-/// @nodoc
-class _$CompliledTemplateFileCopyWithImpl<$Res,
-        $Val extends CompliledTemplateFile>
-    implements $CompliledTemplateFileCopyWith<$Res> {
-  _$CompliledTemplateFileCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of CompliledTemplateFile
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $CompliledTemplateFileCopyWith<CompliledTemplateFile> get copyWith =>
+      _$CompliledTemplateFileCopyWithImpl<CompliledTemplateFile>(
+          this as CompliledTemplateFile, _$identity);
+
+  /// Serializes this CompliledTemplateFile to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? name = null,
-    Object? templateType = null,
-    Object? fileName = null,
-    Object? path = null,
-    Object? content = null,
-    Object? fileType = null,
-    Object? featureName = null,
-  }) {
-    return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      templateType: null == templateType
-          ? _value.templateType
-          : templateType // ignore: cast_nullable_to_non_nullable
-              as String,
-      fileName: null == fileName
-          ? _value.fileName
-          : fileName // ignore: cast_nullable_to_non_nullable
-              as String,
-      path: null == path
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String,
-      content: null == content
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
-              as String,
-      fileType: null == fileType
-          ? _value.fileType
-          : fileType // ignore: cast_nullable_to_non_nullable
-              as String,
-      featureName: null == featureName
-          ? _value.featureName
-          : featureName // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is CompliledTemplateFile &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.templateType, templateType) ||
+                other.templateType == templateType) &&
+            (identical(other.fileName, fileName) ||
+                other.fileName == fileName) &&
+            (identical(other.path, path) || other.path == path) &&
+            (identical(other.content, content) || other.content == content) &&
+            (identical(other.fileType, fileType) ||
+                other.fileType == fileType) &&
+            (identical(other.featureName, featureName) ||
+                other.featureName == featureName));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, name, templateType, fileName,
+      path, content, fileType, featureName);
+
+  @override
+  String toString() {
+    return 'CompliledTemplateFile(name: $name, templateType: $templateType, fileName: $fileName, path: $path, content: $content, fileType: $fileType, featureName: $featureName)';
   }
 }
 
 /// @nodoc
-abstract class _$$CompliledTemplateFileImplCopyWith<$Res>
-    implements $CompliledTemplateFileCopyWith<$Res> {
-  factory _$$CompliledTemplateFileImplCopyWith(
-          _$CompliledTemplateFileImpl value,
-          $Res Function(_$CompliledTemplateFileImpl) then) =
-      __$$CompliledTemplateFileImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $CompliledTemplateFileCopyWith<$Res> {
+  factory $CompliledTemplateFileCopyWith(CompliledTemplateFile value,
+          $Res Function(CompliledTemplateFile) _then) =
+      _$CompliledTemplateFileCopyWithImpl;
   @useResult
   $Res call(
       {String name,
@@ -140,14 +94,15 @@ abstract class _$$CompliledTemplateFileImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$CompliledTemplateFileImplCopyWithImpl<$Res>
-    extends _$CompliledTemplateFileCopyWithImpl<$Res,
-        _$CompliledTemplateFileImpl>
-    implements _$$CompliledTemplateFileImplCopyWith<$Res> {
-  __$$CompliledTemplateFileImplCopyWithImpl(_$CompliledTemplateFileImpl _value,
-      $Res Function(_$CompliledTemplateFileImpl) _then)
-      : super(_value, _then);
+class _$CompliledTemplateFileCopyWithImpl<$Res>
+    implements $CompliledTemplateFileCopyWith<$Res> {
+  _$CompliledTemplateFileCopyWithImpl(this._self, this._then);
 
+  final CompliledTemplateFile _self;
+  final $Res Function(CompliledTemplateFile) _then;
+
+  /// Create a copy of CompliledTemplateFile
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -159,33 +114,33 @@ class __$$CompliledTemplateFileImplCopyWithImpl<$Res>
     Object? fileType = null,
     Object? featureName = null,
   }) {
-    return _then(_$CompliledTemplateFileImpl(
+    return _then(_self.copyWith(
       name: null == name
-          ? _value.name
+          ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
       templateType: null == templateType
-          ? _value.templateType
+          ? _self.templateType
           : templateType // ignore: cast_nullable_to_non_nullable
               as String,
       fileName: null == fileName
-          ? _value.fileName
+          ? _self.fileName
           : fileName // ignore: cast_nullable_to_non_nullable
               as String,
       path: null == path
-          ? _value.path
+          ? _self.path
           : path // ignore: cast_nullable_to_non_nullable
               as String,
       content: null == content
-          ? _value.content
+          ? _self.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
       fileType: null == fileType
-          ? _value.fileType
+          ? _self.fileType
           : fileType // ignore: cast_nullable_to_non_nullable
               as String,
       featureName: null == featureName
-          ? _value.featureName
+          ? _self.featureName
           : featureName // ignore: cast_nullable_to_non_nullable
               as String,
     ));
@@ -194,8 +149,8 @@ class __$$CompliledTemplateFileImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$CompliledTemplateFileImpl implements _CompliledTemplateFile {
-  _$CompliledTemplateFileImpl(
+class _CompliledTemplateFile implements CompliledTemplateFile {
+  _CompliledTemplateFile(
       {required this.name,
       required this.templateType,
       required this.fileName,
@@ -203,9 +158,8 @@ class _$CompliledTemplateFileImpl implements _CompliledTemplateFile {
       required this.content,
       required this.fileType,
       this.featureName = ''});
-
-  factory _$CompliledTemplateFileImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CompliledTemplateFileImplFromJson(json);
+  factory _CompliledTemplateFile.fromJson(Map<String, dynamic> json) =>
+      _$CompliledTemplateFileFromJson(json);
 
   /// Pascal case name of the template this file belongs too
   @override
@@ -237,16 +191,27 @@ class _$CompliledTemplateFileImpl implements _CompliledTemplateFile {
   @JsonKey()
   final String featureName;
 
+  /// Create a copy of CompliledTemplateFile
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'CompliledTemplateFile(name: $name, templateType: $templateType, fileName: $fileName, path: $path, content: $content, fileType: $fileType, featureName: $featureName)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$CompliledTemplateFileCopyWith<_CompliledTemplateFile> get copyWith =>
+      __$CompliledTemplateFileCopyWithImpl<_CompliledTemplateFile>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$CompliledTemplateFileToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CompliledTemplateFileImpl &&
+            other is _CompliledTemplateFile &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.templateType, templateType) ||
                 other.templateType == templateType) &&
@@ -260,163 +225,157 @@ class _$CompliledTemplateFileImpl implements _CompliledTemplateFile {
                 other.featureName == featureName));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name, templateType, fileName,
       path, content, fileType, featureName);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$CompliledTemplateFileImplCopyWith<_$CompliledTemplateFileImpl>
-      get copyWith => __$$CompliledTemplateFileImplCopyWithImpl<
-          _$CompliledTemplateFileImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$CompliledTemplateFileImplToJson(
-      this,
-    );
+  String toString() {
+    return 'CompliledTemplateFile(name: $name, templateType: $templateType, fileName: $fileName, path: $path, content: $content, fileType: $fileType, featureName: $featureName)';
   }
 }
 
-abstract class _CompliledTemplateFile implements CompliledTemplateFile {
-  factory _CompliledTemplateFile(
-      {required final String name,
-      required final String templateType,
-      required final String fileName,
-      required final String path,
-      required final String content,
-      required final String fileType,
-      final String featureName}) = _$CompliledTemplateFileImpl;
-
-  factory _CompliledTemplateFile.fromJson(Map<String, dynamic> json) =
-      _$CompliledTemplateFileImpl.fromJson;
-
+/// @nodoc
+abstract mixin class _$CompliledTemplateFileCopyWith<$Res>
+    implements $CompliledTemplateFileCopyWith<$Res> {
+  factory _$CompliledTemplateFileCopyWith(_CompliledTemplateFile value,
+          $Res Function(_CompliledTemplateFile) _then) =
+      __$CompliledTemplateFileCopyWithImpl;
   @override
-
-  /// Pascal case name of the template this file belongs too
-  String get name;
-  @override
-
-  /// Pascal case name of the template type this file belongs too,
-  String get templateType;
-  @override
-
-  /// Pascal case name of the file without the extension
-  String get fileName;
-  @override
-
-  /// Relative file path from the template in the templates folder
-  /// .i.e. from we don't include template/view/
-  String get path;
-  @override
-
-  /// The content as is from the file that was read
-  String get content;
-  @override
-
-  /// The type of file to determine how we'll store it
-  String get fileType;
-  @override
-
-  /// The identifier to use to determine location of modifications
-  String get featureName;
-  @override
-  @JsonKey(ignore: true)
-  _$$CompliledTemplateFileImplCopyWith<_$CompliledTemplateFileImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  @useResult
+  $Res call(
+      {String name,
+      String templateType,
+      String fileName,
+      String path,
+      String content,
+      String fileType,
+      String featureName});
 }
 
-CompiledCreateCommand _$CompiledCreateCommandFromJson(
-    Map<String, dynamic> json) {
-  return _CompiledCreateCommand.fromJson(json);
+/// @nodoc
+class __$CompliledTemplateFileCopyWithImpl<$Res>
+    implements _$CompliledTemplateFileCopyWith<$Res> {
+  __$CompliledTemplateFileCopyWithImpl(this._self, this._then);
+
+  final _CompliledTemplateFile _self;
+  final $Res Function(_CompliledTemplateFile) _then;
+
+  /// Create a copy of CompliledTemplateFile
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? name = null,
+    Object? templateType = null,
+    Object? fileName = null,
+    Object? path = null,
+    Object? content = null,
+    Object? fileType = null,
+    Object? featureName = null,
+  }) {
+    return _then(_CompliledTemplateFile(
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      templateType: null == templateType
+          ? _self.templateType
+          : templateType // ignore: cast_nullable_to_non_nullable
+              as String,
+      fileName: null == fileName
+          ? _self.fileName
+          : fileName // ignore: cast_nullable_to_non_nullable
+              as String,
+      path: null == path
+          ? _self.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String,
+      content: null == content
+          ? _self.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String,
+      fileType: null == fileType
+          ? _self.fileType
+          : fileType // ignore: cast_nullable_to_non_nullable
+              as String,
+      featureName: null == featureName
+          ? _self.featureName
+          : featureName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 mixin _$CompiledCreateCommand {
-  String get name => throw _privateConstructorUsedError;
-  List<CompiledTemplate> get templates => throw _privateConstructorUsedError;
+  String get name;
+  List<CompiledTemplate> get templates;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $CompiledCreateCommandCopyWith<CompiledCreateCommand> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $CompiledCreateCommandCopyWith<$Res> {
-  factory $CompiledCreateCommandCopyWith(CompiledCreateCommand value,
-          $Res Function(CompiledCreateCommand) then) =
-      _$CompiledCreateCommandCopyWithImpl<$Res, CompiledCreateCommand>;
-  @useResult
-  $Res call({String name, List<CompiledTemplate> templates});
-}
-
-/// @nodoc
-class _$CompiledCreateCommandCopyWithImpl<$Res,
-        $Val extends CompiledCreateCommand>
-    implements $CompiledCreateCommandCopyWith<$Res> {
-  _$CompiledCreateCommandCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of CompiledCreateCommand
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $CompiledCreateCommandCopyWith<CompiledCreateCommand> get copyWith =>
+      _$CompiledCreateCommandCopyWithImpl<CompiledCreateCommand>(
+          this as CompiledCreateCommand, _$identity);
+
+  /// Serializes this CompiledCreateCommand to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? name = null,
-    Object? templates = null,
-  }) {
-    return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      templates: null == templates
-          ? _value.templates
-          : templates // ignore: cast_nullable_to_non_nullable
-              as List<CompiledTemplate>,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is CompiledCreateCommand &&
+            (identical(other.name, name) || other.name == name) &&
+            const DeepCollectionEquality().equals(other.templates, templates));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, name, const DeepCollectionEquality().hash(templates));
+
+  @override
+  String toString() {
+    return 'CompiledCreateCommand(name: $name, templates: $templates)';
   }
 }
 
 /// @nodoc
-abstract class _$$CompiledCreateCommandImplCopyWith<$Res>
-    implements $CompiledCreateCommandCopyWith<$Res> {
-  factory _$$CompiledCreateCommandImplCopyWith(
-          _$CompiledCreateCommandImpl value,
-          $Res Function(_$CompiledCreateCommandImpl) then) =
-      __$$CompiledCreateCommandImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $CompiledCreateCommandCopyWith<$Res> {
+  factory $CompiledCreateCommandCopyWith(CompiledCreateCommand value,
+          $Res Function(CompiledCreateCommand) _then) =
+      _$CompiledCreateCommandCopyWithImpl;
   @useResult
   $Res call({String name, List<CompiledTemplate> templates});
 }
 
 /// @nodoc
-class __$$CompiledCreateCommandImplCopyWithImpl<$Res>
-    extends _$CompiledCreateCommandCopyWithImpl<$Res,
-        _$CompiledCreateCommandImpl>
-    implements _$$CompiledCreateCommandImplCopyWith<$Res> {
-  __$$CompiledCreateCommandImplCopyWithImpl(_$CompiledCreateCommandImpl _value,
-      $Res Function(_$CompiledCreateCommandImpl) _then)
-      : super(_value, _then);
+class _$CompiledCreateCommandCopyWithImpl<$Res>
+    implements $CompiledCreateCommandCopyWith<$Res> {
+  _$CompiledCreateCommandCopyWithImpl(this._self, this._then);
 
+  final CompiledCreateCommand _self;
+  final $Res Function(CompiledCreateCommand) _then;
+
+  /// Create a copy of CompiledCreateCommand
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? name = null,
     Object? templates = null,
   }) {
-    return _then(_$CompiledCreateCommandImpl(
+    return _then(_self.copyWith(
       name: null == name
-          ? _value.name
+          ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
       templates: null == templates
-          ? _value._templates
+          ? _self.templates
           : templates // ignore: cast_nullable_to_non_nullable
               as List<CompiledTemplate>,
     ));
@@ -425,13 +384,12 @@ class __$$CompiledCreateCommandImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$CompiledCreateCommandImpl implements _CompiledCreateCommand {
-  _$CompiledCreateCommandImpl(
+class _CompiledCreateCommand implements CompiledCreateCommand {
+  _CompiledCreateCommand(
       {required this.name, required final List<CompiledTemplate> templates})
       : _templates = templates;
-
-  factory _$CompiledCreateCommandImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CompiledCreateCommandImplFromJson(json);
+  factory _CompiledCreateCommand.fromJson(Map<String, dynamic> json) =>
+      _$CompiledCreateCommandFromJson(json);
 
   @override
   final String name;
@@ -443,130 +401,130 @@ class _$CompiledCreateCommandImpl implements _CompiledCreateCommand {
     return EqualUnmodifiableListView(_templates);
   }
 
+  /// Create a copy of CompiledCreateCommand
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'CompiledCreateCommand(name: $name, templates: $templates)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$CompiledCreateCommandCopyWith<_CompiledCreateCommand> get copyWith =>
+      __$CompiledCreateCommandCopyWithImpl<_CompiledCreateCommand>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$CompiledCreateCommandToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CompiledCreateCommandImpl &&
+            other is _CompiledCreateCommand &&
             (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality()
                 .equals(other._templates, _templates));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, name, const DeepCollectionEquality().hash(_templates));
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$CompiledCreateCommandImplCopyWith<_$CompiledCreateCommandImpl>
-      get copyWith => __$$CompiledCreateCommandImplCopyWithImpl<
-          _$CompiledCreateCommandImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$CompiledCreateCommandImplToJson(
-      this,
-    );
+  String toString() {
+    return 'CompiledCreateCommand(name: $name, templates: $templates)';
   }
 }
 
-abstract class _CompiledCreateCommand implements CompiledCreateCommand {
-  factory _CompiledCreateCommand(
-          {required final String name,
-          required final List<CompiledTemplate> templates}) =
-      _$CompiledCreateCommandImpl;
-
-  factory _CompiledCreateCommand.fromJson(Map<String, dynamic> json) =
-      _$CompiledCreateCommandImpl.fromJson;
-
+/// @nodoc
+abstract mixin class _$CompiledCreateCommandCopyWith<$Res>
+    implements $CompiledCreateCommandCopyWith<$Res> {
+  factory _$CompiledCreateCommandCopyWith(_CompiledCreateCommand value,
+          $Res Function(_CompiledCreateCommand) _then) =
+      __$CompiledCreateCommandCopyWithImpl;
   @override
-  String get name;
-  @override
-  List<CompiledTemplate> get templates;
-  @override
-  @JsonKey(ignore: true)
-  _$$CompiledCreateCommandImplCopyWith<_$CompiledCreateCommandImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  @useResult
+  $Res call({String name, List<CompiledTemplate> templates});
 }
 
-CompiledTemplate _$CompiledTemplateFromJson(Map<String, dynamic> json) {
-  return _CompiledTemplate.fromJson(json);
+/// @nodoc
+class __$CompiledCreateCommandCopyWithImpl<$Res>
+    implements _$CompiledCreateCommandCopyWith<$Res> {
+  __$CompiledCreateCommandCopyWithImpl(this._self, this._then);
+
+  final _CompiledCreateCommand _self;
+  final $Res Function(_CompiledCreateCommand) _then;
+
+  /// Create a copy of CompiledCreateCommand
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? name = null,
+    Object? templates = null,
+  }) {
+    return _then(_CompiledCreateCommand(
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      templates: null == templates
+          ? _self._templates
+          : templates // ignore: cast_nullable_to_non_nullable
+              as List<CompiledTemplate>,
+    ));
+  }
 }
 
 /// @nodoc
 mixin _$CompiledTemplate {
-  String get type => throw _privateConstructorUsedError;
-  List<CompliledTemplateFile> get files => throw _privateConstructorUsedError;
-  List<CompiledFileModification> get modificationFiles =>
-      throw _privateConstructorUsedError;
+  String get type;
+  List<CompliledTemplateFile> get files;
+  List<CompiledFileModification> get modificationFiles;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $CompiledTemplateCopyWith<CompiledTemplate> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $CompiledTemplateCopyWith<$Res> {
-  factory $CompiledTemplateCopyWith(
-          CompiledTemplate value, $Res Function(CompiledTemplate) then) =
-      _$CompiledTemplateCopyWithImpl<$Res, CompiledTemplate>;
-  @useResult
-  $Res call(
-      {String type,
-      List<CompliledTemplateFile> files,
-      List<CompiledFileModification> modificationFiles});
-}
-
-/// @nodoc
-class _$CompiledTemplateCopyWithImpl<$Res, $Val extends CompiledTemplate>
-    implements $CompiledTemplateCopyWith<$Res> {
-  _$CompiledTemplateCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of CompiledTemplate
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $CompiledTemplateCopyWith<CompiledTemplate> get copyWith =>
+      _$CompiledTemplateCopyWithImpl<CompiledTemplate>(
+          this as CompiledTemplate, _$identity);
+
+  /// Serializes this CompiledTemplate to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? type = null,
-    Object? files = null,
-    Object? modificationFiles = null,
-  }) {
-    return _then(_value.copyWith(
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      files: null == files
-          ? _value.files
-          : files // ignore: cast_nullable_to_non_nullable
-              as List<CompliledTemplateFile>,
-      modificationFiles: null == modificationFiles
-          ? _value.modificationFiles
-          : modificationFiles // ignore: cast_nullable_to_non_nullable
-              as List<CompiledFileModification>,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is CompiledTemplate &&
+            (identical(other.type, type) || other.type == type) &&
+            const DeepCollectionEquality().equals(other.files, files) &&
+            const DeepCollectionEquality()
+                .equals(other.modificationFiles, modificationFiles));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      type,
+      const DeepCollectionEquality().hash(files),
+      const DeepCollectionEquality().hash(modificationFiles));
+
+  @override
+  String toString() {
+    return 'CompiledTemplate(type: $type, files: $files, modificationFiles: $modificationFiles)';
   }
 }
 
 /// @nodoc
-abstract class _$$CompiledTemplateImplCopyWith<$Res>
-    implements $CompiledTemplateCopyWith<$Res> {
-  factory _$$CompiledTemplateImplCopyWith(_$CompiledTemplateImpl value,
-          $Res Function(_$CompiledTemplateImpl) then) =
-      __$$CompiledTemplateImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $CompiledTemplateCopyWith<$Res> {
+  factory $CompiledTemplateCopyWith(
+          CompiledTemplate value, $Res Function(CompiledTemplate) _then) =
+      _$CompiledTemplateCopyWithImpl;
   @useResult
   $Res call(
       {String type,
@@ -575,13 +533,15 @@ abstract class _$$CompiledTemplateImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$CompiledTemplateImplCopyWithImpl<$Res>
-    extends _$CompiledTemplateCopyWithImpl<$Res, _$CompiledTemplateImpl>
-    implements _$$CompiledTemplateImplCopyWith<$Res> {
-  __$$CompiledTemplateImplCopyWithImpl(_$CompiledTemplateImpl _value,
-      $Res Function(_$CompiledTemplateImpl) _then)
-      : super(_value, _then);
+class _$CompiledTemplateCopyWithImpl<$Res>
+    implements $CompiledTemplateCopyWith<$Res> {
+  _$CompiledTemplateCopyWithImpl(this._self, this._then);
 
+  final CompiledTemplate _self;
+  final $Res Function(CompiledTemplate) _then;
+
+  /// Create a copy of CompiledTemplate
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -589,17 +549,17 @@ class __$$CompiledTemplateImplCopyWithImpl<$Res>
     Object? files = null,
     Object? modificationFiles = null,
   }) {
-    return _then(_$CompiledTemplateImpl(
+    return _then(_self.copyWith(
       type: null == type
-          ? _value.type
+          ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
       files: null == files
-          ? _value._files
+          ? _self.files
           : files // ignore: cast_nullable_to_non_nullable
               as List<CompliledTemplateFile>,
       modificationFiles: null == modificationFiles
-          ? _value._modificationFiles
+          ? _self.modificationFiles
           : modificationFiles // ignore: cast_nullable_to_non_nullable
               as List<CompiledFileModification>,
     ));
@@ -608,16 +568,15 @@ class __$$CompiledTemplateImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$CompiledTemplateImpl implements _CompiledTemplate {
-  _$CompiledTemplateImpl(
+class _CompiledTemplate implements CompiledTemplate {
+  _CompiledTemplate(
       {required this.type,
       required final List<CompliledTemplateFile> files,
       final List<CompiledFileModification> modificationFiles = const []})
       : _files = files,
         _modificationFiles = modificationFiles;
-
-  factory _$CompiledTemplateImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CompiledTemplateImplFromJson(json);
+  factory _CompiledTemplate.fromJson(Map<String, dynamic> json) =>
+      _$CompiledTemplateFromJson(json);
 
   @override
   final String type;
@@ -639,23 +598,33 @@ class _$CompiledTemplateImpl implements _CompiledTemplate {
     return EqualUnmodifiableListView(_modificationFiles);
   }
 
+  /// Create a copy of CompiledTemplate
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'CompiledTemplate(type: $type, files: $files, modificationFiles: $modificationFiles)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$CompiledTemplateCopyWith<_CompiledTemplate> get copyWith =>
+      __$CompiledTemplateCopyWithImpl<_CompiledTemplate>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$CompiledTemplateToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CompiledTemplateImpl &&
+            other is _CompiledTemplate &&
             (identical(other.type, type) || other.type == type) &&
             const DeepCollectionEquality().equals(other._files, _files) &&
             const DeepCollectionEquality()
                 .equals(other._modificationFiles, _modificationFiles));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -663,147 +632,123 @@ class _$CompiledTemplateImpl implements _CompiledTemplate {
       const DeepCollectionEquality().hash(_files),
       const DeepCollectionEquality().hash(_modificationFiles));
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$CompiledTemplateImplCopyWith<_$CompiledTemplateImpl> get copyWith =>
-      __$$CompiledTemplateImplCopyWithImpl<_$CompiledTemplateImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$CompiledTemplateImplToJson(
-      this,
-    );
+  String toString() {
+    return 'CompiledTemplate(type: $type, files: $files, modificationFiles: $modificationFiles)';
   }
 }
 
-abstract class _CompiledTemplate implements CompiledTemplate {
-  factory _CompiledTemplate(
-          {required final String type,
-          required final List<CompliledTemplateFile> files,
-          final List<CompiledFileModification> modificationFiles}) =
-      _$CompiledTemplateImpl;
-
-  factory _CompiledTemplate.fromJson(Map<String, dynamic> json) =
-      _$CompiledTemplateImpl.fromJson;
-
+/// @nodoc
+abstract mixin class _$CompiledTemplateCopyWith<$Res>
+    implements $CompiledTemplateCopyWith<$Res> {
+  factory _$CompiledTemplateCopyWith(
+          _CompiledTemplate value, $Res Function(_CompiledTemplate) _then) =
+      __$CompiledTemplateCopyWithImpl;
   @override
-  String get type;
-  @override
-  List<CompliledTemplateFile> get files;
-  @override
-  List<CompiledFileModification> get modificationFiles;
-  @override
-  @JsonKey(ignore: true)
-  _$$CompiledTemplateImplCopyWith<_$CompiledTemplateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @useResult
+  $Res call(
+      {String type,
+      List<CompliledTemplateFile> files,
+      List<CompiledFileModification> modificationFiles});
 }
 
-CompiledFileModification _$CompiledFileModificationFromJson(
-    Map<String, dynamic> json) {
-  return _CompiledFileModification.fromJson(json);
+/// @nodoc
+class __$CompiledTemplateCopyWithImpl<$Res>
+    implements _$CompiledTemplateCopyWith<$Res> {
+  __$CompiledTemplateCopyWithImpl(this._self, this._then);
+
+  final _CompiledTemplate _self;
+  final $Res Function(_CompiledTemplate) _then;
+
+  /// Create a copy of CompiledTemplate
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? type = null,
+    Object? files = null,
+    Object? modificationFiles = null,
+  }) {
+    return _then(_CompiledTemplate(
+      type: null == type
+          ? _self.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      files: null == files
+          ? _self._files
+          : files // ignore: cast_nullable_to_non_nullable
+              as List<CompliledTemplateFile>,
+      modificationFiles: null == modificationFiles
+          ? _self._modificationFiles
+          : modificationFiles // ignore: cast_nullable_to_non_nullable
+              as List<CompiledFileModification>,
+    ));
+  }
 }
 
 /// @nodoc
 mixin _$CompiledFileModification {
   /// A short description for what this modiciation does
-  String get description => throw _privateConstructorUsedError;
+  String get description;
 
   /// The relative path to the file that needs to be modified
-  String get path => throw _privateConstructorUsedError;
+  String get path;
 
   /// The identifier to use to determine location of modifications
-  String get identifier => throw _privateConstructorUsedError;
+  String get identifier;
 
   /// The mustache template to use when rendering the modification
-  String get template => throw _privateConstructorUsedError;
+  String get template;
 
   /// The message to show the user of the cli if the modification fails
-  String get error => throw _privateConstructorUsedError;
+  String get error;
 
   /// The message to show the user of the cli if the modification succeeds
-  String get name => throw _privateConstructorUsedError;
+  String get name;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $CompiledFileModificationCopyWith<CompiledFileModification> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $CompiledFileModificationCopyWith<$Res> {
-  factory $CompiledFileModificationCopyWith(CompiledFileModification value,
-          $Res Function(CompiledFileModification) then) =
-      _$CompiledFileModificationCopyWithImpl<$Res, CompiledFileModification>;
-  @useResult
-  $Res call(
-      {String description,
-      String path,
-      String identifier,
-      String template,
-      String error,
-      String name});
-}
-
-/// @nodoc
-class _$CompiledFileModificationCopyWithImpl<$Res,
-        $Val extends CompiledFileModification>
-    implements $CompiledFileModificationCopyWith<$Res> {
-  _$CompiledFileModificationCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of CompiledFileModification
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $CompiledFileModificationCopyWith<CompiledFileModification> get copyWith =>
+      _$CompiledFileModificationCopyWithImpl<CompiledFileModification>(
+          this as CompiledFileModification, _$identity);
+
+  /// Serializes this CompiledFileModification to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? description = null,
-    Object? path = null,
-    Object? identifier = null,
-    Object? template = null,
-    Object? error = null,
-    Object? name = null,
-  }) {
-    return _then(_value.copyWith(
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      path: null == path
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String,
-      identifier: null == identifier
-          ? _value.identifier
-          : identifier // ignore: cast_nullable_to_non_nullable
-              as String,
-      template: null == template
-          ? _value.template
-          : template // ignore: cast_nullable_to_non_nullable
-              as String,
-      error: null == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is CompiledFileModification &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.path, path) || other.path == path) &&
+            (identical(other.identifier, identifier) ||
+                other.identifier == identifier) &&
+            (identical(other.template, template) ||
+                other.template == template) &&
+            (identical(other.error, error) || other.error == error) &&
+            (identical(other.name, name) || other.name == name));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, description, path, identifier, template, error, name);
+
+  @override
+  String toString() {
+    return 'CompiledFileModification(description: $description, path: $path, identifier: $identifier, template: $template, error: $error, name: $name)';
   }
 }
 
 /// @nodoc
-abstract class _$$CompiledFileModificationImplCopyWith<$Res>
-    implements $CompiledFileModificationCopyWith<$Res> {
-  factory _$$CompiledFileModificationImplCopyWith(
-          _$CompiledFileModificationImpl value,
-          $Res Function(_$CompiledFileModificationImpl) then) =
-      __$$CompiledFileModificationImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $CompiledFileModificationCopyWith<$Res> {
+  factory $CompiledFileModificationCopyWith(CompiledFileModification value,
+          $Res Function(CompiledFileModification) _then) =
+      _$CompiledFileModificationCopyWithImpl;
   @useResult
   $Res call(
       {String description,
@@ -815,15 +760,15 @@ abstract class _$$CompiledFileModificationImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$CompiledFileModificationImplCopyWithImpl<$Res>
-    extends _$CompiledFileModificationCopyWithImpl<$Res,
-        _$CompiledFileModificationImpl>
-    implements _$$CompiledFileModificationImplCopyWith<$Res> {
-  __$$CompiledFileModificationImplCopyWithImpl(
-      _$CompiledFileModificationImpl _value,
-      $Res Function(_$CompiledFileModificationImpl) _then)
-      : super(_value, _then);
+class _$CompiledFileModificationCopyWithImpl<$Res>
+    implements $CompiledFileModificationCopyWith<$Res> {
+  _$CompiledFileModificationCopyWithImpl(this._self, this._then);
 
+  final CompiledFileModification _self;
+  final $Res Function(CompiledFileModification) _then;
+
+  /// Create a copy of CompiledFileModification
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -834,29 +779,29 @@ class __$$CompiledFileModificationImplCopyWithImpl<$Res>
     Object? error = null,
     Object? name = null,
   }) {
-    return _then(_$CompiledFileModificationImpl(
+    return _then(_self.copyWith(
       description: null == description
-          ? _value.description
+          ? _self.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
       path: null == path
-          ? _value.path
+          ? _self.path
           : path // ignore: cast_nullable_to_non_nullable
               as String,
       identifier: null == identifier
-          ? _value.identifier
+          ? _self.identifier
           : identifier // ignore: cast_nullable_to_non_nullable
               as String,
       template: null == template
-          ? _value.template
+          ? _self.template
           : template // ignore: cast_nullable_to_non_nullable
               as String,
       error: null == error
-          ? _value.error
+          ? _self.error
           : error // ignore: cast_nullable_to_non_nullable
               as String,
       name: null == name
-          ? _value.name
+          ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
     ));
@@ -865,17 +810,16 @@ class __$$CompiledFileModificationImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$CompiledFileModificationImpl implements _CompiledFileModification {
-  _$CompiledFileModificationImpl(
+class _CompiledFileModification implements CompiledFileModification {
+  _CompiledFileModification(
       {required this.description,
       required this.path,
       required this.identifier,
       required this.template,
       required this.error,
       required this.name});
-
-  factory _$CompiledFileModificationImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CompiledFileModificationImplFromJson(json);
+  factory _CompiledFileModification.fromJson(Map<String, dynamic> json) =>
+      _$CompiledFileModificationFromJson(json);
 
   /// A short description for what this modiciation does
   @override
@@ -901,16 +845,27 @@ class _$CompiledFileModificationImpl implements _CompiledFileModification {
   @override
   final String name;
 
+  /// Create a copy of CompiledFileModification
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'CompiledFileModification(description: $description, path: $path, identifier: $identifier, template: $template, error: $error, name: $name)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$CompiledFileModificationCopyWith<_CompiledFileModification> get copyWith =>
+      __$CompiledFileModificationCopyWithImpl<_CompiledFileModification>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$CompiledFileModificationToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CompiledFileModificationImpl &&
+            other is _CompiledFileModification &&
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.path, path) || other.path == path) &&
@@ -922,64 +877,81 @@ class _$CompiledFileModificationImpl implements _CompiledFileModification {
             (identical(other.name, name) || other.name == name));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, description, path, identifier, template, error, name);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$CompiledFileModificationImplCopyWith<_$CompiledFileModificationImpl>
-      get copyWith => __$$CompiledFileModificationImplCopyWithImpl<
-          _$CompiledFileModificationImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$CompiledFileModificationImplToJson(
-      this,
-    );
+  String toString() {
+    return 'CompiledFileModification(description: $description, path: $path, identifier: $identifier, template: $template, error: $error, name: $name)';
   }
 }
 
-abstract class _CompiledFileModification implements CompiledFileModification {
-  factory _CompiledFileModification(
-      {required final String description,
-      required final String path,
-      required final String identifier,
-      required final String template,
-      required final String error,
-      required final String name}) = _$CompiledFileModificationImpl;
-
-  factory _CompiledFileModification.fromJson(Map<String, dynamic> json) =
-      _$CompiledFileModificationImpl.fromJson;
-
+/// @nodoc
+abstract mixin class _$CompiledFileModificationCopyWith<$Res>
+    implements $CompiledFileModificationCopyWith<$Res> {
+  factory _$CompiledFileModificationCopyWith(_CompiledFileModification value,
+          $Res Function(_CompiledFileModification) _then) =
+      __$CompiledFileModificationCopyWithImpl;
   @override
-
-  /// A short description for what this modiciation does
-  String get description;
-  @override
-
-  /// The relative path to the file that needs to be modified
-  String get path;
-  @override
-
-  /// The identifier to use to determine location of modifications
-  String get identifier;
-  @override
-
-  /// The mustache template to use when rendering the modification
-  String get template;
-  @override
-
-  /// The message to show the user of the cli if the modification fails
-  String get error;
-  @override
-
-  /// The message to show the user of the cli if the modification succeeds
-  String get name;
-  @override
-  @JsonKey(ignore: true)
-  _$$CompiledFileModificationImplCopyWith<_$CompiledFileModificationImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  @useResult
+  $Res call(
+      {String description,
+      String path,
+      String identifier,
+      String template,
+      String error,
+      String name});
 }
+
+/// @nodoc
+class __$CompiledFileModificationCopyWithImpl<$Res>
+    implements _$CompiledFileModificationCopyWith<$Res> {
+  __$CompiledFileModificationCopyWithImpl(this._self, this._then);
+
+  final _CompiledFileModification _self;
+  final $Res Function(_CompiledFileModification) _then;
+
+  /// Create a copy of CompiledFileModification
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? description = null,
+    Object? path = null,
+    Object? identifier = null,
+    Object? template = null,
+    Object? error = null,
+    Object? name = null,
+  }) {
+    return _then(_CompiledFileModification(
+      description: null == description
+          ? _self.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      path: null == path
+          ? _self.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String,
+      identifier: null == identifier
+          ? _self.identifier
+          : identifier // ignore: cast_nullable_to_non_nullable
+              as String,
+      template: null == template
+          ? _self.template
+          : template // ignore: cast_nullable_to_non_nullable
+              as String,
+      error: null == error
+          ? _self.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+// dart format on

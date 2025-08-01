@@ -6,7 +6,7 @@ part 'config_model.freezed.dart';
 part 'config_model.g.dart';
 
 @freezed
-class Config with _$Config {
+abstract class Config with _$Config {
   factory Config({
     /// Path where views and viewmodels will be genereated.
     @JsonKey(name: 'views_path') @Default('presentation') String viewsPath,

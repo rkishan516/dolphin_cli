@@ -6,9 +6,9 @@ part of 'template_models.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CompliledTemplateFileImpl _$$CompliledTemplateFileImplFromJson(
+_CompliledTemplateFile _$CompliledTemplateFileFromJson(
         Map<String, dynamic> json) =>
-    _$CompliledTemplateFileImpl(
+    _CompliledTemplateFile(
       name: json['name'] as String,
       templateType: json['templateType'] as String,
       fileName: json['fileName'] as String,
@@ -18,8 +18,8 @@ _$CompliledTemplateFileImpl _$$CompliledTemplateFileImplFromJson(
       featureName: json['featureName'] as String? ?? '',
     );
 
-Map<String, dynamic> _$$CompliledTemplateFileImplToJson(
-        _$CompliledTemplateFileImpl instance) =>
+Map<String, dynamic> _$CompliledTemplateFileToJson(
+        _CompliledTemplateFile instance) =>
     <String, dynamic>{
       'name': instance.name,
       'templateType': instance.templateType,
@@ -30,25 +30,24 @@ Map<String, dynamic> _$$CompliledTemplateFileImplToJson(
       'featureName': instance.featureName,
     };
 
-_$CompiledCreateCommandImpl _$$CompiledCreateCommandImplFromJson(
+_CompiledCreateCommand _$CompiledCreateCommandFromJson(
         Map<String, dynamic> json) =>
-    _$CompiledCreateCommandImpl(
+    _CompiledCreateCommand(
       name: json['name'] as String,
       templates: (json['templates'] as List<dynamic>)
           .map((e) => CompiledTemplate.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$$CompiledCreateCommandImplToJson(
-        _$CompiledCreateCommandImpl instance) =>
+Map<String, dynamic> _$CompiledCreateCommandToJson(
+        _CompiledCreateCommand instance) =>
     <String, dynamic>{
       'name': instance.name,
       'templates': instance.templates.map((e) => e.toJson()).toList(),
     };
 
-_$CompiledTemplateImpl _$$CompiledTemplateImplFromJson(
-        Map<String, dynamic> json) =>
-    _$CompiledTemplateImpl(
+_CompiledTemplate _$CompiledTemplateFromJson(Map<String, dynamic> json) =>
+    _CompiledTemplate(
       type: json['type'] as String,
       files: (json['files'] as List<dynamic>)
           .map((e) => CompliledTemplateFile.fromJson(e as Map<String, dynamic>))
@@ -60,8 +59,7 @@ _$CompiledTemplateImpl _$$CompiledTemplateImplFromJson(
           const [],
     );
 
-Map<String, dynamic> _$$CompiledTemplateImplToJson(
-        _$CompiledTemplateImpl instance) =>
+Map<String, dynamic> _$CompiledTemplateToJson(_CompiledTemplate instance) =>
     <String, dynamic>{
       'type': instance.type,
       'files': instance.files.map((e) => e.toJson()).toList(),
@@ -69,9 +67,9 @@ Map<String, dynamic> _$$CompiledTemplateImplToJson(
           instance.modificationFiles.map((e) => e.toJson()).toList(),
     };
 
-_$CompiledFileModificationImpl _$$CompiledFileModificationImplFromJson(
+_CompiledFileModification _$CompiledFileModificationFromJson(
         Map<String, dynamic> json) =>
-    _$CompiledFileModificationImpl(
+    _CompiledFileModification(
       description: json['description'] as String,
       path: json['path'] as String,
       identifier: json['identifier'] as String,
@@ -80,8 +78,8 @@ _$CompiledFileModificationImpl _$$CompiledFileModificationImplFromJson(
       name: json['name'] as String,
     );
 
-Map<String, dynamic> _$$CompiledFileModificationImplToJson(
-        _$CompiledFileModificationImpl instance) =>
+Map<String, dynamic> _$CompiledFileModificationToJson(
+        _CompiledFileModification instance) =>
     <String, dynamic>{
       'description': instance.description,
       'path': instance.path,

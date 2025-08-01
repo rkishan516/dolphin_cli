@@ -6,7 +6,7 @@ part of 'config_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ConfigImpl _$$ConfigImplFromJson(Map<String, dynamic> json) => _$ConfigImpl(
+_Config _$ConfigFromJson(Map<String, dynamic> json) => _Config(
       viewsPath: json['views_path'] as String? ?? 'presentation',
       servicesPath: json['services_path'] as String? ?? 'services',
       widgetsPath: json['widgets_path'] as String? ?? 'presentation',
@@ -14,11 +14,10 @@ _$ConfigImpl _$$ConfigImplFromJson(Map<String, dynamic> json) => _$ConfigImpl(
       dialogsPath: json['dialogs_path'] as String? ?? 'presentation',
       dolphinAppFilePath:
           json['dolphin_app_file_path'] as String? ?? 'app/app.dart',
-      lineLength: json['line_length'] as int? ?? 80,
+      lineLength: (json['line_length'] as num?)?.toInt() ?? 80,
     );
 
-Map<String, dynamic> _$$ConfigImplToJson(_$ConfigImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$ConfigToJson(_Config instance) => <String, dynamic>{
       'views_path': instance.viewsPath,
       'services_path': instance.servicesPath,
       'widgets_path': instance.widgetsPath,
