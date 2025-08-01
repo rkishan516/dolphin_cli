@@ -1,0 +1,23 @@
+repos:
+  - repo: local
+    hooks:
+      - id: dart-format
+        name: dart format
+        entry: dart format
+        language: system
+        types: [dart]
+        args: [--fix]
+      
+      - id: dart-analyze
+        name: dart analyze
+        entry: dart analyze
+        language: system
+        types: [dart]
+        pass_filenames: false
+      
+      - id: dart-test
+        name: dart test
+        entry: dart test
+        language: system
+        types: [dart]
+        pass_filenames: false
