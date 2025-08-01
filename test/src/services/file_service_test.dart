@@ -413,7 +413,7 @@ void main() {
       testWithOverrides(
           'when called with filepath & content lines holding content should be removed from the file',
           () async {
-        String content = "Hello";
+        String content = 'Hello';
         var recasedContent = ReCase(content);
         await fileService.removeSpecificFileLines(
             filePath: fileName, removedContent: content);
@@ -428,7 +428,7 @@ void main() {
       testWithOverrides(
           'when called with filepath & content with type service lines holding content should be removed from the file',
           () async {
-        final content = "World";
+        final content = 'World';
         final recasedContent = ReCase(content);
         await fileService.removeSpecificFileLines(
           filePath: fileName,

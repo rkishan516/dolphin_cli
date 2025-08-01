@@ -50,13 +50,13 @@ void main() {
     final xdgConfigFilePath = '${xdg.configHome.path}/dolphin/$kConfigFileName';
 
     final Config customConfig = Config.fromJson({
-      "bottom_sheets_path": "ui",
-      "dialogs_path": "ui",
-      "line_length": 100,
-      "services_path": "services/service",
-      "dolphin_app_file_path": "app/main_app.dart",
-      "views_path": "ui",
-      "widgets_path": "ui"
+      'bottom_sheets_path': 'ui',
+      'dialogs_path': 'ui',
+      'line_length': 100,
+      'services_path': 'services/service',
+      'dolphin_app_file_path': 'app/main_app.dart',
+      'views_path': 'ui',
+      'widgets_path': 'ui'
     });
 
     group('resolveConfigFile when called', () {
@@ -214,7 +214,7 @@ void main() {
       });
 
       testWithOverrides('should sanitize path', () async {
-        final configToBeSanitize = {"services_path": "lib/app/services/"};
+        final configToBeSanitize = {'services_path': 'lib/app/services/'};
         when(() => fileService.readFileAsString(filePath: customConfigFilePath))
             .thenAnswer(
           (i) async => jsonEncode(configToBeSanitize),
@@ -319,7 +319,7 @@ void main() {
             'with path equals "${testCase.input}" and find equals "test/" should return "${testCase.output}"',
             () async {
           final importPath =
-              configService.sanitizePath(testCase.input, "test/");
+              configService.sanitizePath(testCase.input, 'test/');
 
           expect(importPath, testCase.output);
         });

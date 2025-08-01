@@ -1,4 +1,16 @@
+## 1.6.0
+
+- Add enhanced linting rules for better code quality
+- Add GitHub Actions CI/CD workflow for automated testing
+- Add pre-commit hooks configuration for code quality checks
+- Add centralized error handling service
+- Add performance monitoring utility
+- Add VS Code configuration for better developer experience
+- Update dependencies: freezed to v3.1.0, build_runner to v2.6.0
+- Fix linting issues with const constructors and quote preferences
+
 ## 1.5.2
+
 - Update pub dependencies
 - Update `dolphin generate` to use flutter instead of dart
 - Update flutter_lints to v6
