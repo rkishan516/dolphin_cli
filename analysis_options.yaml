@@ -15,9 +15,17 @@ include: package:lints/recommended.yaml
 
 # Uncomment the following section to specify additional rules.
 
-# linter:
-#   rules:
-#     - camel_case_types
+linter:
+  rules:
+    - always_declare_return_types
+    - avoid_empty_else
+    - avoid_types_as_parameter_names
+    - prefer_const_constructors
+    - prefer_final_fields
+    - prefer_single_quotes
+    - unnecessary_const
+    - unnecessary_new
+    - use_key_in_widget_constructors
 
 analyzer:
   exclude:
