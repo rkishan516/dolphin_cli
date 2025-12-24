@@ -24,10 +24,11 @@ mixin ProjectStructureValidator {
     final hasOutputPath = outputPath != null;
     final appPath = configService.dolphinAppFilePath;
 
-    return File(hasOutputPath
-            ? path.join(outputPath, 'lib', appPath)
-            : path.join('lib', appPath))
-        .exists();
+    return File(
+      hasOutputPath
+          ? path.join(outputPath, 'lib', appPath)
+          : path.join('lib', appPath),
+    ).exists();
   }
 
   /// Validates structure and throws exception message when not valid.

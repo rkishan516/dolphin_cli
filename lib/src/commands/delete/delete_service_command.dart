@@ -37,11 +37,7 @@ class DeleteServiceCommand extends DolphinCommand
         defaultsTo: 'common',
         help: kCommandHelpFeature,
       )
-      ..addOption(
-        ksConfigPath,
-        abbr: 'c',
-        help: kCommandHelpConfigFilePath,
-      )
+      ..addOption(ksConfigPath, abbr: 'c', help: kCommandHelpConfigFilePath)
       ..addOption(
         ksLineLength,
         abbr: 'l',
@@ -53,8 +49,9 @@ class DeleteServiceCommand extends DolphinCommand
   @override
   Future<int> run() async {
     try {
-      final workingDirectory =
-          argResults!.rest.length > 1 ? argResults!.rest[1] : null;
+      final workingDirectory = argResults!.rest.length > 1
+          ? argResults!.rest[1]
+          : null;
       final serviceName = argResults!.rest.first;
       final featureName = argResults![ksFeatureName];
       await configService.composeAndLoadConfigFile(
@@ -65,8 +62,9 @@ class DeleteServiceCommand extends DolphinCommand
       await pubspecService.initialise(workingDirectory: workingDirectory);
       await validateStructure(outputPath: workingDirectory);
       await _deleteServiceFiles(
-        outputPath:
-            Directory('${Directory.current.path}/lib/app/$featureName').path,
+        outputPath: Directory(
+          '${Directory.current.path}/lib/app/$featureName',
+        ).path,
         serviceName: serviceName,
       );
       await processService.runBuildRunner(workingDirectory: workingDirectory);
@@ -84,8 +82,10 @@ class DeleteServiceCommand extends DolphinCommand
   ///  `outputPath` (String): The path to the output folder.
   ///
   ///  `serviceName` (String): The name of the service to be deleted.
-  Future<void> _deleteServiceFiles(
-      {String? outputPath, required String serviceName}) async {
+  Future<void> _deleteServiceFiles({
+    String? outputPath,
+    required String serviceName,
+  }) async {
     /// Deleting the service file.
     final templateFiles =
         kCompiledDolphinTemplates['service']!['empty']!.templateFiles;

@@ -15,7 +15,7 @@ class _SplashPageState extends ConsumerState<SplashPage> {
   void initState() {
     super.initState();
     SchedulerBinding.instance.addPostFrameCallback((_) {
-      ref.watch(splashPageNotifierProvider.notifier).runStartUpLogic();
+      ref.watch(splashPageProvider.notifier).runStartUpLogic();
     });
   }
 

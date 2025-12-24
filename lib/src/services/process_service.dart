@@ -107,7 +107,7 @@ class ProcessService {
         ksFormat,
         filePath ?? ksCurrentDirectory,
         '-l',
-        _formattingLineLength
+        _formattingLineLength,
       ],
       workingDirectory: appName,
     );
@@ -168,7 +168,8 @@ class ProcessService {
     final hasWorkingDirectory = workingDirectory != null;
     if (verbose) {
       progress = logger.progress(
-          'Running $programName ${arguments.join(' ')} ${hasWorkingDirectory ? 'in $workingDirectory/' : ''}...');
+        'Running $programName ${arguments.join(' ')} ${hasWorkingDirectory ? 'in $workingDirectory/' : ''}...',
+      );
     }
 
     try {
@@ -185,11 +186,13 @@ class ProcessService {
         if (verbose) logger.detail(output);
 
         if (handleOutput != null) {
-          lines.addAll(lineSplitter
-              .convert(output)
-              .map((l) => l.trim())
-              .where((l) => l.isNotEmpty)
-              .toList());
+          lines.addAll(
+            lineSplitter
+                .convert(output)
+                .map((l) => l.trim())
+                .where((l) => l.isNotEmpty)
+                .toList(),
+          );
         }
       });
 
@@ -200,10 +203,12 @@ class ProcessService {
       if (verbose) {
         if (exitCode == 0) {
           progress!.complete(
-              'Successfully ran $programName ${arguments.join(' ')} ${workingDirectory != null ? 'in $workingDirectory/' : ''}.');
+            'Successfully ran $programName ${arguments.join(' ')} ${workingDirectory != null ? 'in $workingDirectory/' : ''}.',
+          );
         } else {
           progress!.fail(
-              'Failed to run $programName ${arguments.join(' ')} ${workingDirectory != null ? 'in $workingDirectory/' : ''}. ExitCode: $exitCode');
+            'Failed to run $programName ${arguments.join(' ')} ${workingDirectory != null ? 'in $workingDirectory/' : ''}. ExitCode: $exitCode',
+          );
         }
       }
     } on ProcessException catch (e) {

@@ -24,8 +24,9 @@ void main() {
       validator = TestProjectStructureValidator();
       mockConfigService = MockConfigService();
       return Future(() async {
-        tempDir =
-            await Directory.systemTemp.createTemp('test_project_structure_');
+        tempDir = await Directory.systemTemp.createTemp(
+          'test_project_structure_',
+        );
         pubspecFile = File(p.join(tempDir.path, 'pubspec.yaml'));
         final libDir = Directory(p.join(tempDir.path, 'lib'));
         await libDir.create();
@@ -44,50 +45,48 @@ void main() {
       await expectLater(
         validator.validateStructure(outputPath: tempDir.path),
         throwsA(
-          predicate((e) =>
-              e is InvalidDolphinStructureException &&
-              e.message == kInvalidRootDirectory),
+          predicate(
+            (e) =>
+                e is InvalidDolphinStructureException &&
+                e.message == kInvalidRootDirectory,
+          ),
         ),
       );
     });
 
     test('if not a dolphin application', () async {
-      when(() => mockConfigService.dolphinAppFilePath)
-          .thenReturn('app/app.dart');
+      when(
+        () => mockConfigService.dolphinAppFilePath,
+      ).thenReturn('app/app.dart');
       await pubspecFile.create();
 
-      runScoped(
-        () async {
-          await expectLater(
-            validator.validateStructure(outputPath: tempDir.path),
-            throwsA(
-              predicate(
-                (e) =>
-                    e is InvalidDolphinStructureException &&
-                    e.toString() == kInvalidDolphinStructure,
-              ),
+      runScoped(() async {
+        await expectLater(
+          validator.validateStructure(outputPath: tempDir.path),
+          throwsA(
+            predicate(
+              (e) =>
+                  e is InvalidDolphinStructureException &&
+                  e.toString() == kInvalidDolphinStructure,
             ),
-          );
-        },
-        values: {configServiceRef.overrideWith(() => mockConfigService)},
-      );
+          ),
+        );
+      }, values: {configServiceRef.overrideWith(() => mockConfigService)});
     });
 
     test('if a dolphin application and at root', () async {
-      when(() => mockConfigService.dolphinAppFilePath)
-          .thenReturn('app/app.dart');
+      when(
+        () => mockConfigService.dolphinAppFilePath,
+      ).thenReturn('app/app.dart');
       await pubspecFile.create();
       await appFile.create();
 
-      runScoped(
-        () async {
-          await expectLater(
-            validator.validateStructure(outputPath: tempDir.path),
-            completes,
-          );
-        },
-        values: {configServiceRef.overrideWith(() => mockConfigService)},
-      );
+      runScoped(() async {
+        await expectLater(
+          validator.validateStructure(outputPath: tempDir.path),
+          completes,
+        );
+      }, values: {configServiceRef.overrideWith(() => mockConfigService)});
     });
   });
 }

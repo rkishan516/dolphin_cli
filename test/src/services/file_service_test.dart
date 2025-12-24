@@ -25,10 +25,10 @@ void main() {
     });
 
     T runWithOverrides<T>(T Function() body) {
-      return runScoped(body, values: {
-        fileServiceRef,
-        loggerRef.overrideWith(() => logger),
-      });
+      return runScoped(
+        body,
+        values: {fileServiceRef, loggerRef.overrideWith(() => logger)},
+      );
     }
 
     void testWithOverrides<T>(Object? description, T Function() body) {
@@ -96,12 +96,15 @@ void main() {
         for (final testCase in testCases) {
           testWithOverrides(testCase.description, () async {
             final file = MockFile();
-            when(() => file.exists())
-                .thenAnswer((_) async => testCase.fileExist);
-            when(() => file.create(recursive: true))
-                .thenAnswer((_) async => file);
-            when(() => file.writeAsString(any(), mode: any(named: 'mode')))
-                .thenAnswer((_) async => file);
+            when(
+              () => file.exists(),
+            ).thenAnswer((_) async => testCase.fileExist);
+            when(
+              () => file.create(recursive: true),
+            ).thenAnswer((_) async => file);
+            when(
+              () => file.writeAsString(any(), mode: any(named: 'mode')),
+            ).thenAnswer((_) async => file);
 
             when(() => logger.detail(any())).thenAnswer((i) {});
             when(() => logger.warn(any())).thenAnswer((i) {});
@@ -123,9 +126,9 @@ void main() {
             ).called(1);
 
             void verboseLoggerCallback() => logger.detail(
-                  testCase.verboseMessage ??
-                      '$file operated with ${testCase.type.name}',
-                );
+              testCase.verboseMessage ??
+                  '$file operated with ${testCase.type.name}',
+            );
 
             testCase.verbose
                 ? verify(verboseLoggerCallback).called(1)
@@ -150,12 +153,15 @@ void main() {
         for (final testCase in testCases) {
           testWithOverrides(testCase.description, () async {
             final file = MockFile();
-            when(() => file.exists())
-                .thenAnswer((_) async => testCase.fileExist);
-            when(() => file.create(recursive: true))
-                .thenAnswer((_) async => file);
-            when(() => file.writeAsBytes(any(), mode: any(named: 'mode')))
-                .thenAnswer((_) async => file);
+            when(
+              () => file.exists(),
+            ).thenAnswer((_) async => testCase.fileExist);
+            when(
+              () => file.create(recursive: true),
+            ).thenAnswer((_) async => file);
+            when(
+              () => file.writeAsBytes(any(), mode: any(named: 'mode')),
+            ).thenAnswer((_) async => file);
 
             when(() => logger.detail(any())).thenAnswer((i) {});
             when(() => logger.warn(any())).thenAnswer((i) {});
@@ -179,9 +185,9 @@ void main() {
             ).called(1);
 
             void verboseLoggerCallback() => logger.detail(
-                  testCase.verboseMessage ??
-                      '$file operated with ${testCase.type.name}',
-                );
+              testCase.verboseMessage ??
+                  '$file operated with ${testCase.type.name}',
+            );
 
             testCase.verbose
                 ? verify(verboseLoggerCallback).called(1)
@@ -213,45 +219,49 @@ void main() {
       });
 
       testWithOverrides(
-          'should delete file and log a message if verbose is true', () async {
-        final file = File(filePath);
+        'should delete file and log a message if verbose is true',
+        () async {
+          final file = File(filePath);
 
-        // Create a dummy file for testing
-        await file.create();
+          // Create a dummy file for testing
+          await file.create();
 
-        await fileService.deleteFile(filePath: filePath);
+          await fileService.deleteFile(filePath: filePath);
 
-        expect(file.existsSync(), isFalse);
-        verify(() => logger.detail('$file deleted')).called(1);
-      });
-
-      testWithOverrides(
-          'should delete file and not log a message if verbose is false',
-          () async {
-        final file = File(filePath);
-
-        // Create a dummy file for testing
-        await file.create();
-
-        await fileService.deleteFile(filePath: filePath, verbose: false);
-
-        expect(file.existsSync(), isFalse);
-        verifyNever(() => logger.detail(any()));
-      });
+          expect(file.existsSync(), isFalse);
+          verify(() => logger.detail('$file deleted')).called(1);
+        },
+      );
 
       testWithOverrides(
-          'should throw `FileSystemException` when file does not exist',
-          () async {
-        final file = File(filePath);
+        'should delete file and not log a message if verbose is false',
+        () async {
+          final file = File(filePath);
 
-        await expectLater(
-          fileService.deleteFile(filePath: filePath),
-          throwsA(predicate((e) => e is FileSystemException)),
-        );
+          // Create a dummy file for testing
+          await file.create();
 
-        expect(file.existsSync(), isFalse);
-        verifyNever(() => logger.detail(any()));
-      });
+          await fileService.deleteFile(filePath: filePath, verbose: false);
+
+          expect(file.existsSync(), isFalse);
+          verifyNever(() => logger.detail(any()));
+        },
+      );
+
+      testWithOverrides(
+        'should throw `FileSystemException` when file does not exist',
+        () async {
+          final file = File(filePath);
+
+          await expectLater(
+            fileService.deleteFile(filePath: filePath),
+            throwsA(predicate((e) => e is FileSystemException)),
+          );
+
+          expect(file.existsSync(), isFalse);
+          verifyNever(() => logger.detail(any()));
+        },
+      );
     });
 
     group('fileExists', () {
@@ -266,17 +276,18 @@ void main() {
 
       for (final fileExist in [true, false]) {
         testWithOverrides(
-            'should return $fileExist if file ${fileExist ? '' : 'does not'} exists',
-            () async {
-          if (fileExist) {
-            // Create a dummy file for testing
-            await File(filePath).create();
-          }
+          'should return $fileExist if file ${fileExist ? '' : 'does not'} exists',
+          () async {
+            if (fileExist) {
+              // Create a dummy file for testing
+              await File(filePath).create();
+            }
 
-          final status = await fileService.fileExists(filePath: filePath);
+            final status = await fileService.fileExists(filePath: filePath);
 
-          expect(status, fileExist);
-        });
+            expect(status, fileExist);
+          },
+        );
       }
     });
 
@@ -296,25 +307,33 @@ void main() {
         }
       });
 
-      testWithOverrides('readFileAsString should return content as string',
-          () async {
-        final fileContent =
-            await fileService.readFileAsString(filePath: filePath);
-        expect(fileContent, content);
-      });
+      testWithOverrides(
+        'readFileAsString should return content as string',
+        () async {
+          final fileContent = await fileService.readFileAsString(
+            filePath: filePath,
+          );
+          expect(fileContent, content);
+        },
+      );
 
-      testWithOverrides('readAsBytes should return content as Uint8List',
-          () async {
-        final fileContent = await fileService.readAsBytes(filePath: filePath);
-        expect(fileContent, utf8.encode(content));
-      });
+      testWithOverrides(
+        'readAsBytes should return content as Uint8List',
+        () async {
+          final fileContent = await fileService.readAsBytes(filePath: filePath);
+          expect(fileContent, utf8.encode(content));
+        },
+      );
 
-      testWithOverrides('readAsLines should return content as List<String>',
-          () async {
-        final fileContent =
-            await fileService.readFileAsLines(filePath: filePath);
-        expect(fileContent, content.split('\n'));
-      });
+      testWithOverrides(
+        'readAsLines should return content as List<String>',
+        () async {
+          final fileContent = await fileService.readFileAsLines(
+            filePath: filePath,
+          );
+          expect(fileContent, content.split('\n'));
+        },
+      );
     });
 
     group('deleteFolder', () {
@@ -334,12 +353,14 @@ void main() {
       });
 
       testWithOverrides(
-          'when called should delete directory and all files in it', () async {
-        when(() => logger.detail(any())).thenAnswer((i) {});
-        await fileService.deleteFolder(directoryPath: directoryPath);
-        verify(() => logger.detail(any())).called(fileNames.length);
-        await expectLater(await Directory(directoryPath).exists(), isFalse);
-      });
+        'when called should delete directory and all files in it',
+        () async {
+          when(() => logger.detail(any())).thenAnswer((i) {});
+          await fileService.deleteFolder(directoryPath: directoryPath);
+          verify(() => logger.detail(any())).called(fileNames.length);
+          await expectLater(await Directory(directoryPath).exists(), isFalse);
+        },
+      );
     });
 
     group('getFoldersInDirectory', () {
@@ -359,16 +380,18 @@ void main() {
       });
 
       testWithOverrides(
-          'when called should delete directory and all files in it', () async {
-        when(() => logger.detail(any())).thenAnswer((i) {});
-        final directories = await fileService.getFoldersInDirectory(
-          directoryPath: directoryPath,
-        );
-        expect(
-          directories..sort(),
-          directoryNames.map((e) => join(directoryPath, e)).toList(),
-        );
-      });
+        'when called should delete directory and all files in it',
+        () async {
+          when(() => logger.detail(any())).thenAnswer((i) {});
+          final directories = await fileService.getFoldersInDirectory(
+            directoryPath: directoryPath,
+          );
+          expect(
+            directories..sort(),
+            directoryNames.map((e) => join(directoryPath, e)).toList(),
+          );
+        },
+      );
     });
 
     group('removeLinesOnFile', () {
@@ -386,13 +409,17 @@ void main() {
       });
 
       testWithOverrides(
-          'when called with lines number should delete those lines', () async {
-        await fileService
-            .removeLinesOnFile(filePath: fileName, linesNumber: [2, 3]);
+        'when called with lines number should delete those lines',
+        () async {
+          await fileService.removeLinesOnFile(
+            filePath: fileName,
+            linesNumber: [2, 3],
+          );
 
-        final content = await fileService.readFileAsLines(filePath: fileName);
-        expect(content, ['Hello', 'Hello1']);
-      });
+          final content = await fileService.readFileAsLines(filePath: fileName);
+          expect(content, ['Hello', 'Hello1']);
+        },
+      );
     });
 
     group('removeSpecificFileLines', () {
@@ -411,37 +438,41 @@ void main() {
       });
 
       testWithOverrides(
-          'when called with filepath & content lines holding content should be removed from the file',
-          () async {
-        String content = 'Hello';
-        var recasedContent = ReCase(content);
-        await fileService.removeSpecificFileLines(
-            filePath: fileName, removedContent: content);
-        List<String> file = await File(fileName).readAsLines();
-        expect(
-          file.contains('/${recasedContent.snakeCase}') ||
-              file.contains(' ${recasedContent.pascalCase}'),
-          false,
-        );
-      });
+        'when called with filepath & content lines holding content should be removed from the file',
+        () async {
+          String content = 'Hello';
+          var recasedContent = ReCase(content);
+          await fileService.removeSpecificFileLines(
+            filePath: fileName,
+            removedContent: content,
+          );
+          List<String> file = await File(fileName).readAsLines();
+          expect(
+            file.contains('/${recasedContent.snakeCase}') ||
+                file.contains(' ${recasedContent.pascalCase}'),
+            false,
+          );
+        },
+      );
 
       testWithOverrides(
-          'when called with filepath & content with type service lines holding content should be removed from the file',
-          () async {
-        final content = 'World';
-        final recasedContent = ReCase(content);
-        await fileService.removeSpecificFileLines(
-          filePath: fileName,
-          removedContent: content,
-          type: kTemplateNameService,
-        );
-        final file = await File(fileName).readAsString();
-        expect(
-          file.contains('/${recasedContent.snakeCase}') ||
-              file.contains(' ${recasedContent.pascalCase}'),
-          false,
-        );
-      });
+        'when called with filepath & content with type service lines holding content should be removed from the file',
+        () async {
+          final content = 'World';
+          final recasedContent = ReCase(content);
+          await fileService.removeSpecificFileLines(
+            filePath: fileName,
+            removedContent: content,
+            type: kTemplateNameService,
+          );
+          final file = await File(fileName).readAsString();
+          expect(
+            file.contains('/${recasedContent.snakeCase}') ||
+                file.contains(' ${recasedContent.pascalCase}'),
+            false,
+          );
+        },
+      );
     });
   });
 }

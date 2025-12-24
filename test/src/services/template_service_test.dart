@@ -61,22 +61,16 @@ void main() {
 
     group('renderContentForTemplate', () {
       for (var testCase in [
-        (
-          description: 'when feature name is given',
-          featureName: 'auth',
-        ),
-        (
-          description: 'when feature name is not given',
-          featureName: null,
-        ),
+        (description: 'when feature name is given', featureName: 'auth'),
+        (description: 'when feature name is not given', featureName: null),
       ]) {
         testWithOverrides(
-            '${testCase.description} and content with string that has required all replaceable names, should return string with those values replaced',
-            () {
-          when(() => pubspecService.getPackageName).thenReturn('app');
-          when(() => configService.serviceImportPath).thenReturn('services');
-          when(() => configService.viewImportPath).thenReturn('presentation');
-          final content = '''
+          '${testCase.description} and content with string that has required all replaceable names, should return string with those values replaced',
+          () {
+            when(() => pubspecService.getPackageName).thenReturn('app');
+            when(() => configService.serviceImportPath).thenReturn('services');
+            when(() => configService.viewImportPath).thenReturn('presentation');
+            final content = '''
         {{viewName}}
         {{viewNameSnake}}
         {{viewFileName}}
@@ -87,27 +81,29 @@ void main() {
         {{viewFolderName}}
         {{featureName}}
     ''';
-          final expected = '''
+            final expected =
+                '''
         NewView
         new_view
         new.dart
         new_view
         NewNotifier
-        newNotifierProvider
+        newProvider
         new_notifier.dart
         new
         ${testCase.featureName ?? 'home'}
     ''';
 
-          final result = templateService.renderContentForTemplate(
-            content: content,
-            templateName: kTemplateNameView,
-            name: 'new',
-            featureName: testCase.featureName,
-          );
+            final result = templateService.renderContentForTemplate(
+              content: content,
+              templateName: kTemplateNameView,
+              name: 'new',
+              featureName: testCase.featureName,
+            );
 
-          expect(result, expected);
-        });
+            expect(result, expected);
+          },
+        );
       }
     });
 
@@ -133,7 +129,7 @@ void main() {
               '{{$kTemplatePropertyViewFolderName}} {{$kTemplatePropertyViewFileName}}',
           name: 'helloTest',
           expectedResult: 'TEST\nhello_test hello_test.dart',
-        )
+        ),
       ]) {
         testWithOverrides(testCase.description, () {
           final result = templateService.templateModificationFileContent(
@@ -171,71 +167,78 @@ void main() {
           inputTemplatePath: 'generic/generic.dart.stub',
           expectedPath: 'test/hello_test/hello_test.dart',
           outputFolder: 'test',
-        )
+        ),
       ]) {
         testWithOverrides(
-            'when given a path ${testCase.inputTemplatePath} with viewName helloTest and outputPath ${testCase.outputFolder}, should return ${testCase.expectedPath}',
-            () {
-          when(() =>
-                  configService.replaceCustomPaths(testCase.inputTemplatePath))
-              .thenReturn(testCase.inputTemplatePath);
+          'when given a path ${testCase.inputTemplatePath} with viewName helloTest and outputPath ${testCase.outputFolder}, should return ${testCase.expectedPath}',
+          () {
+            when(
+              () =>
+                  configService.replaceCustomPaths(testCase.inputTemplatePath),
+            ).thenReturn(testCase.inputTemplatePath);
 
-          final result = templateService.getTemplateOutputPath(
-            inputTemplatePath: testCase.inputTemplatePath,
-            name: 'helloTest',
-            outputFolder: testCase.outputFolder,
-          );
-          expect(result, testCase.expectedPath);
-        });
+            final result = templateService.getTemplateOutputPath(
+              inputTemplatePath: testCase.inputTemplatePath,
+              name: 'helloTest',
+              outputFolder: testCase.outputFolder,
+            );
+            expect(result, testCase.expectedPath);
+          },
+        );
       }
     });
 
     testWithOverrides(
-        'writeOutTemplateFiles given templateName view, should write 3 files to the fileSystem',
-        () async {
-      when(() => pubspecService.getPackageName).thenReturn('app');
-      when(() => configService.serviceImportPath).thenReturn('services');
-      when(() => configService.viewImportPath).thenReturn('presentation');
-      when(() => configService.replaceCustomPaths(any()))
-          .thenReturn('state/generic_view_state.dart.stub');
-      when(
-        () => fileService.writeStringFile(
-          file: any(named: 'file'),
-          fileContent: any(named: 'fileContent'),
-          verbose: any(named: 'verbose'),
-        ),
-      ).thenAnswer((i) async => {});
+      'writeOutTemplateFiles given templateName view, should write 3 files to the fileSystem',
+      () async {
+        when(() => pubspecService.getPackageName).thenReturn('app');
+        when(() => configService.serviceImportPath).thenReturn('services');
+        when(() => configService.viewImportPath).thenReturn('presentation');
+        when(
+          () => configService.replaceCustomPaths(any()),
+        ).thenReturn('state/generic_view_state.dart.stub');
+        when(
+          () => fileService.writeStringFile(
+            file: any(named: 'file'),
+            fileContent: any(named: 'fileContent'),
+            verbose: any(named: 'verbose'),
+          ),
+        ).thenAnswer((i) async => {});
 
-      await templateService.writeOutTemplateFiles(
-        template:
-            kCompiledDolphinTemplates[kTemplateNameView]![kTemplateTypeEmpty]!,
-        templateName: kTemplateNameView,
-        name: 'Test',
-      );
+        await templateService.writeOutTemplateFiles(
+          template:
+              kCompiledDolphinTemplates[kTemplateNameView]![kTemplateTypeEmpty]!,
+          templateName: kTemplateNameView,
+          name: 'Test',
+        );
 
-      verify(
-        () => fileService.writeStringFile(
-          file: any(named: 'file'),
-          fileContent: any(named: 'fileContent'),
-          verbose: any(named: 'verbose'),
-        ),
-      ).called(3);
-    });
+        verify(
+          () => fileService.writeStringFile(
+            file: any(named: 'file'),
+            fileContent: any(named: 'fileContent'),
+            verbose: any(named: 'verbose'),
+          ),
+        ).called(3);
+      },
+    );
 
     group('modifyExistingFiles', () {
       setUp(() {
         when(() => pubspecService.getPackageName).thenReturn('app');
         when(() => configService.serviceImportPath).thenReturn('services');
         when(() => configService.viewImportPath).thenReturn('presentation');
-        when(() => configService.replaceCustomPaths(any()))
-            .thenReturn('./routes/notifiers/app_routes.dart');
-        when(() => fileService.fileExists(filePath: any(named: 'filePath')))
-            .thenAnswer((i) async => true);
+        when(
+          () => configService.replaceCustomPaths(any()),
+        ).thenReturn('./routes/notifiers/app_routes.dart');
+        when(
+          () => fileService.fileExists(filePath: any(named: 'filePath')),
+        ).thenAnswer((i) async => true);
         when(
           () => fileService.readFileAsString(filePath: any(named: 'filePath')),
         ).thenAnswer((i) async => '');
-        when(() => processService.runFormat(appName: any(named: 'appName')))
-            .thenAnswer((i) async => {});
+        when(
+          () => processService.runFormat(appName: any(named: 'appName')),
+        ).thenAnswer((i) async => {});
         when(
           () => fileService.writeStringFile(
             file: any(named: 'file'),
@@ -247,120 +250,139 @@ void main() {
         ).thenAnswer((i) async => '');
       });
       testWithOverrides(
-          'Given the view template with a modification file for routes/notifiers/app_routes.dart\n'
-          'should check if the file exists\n'
-          'should get file data if it exist', () async {
-        await templateService.modifyExistingFiles(
-          template: kCompiledDolphinTemplates[kTemplateNameView]![
-              kTemplateTypeEmpty]!,
-          templateName: kTemplateNameView,
-          name: 'test',
-        );
+        'Given the view template with a modification file for routes/notifiers/app_routes.dart\n'
+        'should check if the file exists\n'
+        'should get file data if it exist',
+        () async {
+          await templateService.modifyExistingFiles(
+            template:
+                kCompiledDolphinTemplates[kTemplateNameView]![kTemplateTypeEmpty]!,
+            templateName: kTemplateNameView,
+            name: 'test',
+          );
 
-        verify(
-          () => fileService.fileExists(
-              filePath: './routes/notifiers/app_routes.dart'),
-        ).called(3);
+          verify(
+            () => fileService.fileExists(
+              filePath: './routes/notifiers/app_routes.dart',
+            ),
+          ).called(3);
 
-        verify(() =>
-                fileService.readFileAsString(filePath: any(named: 'filePath')))
-            .called(3);
-      });
-
-      testWithOverrides(
-          'given the view template with a modification file for routes/notifiers/app_routes.dart and outputPath test, should check if the file exists in test',
-          () async {
-        await templateService.modifyExistingFiles(
-          template: kCompiledDolphinTemplates[kTemplateNameView]![
-              kTemplateTypeEmpty]!,
-          templateName: kTemplateNameView,
-          name: 'xyz',
-          outputPath: 'test',
-        );
-        verify(
-          () => fileService.fileExists(
-            filePath: 'test/./routes/notifiers/app_routes.dart',
-          ),
-        ).called(3);
-      });
+          verify(
+            () =>
+                fileService.readFileAsString(filePath: any(named: 'filePath')),
+          ).called(3);
+        },
+      );
 
       testWithOverrides(
-          'Given the view template with a modification file for lib/app/app.dart, if the file does not exist, should throw the InvalidDolphinStructure message',
-          () async {
-        when(() => fileService.fileExists(filePath: any(named: 'filePath')))
-            .thenAnswer((i) async => false);
+        'given the view template with a modification file for routes/notifiers/app_routes.dart and outputPath test, should check if the file exists in test',
+        () async {
+          await templateService.modifyExistingFiles(
+            template:
+                kCompiledDolphinTemplates[kTemplateNameView]![kTemplateTypeEmpty]!,
+            templateName: kTemplateNameView,
+            name: 'xyz',
+            outputPath: 'test',
+          );
+          verify(
+            () => fileService.fileExists(
+              filePath: 'test/./routes/notifiers/app_routes.dart',
+            ),
+          ).called(3);
+        },
+      );
 
-        expect(
+      testWithOverrides(
+        'Given the view template with a modification file for lib/app/app.dart, if the file does not exist, should throw the InvalidDolphinStructure message',
+        () async {
+          when(
+            () => fileService.fileExists(filePath: any(named: 'filePath')),
+          ).thenAnswer((i) async => false);
+
+          expect(
             () async => await templateService.modifyExistingFiles(
-                  template: kCompiledDolphinTemplates[kTemplateNameView]![
-                      kTemplateTypeEmpty]!,
-                  templateName: kTemplateNameView,
-                  name: 'details',
-                ),
+              template:
+                  kCompiledDolphinTemplates[kTemplateNameView]![kTemplateTypeEmpty]!,
+              templateName: kTemplateNameView,
+              name: 'details',
+            ),
             throwsA(
               predicate(
                 (e) =>
                     e is InvalidDolphinStructureException &&
                     e.message == kInvalidDolphinStructureAppFile,
               ),
-            ));
-      });
+            ),
+          );
+        },
+      );
     });
 
-    group('renderTemplate when called with template view and excludeRoutes',
-        () {
-      setUp(() {
-        when(() => pubspecService.getPackageName).thenReturn('app');
-        when(() => configService.serviceImportPath).thenReturn('services');
-        when(() => configService.viewImportPath).thenReturn('presentation');
-        when(() => configService.replaceCustomPaths(any()))
-            .thenReturn('routes/notifiers/app_routes.dart');
-        when(() => fileService.fileExists(filePath: any(named: 'filePath')))
-            .thenAnswer((i) async => true);
-        when(
-          () => fileService.readFileAsString(filePath: any(named: 'filePath')),
-        ).thenAnswer((i) async => '');
+    group(
+      'renderTemplate when called with template view and excludeRoutes',
+      () {
+        setUp(() {
+          when(() => pubspecService.getPackageName).thenReturn('app');
+          when(() => configService.serviceImportPath).thenReturn('services');
+          when(() => configService.viewImportPath).thenReturn('presentation');
+          when(
+            () => configService.replaceCustomPaths(any()),
+          ).thenReturn('routes/notifiers/app_routes.dart');
+          when(
+            () => fileService.fileExists(filePath: any(named: 'filePath')),
+          ).thenAnswer((i) async => true);
+          when(
+            () =>
+                fileService.readFileAsString(filePath: any(named: 'filePath')),
+          ).thenAnswer((i) async => '');
 
-        when(
-          () => fileService.writeStringFile(
-            file: any(named: 'file'),
-            fileContent: any(named: 'fileContent'),
-            verbose: any(named: 'verbose'),
-            type: any(named: 'type'),
-            verboseMessage: any(named: 'verboseMessage'),
-          ),
-        ).thenAnswer((i) async => '');
+          when(
+            () => fileService.writeStringFile(
+              file: any(named: 'file'),
+              fileContent: any(named: 'fileContent'),
+              verbose: any(named: 'verbose'),
+              type: any(named: 'type'),
+              verboseMessage: any(named: 'verboseMessage'),
+            ),
+          ).thenAnswer((i) async => '');
 
-        when(() => processService.runFormat(appName: any(named: 'appName')))
-            .thenAnswer((i) async => {});
-      });
-      testWithOverrides(
+          when(
+            () => processService.runFormat(appName: any(named: 'appName')),
+          ).thenAnswer((i) async => {});
+        });
+        testWithOverrides(
           'should not check if any file exists for file modification',
           () async {
-        await templateService.renderTemplate(
-          templateName: kTemplateNameView,
-          excludeRoute: true,
-          name: 'xyz',
-          templateType: 'empty',
+            await templateService.renderTemplate(
+              templateName: kTemplateNameView,
+              excludeRoute: true,
+              name: 'xyz',
+              templateType: 'empty',
+            );
+
+            verifyNever(
+              () => fileService.fileExists(filePath: any(named: 'filePath')),
+            );
+          },
         );
 
-        verifyNever(
-            () => fileService.fileExists(filePath: any(named: 'filePath')));
-      });
-
-      testWithOverrides('should check if file exists for file modification',
+        testWithOverrides(
+          'should check if file exists for file modification',
           () async {
-        await templateService.renderTemplate(
-          templateName: kTemplateNameView,
-          excludeRoute: false,
-          name: 'xyz',
-          templateType: 'empty',
-        );
+            await templateService.renderTemplate(
+              templateName: kTemplateNameView,
+              excludeRoute: false,
+              name: 'xyz',
+              templateType: 'empty',
+            );
 
-        verify(() => fileService.fileExists(filePath: any(named: 'filePath')))
-            .called(3);
-      });
-    });
+            verify(
+              () => fileService.fileExists(filePath: any(named: 'filePath')),
+            ).called(3);
+          },
+        );
+      },
+    );
 
     group('getTemplateRenderData', () {
       setUp(() {
@@ -369,35 +391,34 @@ void main() {
         when(() => configService.viewImportPath).thenReturn('presentation');
       });
       testWithOverrides(
-          'when given renderTemplates with no values and templateName dolphin, should throw exception',
-          () {
-        expect(
-          () => templateService.getTemplateRenderData(
-              templateName: 'dolphin', testRenderFunctions: {}, name: ''),
-          throwsA(
-            predicate((e) => e is Exception),
-          ),
-        );
-      });
+        'when given renderTemplates with no values and templateName dolphin, should throw exception',
+        () {
+          expect(
+            () => templateService.getTemplateRenderData(
+              templateName: 'dolphin',
+              testRenderFunctions: {},
+              name: '',
+            ),
+            throwsA(predicate((e) => e is Exception)),
+          );
+        },
+      );
       testWithOverrides(
-          'when given renderTemplate snakeCase and templateName snakeCase, should convert the property to snake_case',
-          () {
-        final result = templateService.getTemplateRenderData(
-          templateName: 'snakeCase',
-          name: 'dolphinCli',
-          testRenderFunctions: {
-            'snakeCase': (
-              ReCase recaseValue, {
-              String? featureName,
-            }) =>
-                {
-                  'name': recaseValue.snakeCase,
-                }
-          },
-        );
+        'when given renderTemplate snakeCase and templateName snakeCase, should convert the property to snake_case',
+        () {
+          final result = templateService.getTemplateRenderData(
+            templateName: 'snakeCase',
+            name: 'dolphinCli',
+            testRenderFunctions: {
+              'snakeCase': (ReCase recaseValue, {String? featureName}) => {
+                'name': recaseValue.snakeCase,
+              },
+            },
+          );
 
-        expect(result['name'], 'dolphin_cli');
-      });
+          expect(result['name'], 'dolphin_cli');
+        },
+      );
     });
 
     group('compileTemplateInformation', () {
@@ -439,7 +460,7 @@ void main() {
         for (final expectedFileToWritten in [
           'compiled_constants.dart',
           'compiled_template_map.dart',
-          'compiled_templates.dart'
+          'compiled_templates.dart',
         ]) {
           verify(
             () => fileService.writeStringFile(

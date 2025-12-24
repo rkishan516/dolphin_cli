@@ -1,3 +1,12 @@
+## 1.7.0
+
+- Upgrade to Riverpod 3.0 with updated provider naming convention
+- Update provider names from `*NotifierProvider` to `*Provider` pattern
+- Upgrade GoRouter to v17 and go_router_builder to v4
+- Upgrade talker_flutter to v5
+- Update minimum Dart SDK to 3.10.1
+- Update dependencies: package_info_plus to v9, build_runner to v2.10, freezed to v3.2, mockito to v5.6
+
 ## 1.6.0
 
 - Add enhanced linting rules for better code quality

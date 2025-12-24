@@ -37,11 +37,7 @@ class DeleteDialogCommand extends DolphinCommand
         defaultsTo: 'common',
         help: kCommandHelpFeature,
       )
-      ..addOption(
-        ksConfigPath,
-        abbr: 'c',
-        help: kCommandHelpConfigFilePath,
-      )
+      ..addOption(ksConfigPath, abbr: 'c', help: kCommandHelpConfigFilePath)
       ..addOption(
         ksLineLength,
         abbr: 'l',
@@ -53,8 +49,9 @@ class DeleteDialogCommand extends DolphinCommand
   @override
   Future<int> run() async {
     try {
-      final workingDirectory =
-          argResults!.rest.length > 1 ? argResults!.rest[1] : null;
+      final workingDirectory = argResults!.rest.length > 1
+          ? argResults!.rest[1]
+          : null;
       final dialogName = argResults!.rest.first;
       final featureName = argResults![ksFeatureName];
       await configService.composeAndLoadConfigFile(
@@ -65,9 +62,11 @@ class DeleteDialogCommand extends DolphinCommand
       await pubspecService.initialise(workingDirectory: workingDirectory);
       await validateStructure(outputPath: workingDirectory);
       await _deleteDialog(
-          outputPath:
-              Directory('${Directory.current.path}/lib/app/$featureName').path,
-          dialogName: dialogName);
+        outputPath: Directory(
+          '${Directory.current.path}/lib/app/$featureName',
+        ).path,
+        dialogName: dialogName,
+      );
       await processService.runBuildRunner(workingDirectory: workingDirectory);
     } on PathNotFoundException catch (e) {
       logger.err(e.toString());
@@ -86,8 +85,10 @@ class DeleteDialogCommand extends DolphinCommand
   ///  `outputPath` (String): The path to the output folder.
   ///
   ///  `dialogName` (String): The name of the dialog.
-  Future<void> _deleteDialog(
-      {String? outputPath, required String dialogName}) async {
+  Future<void> _deleteDialog({
+    String? outputPath,
+    required String dialogName,
+  }) async {
     /// Deleting the dialog folder.
     final templateFiles =
         kCompiledDolphinTemplates['dialog']!['empty']!.templateFiles;

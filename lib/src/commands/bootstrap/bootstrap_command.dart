@@ -32,11 +32,7 @@ class BootstrapCommand extends DolphinCommand {
         defaultsTo: 'mobile',
         help: kCommandHelpCreateAppTemplate,
       )
-      ..addOption(
-        ksConfigPath,
-        abbr: 'c',
-        help: kCommandHelpConfigFilePath,
-      )
+      ..addOption(ksConfigPath, abbr: 'c', help: kCommandHelpConfigFilePath)
       ..addOption(
         ksLineLength,
         abbr: 'l',
@@ -131,7 +127,7 @@ class BootstrapCommand extends DolphinCommand {
         'cloud_firestore',
         'cloud_functions',
         'firebase_auth',
-        'firebase_storage'
+        'firebase_storage',
       ],
     );
 
@@ -168,8 +164,8 @@ class BootstrapCommand extends DolphinCommand {
   void _replaceConfigFile({required String appName}) {
     if (!configService.hasCustomConfig) return;
 
-    File('$appName/$kConfigFileName').writeAsStringSync(
-      configService.exportConfig(),
-    );
+    File(
+      '$appName/$kConfigFileName',
+    ).writeAsStringSync(configService.exportConfig());
   }
 }

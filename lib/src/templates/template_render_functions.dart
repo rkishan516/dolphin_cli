@@ -4,31 +4,24 @@ import 'package:dolphin_cli/src/services/config_service.dart';
 import 'package:dolphin_cli/src/templates/template_constants.dart';
 
 /// Definition of a function that when executed returns a [Map<String, String>]
-typedef RenderFunction = Map<String, String> Function(ReCase value,
-    {String? featureName});
+typedef RenderFunction =
+    Map<String, String> Function(ReCase value, {String? featureName});
 
 Map<String, RenderFunction> renderFunctions = {
-  kTemplateNameView: (
-    ReCase value, {
-    String? featureName,
-  }) {
+  kTemplateNameView: (ReCase value, {String? featureName}) {
     return {
       kTemplatePropertyViewName: '${value.pascalCase}View',
       kTemplatePropertyViewNameSnake: '${value.snakeCase}_view',
       kTemplatePropertyViewFileName: '${value.snakeCase}.dart',
       kTemplatePropertyViewFileNameWithoutExtension: '${value.snakeCase}_view',
       kTemplatePropertyNotifierName: '${value.pascalCase}Notifier',
-      kTemplatePropertyNotifierProviderName:
-          '${value.camelCase}NotifierProvider',
+      kTemplatePropertyNotifierProviderName: '${value.camelCase}Provider',
       kTemplatePropertyNotifierFileName: '${value.snakeCase}_notifier.dart',
       kTemplatePropertyViewFolderName: value.snakeCase,
-      'featureName': featureName ?? 'home'
+      'featureName': featureName ?? 'home',
     };
   },
-  kTemplateNameService: (
-    ReCase value, {
-    String? featureName,
-  }) {
+  kTemplateNameService: (ReCase value, {String? featureName}) {
     return {
       kTemplatePropertyServiceName: value.pascalCase,
       'serviceNameSnake': value.snakeCase,
@@ -36,10 +29,7 @@ Map<String, RenderFunction> renderFunctions = {
       'featureName': featureName ?? 'home',
     };
   },
-  kTemplateNameApp: (
-    ReCase value, {
-    String? featureName,
-  }) {
+  kTemplateNameApp: (ReCase value, {String? featureName}) {
     return {
       kTemplatePropertyRelativeBottomSheetFilePath: getFilePath(
         builder: 'bottomsheets',
@@ -48,54 +38,32 @@ Map<String, RenderFunction> renderFunctions = {
       kTemplatePropertyRelativeRouterFilePath: getFilePath(builder: 'router'),
     };
   },
-  kTemplateNameBottomSheet: (
-    ReCase value, {
-    String? featureName,
-  }) {
+  kTemplateNameBottomSheet: (ReCase value, {String? featureName}) {
     return {
       kTemplatePropertySheetName: '${value.pascalCase}Sheet',
       'sheetNameSnake': value.snakeCase,
-      kTemplatePropertySheetNotifierName:
-          '${value.camelCase}SheetNotifierProvider',
+      kTemplatePropertySheetNotifierName: '${value.camelCase}SheetProvider',
       'featureName': featureName ?? 'home',
     };
   },
-  kTemplateNameDialog: (
-    ReCase value, {
-    String? featureName,
-  }) {
+  kTemplateNameDialog: (ReCase value, {String? featureName}) {
     return {
       kTemplatePropertyDialogName: '${value.pascalCase}Dialog',
       'dialogNameSnake': value.snakeCase,
-      kTemplatePropertyDialogNotifierName:
-          '${value.camelCase}DialogNotifierProvider',
+      kTemplatePropertyDialogNotifierName: '${value.camelCase}DialogProvider',
       'featureName': featureName ?? 'home',
     };
   },
-  kTemplateNameWidget: (
-    ReCase value, {
-    String? featureName,
-  }) {
-    return {
-      kTemplatePropertyWidgetName: value.pascalCase,
-    };
+  kTemplateNameWidget: (ReCase value, {String? featureName}) {
+    return {kTemplatePropertyWidgetName: value.pascalCase};
   },
-  kTemplateNameAppWrite: (
-    ReCase value, {
-    String? featureName,
-  }) {
+  kTemplateNameAppWrite: (ReCase value, {String? featureName}) {
     return {};
   },
-  kTemplateNameFirebase: (
-    ReCase value, {
-    String? featureName,
-  }) {
+  kTemplateNameFirebase: (ReCase value, {String? featureName}) {
     return {};
   },
-  kTemplateNameSupabase: (
-    ReCase value, {
-    String? featureName,
-  }) {
+  kTemplateNameSupabase: (ReCase value, {String? featureName}) {
     return {};
   },
 };
@@ -103,10 +71,9 @@ Map<String, RenderFunction> renderFunctions = {
 /// Returns file path of the [builder]
 @visibleForTesting
 String getFilePath({required String builder}) {
-  final path = configService.dolphinAppFilePath
-      .replaceFirst('lib/', '')
-      .split('.')
-    ..insert(1, builder);
+  final path =
+      configService.dolphinAppFilePath.replaceFirst('lib/', '').split('.')
+        ..insert(1, builder);
 
   return path.join('.');
 }

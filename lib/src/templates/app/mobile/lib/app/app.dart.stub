@@ -21,7 +21,7 @@ class MainApp extends ConsumerWidget {
         scheme: FlexScheme.blueM3,
         useMaterial3: true,
       ),
-      themeMode: ref.watch(themeModeNotifierProvider),
+      themeMode: ref.watch(themeModeProvider),
       routerConfig: ref.watch(navigatorProvider),
       builder: (context, child) {
         return _VersionOverlay(

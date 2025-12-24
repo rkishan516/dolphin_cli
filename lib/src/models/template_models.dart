@@ -33,10 +33,7 @@ abstract class CompliledTemplateFile with _$CompliledTemplateFile {
       _$CompliledTemplateFileFromJson(json);
 }
 
-enum FileType {
-  text,
-  image,
-}
+enum FileType { text, image }
 
 @freezed
 abstract class CompiledCreateCommand with _$CompiledCreateCommand {

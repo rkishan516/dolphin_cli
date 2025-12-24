@@ -30,19 +30,9 @@ class CreateAppCommand extends DolphinCommand {
         defaultsTo: 'mobile',
         help: kCommandHelpCreateAppTemplate,
       )
-      ..addOption(
-        ksConfigPath,
-        abbr: 'c',
-        help: kCommandHelpConfigFilePath,
-      )
-      ..addOption(
-        ksAppDescription,
-        help: kCommandHelpAppDescription,
-      )
-      ..addOption(
-        ksAppOrganization,
-        help: kCommandHelpAppOrganization,
-      )
+      ..addOption(ksConfigPath, abbr: 'c', help: kCommandHelpConfigFilePath)
+      ..addOption(ksAppDescription, help: kCommandHelpAppDescription)
+      ..addOption(ksAppOrganization, help: kCommandHelpAppOrganization)
       ..addMultiOption(
         ksAppPlatforms,
         allowed: ['ios', 'android', 'windows', 'linux', 'macos', 'web'],

@@ -18,8 +18,8 @@ class PubspecService {
     final bool hasWorkingDirectory = workingDirectory != null;
 
     final pubspecYamlContent = await File(
-            '${hasWorkingDirectory ? '$workingDirectory/' : ''}pubspec.yaml')
-        .readAsString();
+      '${hasWorkingDirectory ? '$workingDirectory/' : ''}pubspec.yaml',
+    ).readAsString();
     pubspecYaml = pubspecYamlContent.toPubspecYaml();
   }
 

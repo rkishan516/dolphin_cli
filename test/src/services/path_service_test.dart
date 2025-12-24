@@ -24,28 +24,16 @@ void main() {
 
     testWithOverrides('separator', () {
       // final seperator = Platform.isWindows ? '\' : '/';
-      expect(
-        pathService.separator,
-        '/',
-      );
+      expect(pathService.separator, '/');
     });
 
     testWithOverrides('join', () {
-      expect(
-        pathService.join('lib', 'src', 'templates'),
-        'lib/src/templates',
-      );
+      expect(pathService.join('lib', 'src', 'templates'), 'lib/src/templates');
     });
 
     testWithOverrides('basename', () {
-      expect(
-        pathService.basename('lib/src/templates/main.dart'),
-        'main.dart',
-      );
-      expect(
-        pathService.basename('lib/src/templates/'),
-        'templates',
-      );
+      expect(pathService.basename('lib/src/templates/main.dart'), 'main.dart');
+      expect(pathService.basename('lib/src/templates/'), 'templates');
     });
 
     testWithOverrides('configHome', () {

@@ -25,11 +25,7 @@ class CreateWidgetCommand extends DolphinCommand
 
   CreateWidgetCommand() {
     argParser
-      ..addFlag(
-        ksModel,
-        defaultsTo: true,
-        help: kCommandHelpModel,
-      )
+      ..addFlag(ksModel, defaultsTo: true, help: kCommandHelpModel)
       ..addOption(
         ksFeatureName,
         defaultsTo: 'common',
@@ -42,16 +38,8 @@ class CreateWidgetCommand extends DolphinCommand
         defaultsTo: 'empty',
         help: kCommandHelpCreateWidgetTemplate,
       )
-      ..addOption(
-        ksConfigPath,
-        abbr: 'c',
-        help: kCommandHelpConfigFilePath,
-      )
-      ..addOption(
-        ksPath,
-        abbr: 'p',
-        help: kCommandHelpPath,
-      )
+      ..addOption(ksConfigPath, abbr: 'c', help: kCommandHelpConfigFilePath)
+      ..addOption(ksPath, abbr: 'p', help: kCommandHelpPath)
       ..addOption(
         ksLineLength,
         abbr: 'l',
@@ -66,8 +54,9 @@ class CreateWidgetCommand extends DolphinCommand
       final widgetName = argResults!.rest.first;
       final featureName = argResults![ksFeatureName];
       final templateType = argResults![ksTemplateType];
-      final workingDirectory =
-          argResults!.rest.length > 1 ? argResults!.rest[1] : null;
+      final workingDirectory = argResults!.rest.length > 1
+          ? argResults!.rest[1]
+          : null;
 
       // load configuration
       await configService.composeAndLoadConfigFile(
@@ -84,8 +73,9 @@ class CreateWidgetCommand extends DolphinCommand
       await templateService.renderTemplate(
         templateName: name,
         name: widgetName,
-        outputPath:
-            Directory('${Directory.current.path}/lib/app/$featureName').path,
+        outputPath: Directory(
+          '${Directory.current.path}/lib/app/$featureName',
+        ).path,
         featureName: featureName,
         verbose: true,
         hasModel: argResults![ksModel],

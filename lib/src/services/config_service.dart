@@ -59,9 +59,7 @@ class ConfigService {
   ///
   /// Generally used when creating an app to determine the configuration to
   /// export to the project.
-  Future<void> findAndLoadConfigFile({
-    String? configFilePath,
-  }) async {
+  Future<void> findAndLoadConfigFile({String? configFilePath}) async {
     try {
       final configPath = await resolveConfigFile(
         configFilePath: configFilePath,
@@ -167,9 +165,7 @@ class ConfigService {
   @visibleForTesting
   Future<void> loadConfig(String configFilePath) async {
     try {
-      final data = await fileService.readFileAsString(
-        filePath: configFilePath,
-      );
+      final data = await fileService.readFileAsString(filePath: configFilePath);
       _customConfig = Config.fromJson(jsonDecode(data));
       _hasCustomConfig = true;
       _sanitizeCustomConfig();

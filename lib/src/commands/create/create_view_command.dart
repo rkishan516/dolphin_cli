@@ -42,11 +42,7 @@ class CreateViewCommand extends DolphinCommand with ProjectStructureValidator {
         defaultsTo: 'empty',
         help: kCommandHelpCreateViewTemplate,
       )
-      ..addOption(
-        ksConfigPath,
-        abbr: 'c',
-        help: kCommandHelpConfigFilePath,
-      )
+      ..addOption(ksConfigPath, abbr: 'c', help: kCommandHelpConfigFilePath)
       ..addOption(
         ksLineLength,
         abbr: 'l',
@@ -61,8 +57,9 @@ class CreateViewCommand extends DolphinCommand with ProjectStructureValidator {
       final viewName = argResults!.rest.first;
       final featureName = argResults![ksFeatureName];
       var templateType = argResults![ksTemplateType] as String?;
-      final workingDirectory =
-          argResults!.rest.length > 1 ? argResults!.rest[1] : null;
+      final workingDirectory = argResults!.rest.length > 1
+          ? argResults!.rest[1]
+          : null;
       await configService.composeAndLoadConfigFile(
         configFilePath: argResults![ksConfigPath],
         projectPath: workingDirectory,
@@ -79,8 +76,9 @@ class CreateViewCommand extends DolphinCommand with ProjectStructureValidator {
       await templateService.renderTemplate(
         templateName: name,
         name: viewName,
-        outputPath:
-            Directory('${Directory.current.path}/lib/app/$featureName').path,
+        outputPath: Directory(
+          '${Directory.current.path}/lib/app/$featureName',
+        ).path,
         featureName: featureName,
         verbose: true,
         excludeRoute: argResults![ksExcludeRoute],

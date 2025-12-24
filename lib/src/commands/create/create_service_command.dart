@@ -43,11 +43,7 @@ class CreateServiceCommand extends DolphinCommand
         defaultsTo: 'empty',
         help: kCommandHelpCreateServiceTemplate,
       )
-      ..addOption(
-        ksConfigPath,
-        abbr: 'c',
-        help: kCommandHelpConfigFilePath,
-      )
+      ..addOption(ksConfigPath, abbr: 'c', help: kCommandHelpConfigFilePath)
       ..addOption(
         ksLineLength,
         abbr: 'l',
@@ -62,8 +58,9 @@ class CreateServiceCommand extends DolphinCommand
       final serviceName = argResults!.rest.first;
       final featureName = argResults![ksFeatureName];
       final templateType = argResults![ksTemplateType];
-      final workingDirectory =
-          argResults!.rest.length > 1 ? argResults!.rest[1] : null;
+      final workingDirectory = argResults!.rest.length > 1
+          ? argResults!.rest[1]
+          : null;
       await configService.composeAndLoadConfigFile(
         configFilePath: argResults![ksConfigPath],
         projectPath: workingDirectory,
@@ -75,8 +72,9 @@ class CreateServiceCommand extends DolphinCommand
       await templateService.renderTemplate(
         templateName: name,
         name: serviceName,
-        outputPath:
-            Directory('${Directory.current.path}/lib/app/$featureName').path,
+        outputPath: Directory(
+          '${Directory.current.path}/lib/app/$featureName',
+        ).path,
         featureName: featureName,
         verbose: true,
         excludeRoute: argResults![ksExcludeDependency],

@@ -36,11 +36,7 @@ class DeleteViewCommand extends DolphinCommand with ProjectStructureValidator {
         defaultsTo: 'common',
         help: kCommandHelpFeature,
       )
-      ..addOption(
-        ksConfigPath,
-        abbr: 'c',
-        help: kCommandHelpConfigFilePath,
-      )
+      ..addOption(ksConfigPath, abbr: 'c', help: kCommandHelpConfigFilePath)
       ..addOption(
         ksLineLength,
         abbr: 'l',
@@ -52,8 +48,9 @@ class DeleteViewCommand extends DolphinCommand with ProjectStructureValidator {
   @override
   Future<int> run() async {
     try {
-      final workingDirectory =
-          argResults!.rest.length > 1 ? argResults!.rest[1] : null;
+      final workingDirectory = argResults!.rest.length > 1
+          ? argResults!.rest[1]
+          : null;
       final viewName = argResults!.rest.first;
       final featureName = argResults![ksFeatureName];
       await configService.composeAndLoadConfigFile(
@@ -64,9 +61,11 @@ class DeleteViewCommand extends DolphinCommand with ProjectStructureValidator {
       await pubspecService.initialise(workingDirectory: workingDirectory);
       await validateStructure(outputPath: workingDirectory);
       await _deleteViewFiles(
-          outputPath:
-              Directory('${Directory.current.path}/lib/app/$featureName').path,
-          viewName: viewName);
+        outputPath: Directory(
+          '${Directory.current.path}/lib/app/$featureName',
+        ).path,
+        viewName: viewName,
+      );
       await processService.runBuildRunner(workingDirectory: workingDirectory);
     } catch (e) {
       logger.err(e.toString());
@@ -82,8 +81,10 @@ class DeleteViewCommand extends DolphinCommand with ProjectStructureValidator {
   ///   `outputPath` (String): The path to the output folder.
   ///
   ///   `viewName` (String): The name of the view.
-  Future<void> _deleteViewFiles(
-      {String? outputPath, required String viewName}) async {
+  Future<void> _deleteViewFiles({
+    String? outputPath,
+    required String viewName,
+  }) async {
     // /// Deleting the view folder.
     final templateFiles =
         kCompiledDolphinTemplates['view']!['empty']!.templateFiles;

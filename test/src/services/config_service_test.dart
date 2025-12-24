@@ -56,72 +56,84 @@ void main() {
       'services_path': 'services/service',
       'dolphin_app_file_path': 'app/main_app.dart',
       'views_path': 'ui',
-      'widgets_path': 'ui'
+      'widgets_path': 'ui',
     });
 
     group('resolveConfigFile when called', () {
       testWithOverrides(
-          'with configFilePath should return configFilePath and call fileExist',
-          () async {
-        when(() => fileService.fileExists(filePath: customConfigFilePath))
-            .thenAnswer((i) async => true);
+        'with configFilePath should return configFilePath and call fileExist',
+        () async {
+          when(
+            () => fileService.fileExists(filePath: customConfigFilePath),
+          ).thenAnswer((i) async => true);
 
-        final path = await configService.resolveConfigFile(
-          configFilePath: customConfigFilePath,
-        );
+          final path = await configService.resolveConfigFile(
+            configFilePath: customConfigFilePath,
+          );
 
-        expect(path, customConfigFilePath);
-        verify(
-          () => fileService.fileExists(filePath: customConfigFilePath),
-        ).called(1);
-      });
-
-      testWithOverrides(
-          'with configFilePath and file does not exists should throw ConfigFileNotFoundException with message equal kConfigFileNotFoundRetry and shouldHaltCommand equal true',
-          () async {
-        when(() => fileService.fileExists(filePath: customConfigFilePath))
-            .thenAnswer((i) async => false);
-
-        expect(
-          () => configService.resolveConfigFile(
-              configFilePath: customConfigFilePath),
-          throwsA(predicate(
-            (e) =>
-                e is ConfigFileNotFoundException &&
-                e.toString() == kConfigFileNotFoundRetry &&
-                e.shouldHaltCommand == true,
-          )),
-        );
-      });
+          expect(path, customConfigFilePath);
+          verify(
+            () => fileService.fileExists(filePath: customConfigFilePath),
+          ).called(1);
+        },
+      );
 
       testWithOverrides(
-          'without configFilePath should call fileExists on XDG_CONFIG_HOME and return xdgConfigFilePath',
-          () async {
-        when(() => fileService.fileExists(filePath: xdgConfigFilePath))
-            .thenAnswer((i) async => true);
+        'with configFilePath and file does not exists should throw ConfigFileNotFoundException with message equal kConfigFileNotFoundRetry and shouldHaltCommand equal true',
+        () async {
+          when(
+            () => fileService.fileExists(filePath: customConfigFilePath),
+          ).thenAnswer((i) async => false);
 
-        final path = await configService.resolveConfigFile();
+          expect(
+            () => configService.resolveConfigFile(
+              configFilePath: customConfigFilePath,
+            ),
+            throwsA(
+              predicate(
+                (e) =>
+                    e is ConfigFileNotFoundException &&
+                    e.toString() == kConfigFileNotFoundRetry &&
+                    e.shouldHaltCommand == true,
+              ),
+            ),
+          );
+        },
+      );
 
-        verify(
-          () => fileService.fileExists(filePath: xdgConfigFilePath),
-        ).called(1);
-        expect(path, xdgConfigFilePath);
-      });
+      testWithOverrides(
+        'without configFilePath should call fileExists on XDG_CONFIG_HOME and return xdgConfigFilePath',
+        () async {
+          when(
+            () => fileService.fileExists(filePath: xdgConfigFilePath),
+          ).thenAnswer((i) async => true);
+
+          final path = await configService.resolveConfigFile();
+
+          verify(
+            () => fileService.fileExists(filePath: xdgConfigFilePath),
+          ).called(1);
+          expect(path, xdgConfigFilePath);
+        },
+      );
 
       testWithOverrides(
         'without configFilePath and Home environment variable is not set should throw ConfigFileNotFoundException with message equal kConfigFileNotFound and shouldHaltCommand equal false',
         () async {
-          when(() => fileService.fileExists(filePath: xdgConfigFilePath))
-              .thenThrow(StateError(''));
+          when(
+            () => fileService.fileExists(filePath: xdgConfigFilePath),
+          ).thenThrow(StateError(''));
 
           await expectLater(
             configService.resolveConfigFile(),
-            throwsA(predicate(
-              (e) =>
-                  e is ConfigFileNotFoundException &&
-                  e.message == kConfigFileNotFound &&
-                  e.shouldHaltCommand == false,
-            )),
+            throwsA(
+              predicate(
+                (e) =>
+                    e is ConfigFileNotFoundException &&
+                    e.message == kConfigFileNotFound &&
+                    e.shouldHaltCommand == false,
+              ),
+            ),
           );
         },
       );
@@ -129,17 +141,20 @@ void main() {
       testWithOverrides(
         'without configFilePath and Home environment variable is set should throw ConfigFileNotFoundException with message equal kConfigFileNotFound and shouldHaltCommand equal false',
         () async {
-          when(() => fileService.fileExists(filePath: xdgConfigFilePath))
-              .thenAnswer((i) async => false);
+          when(
+            () => fileService.fileExists(filePath: xdgConfigFilePath),
+          ).thenAnswer((i) async => false);
 
           await expectLater(
             configService.resolveConfigFile(),
-            throwsA(predicate(
-              (e) =>
-                  e is ConfigFileNotFoundException &&
-                  e.message == kConfigFileNotFound &&
-                  e.shouldHaltCommand == false,
-            )),
+            throwsA(
+              predicate(
+                (e) =>
+                    e is ConfigFileNotFoundException &&
+                    e.message == kConfigFileNotFound &&
+                    e.shouldHaltCommand == false,
+              ),
+            ),
           );
         },
       );
@@ -147,78 +162,91 @@ void main() {
 
     group('composeConfigFile when called', () {
       testWithOverrides(
-          'with configFilePath should return configFilePath and should call fileExist on configFilePath',
-          () async {
-        when(() => fileService.fileExists(filePath: customConfigFilePath))
-            .thenAnswer((i) async => true);
+        'with configFilePath should return configFilePath and should call fileExist on configFilePath',
+        () async {
+          when(
+            () => fileService.fileExists(filePath: customConfigFilePath),
+          ).thenAnswer((i) async => true);
 
-        final path = await configService.composeConfigFile(
-          configFilePath: customConfigFilePath,
-        );
+          final path = await configService.composeConfigFile(
+            configFilePath: customConfigFilePath,
+          );
 
-        expect(path, customConfigFilePath);
-        verify(() => fileService.fileExists(filePath: customConfigFilePath))
-            .called(1);
-      });
-
-      testWithOverrides(
-          'with configFilePath and file does NOT exists should throw ConfigFileNotFoundException with message equal kConfigFileNotFoundRetry and shouldHaltCommand equal true',
-          () async {
-        when(() => fileService.fileExists(filePath: customConfigFilePath))
-            .thenAnswer((i) async => false);
-
-        expect(
-          () => configService.composeConfigFile(
-              configFilePath: customConfigFilePath),
-          throwsA(predicate(
-            (e) =>
-                e is ConfigFileNotFoundException &&
-                e.message == kConfigFileNotFoundRetry &&
-                e.shouldHaltCommand == true,
-          )),
-        );
-      });
-
-      testWithOverrides('without configFilePath should return kConfigFileName',
-          () async {
-        final path = await configService.composeConfigFile();
-
-        expect(path, kConfigFileName);
-      });
+          expect(path, customConfigFilePath);
+          verify(
+            () => fileService.fileExists(filePath: customConfigFilePath),
+          ).called(1);
+        },
+      );
 
       testWithOverrides(
-          'without configFilePath and projectPath is NOT null should return kConfigFileName with projectPath',
-          () async {
-        final projectPath = 'example';
+        'with configFilePath and file does NOT exists should throw ConfigFileNotFoundException with message equal kConfigFileNotFoundRetry and shouldHaltCommand equal true',
+        () async {
+          when(
+            () => fileService.fileExists(filePath: customConfigFilePath),
+          ).thenAnswer((i) async => false);
 
-        final path =
-            await configService.composeConfigFile(projectPath: projectPath);
+          expect(
+            () => configService.composeConfigFile(
+              configFilePath: customConfigFilePath,
+            ),
+            throwsA(
+              predicate(
+                (e) =>
+                    e is ConfigFileNotFoundException &&
+                    e.message == kConfigFileNotFoundRetry &&
+                    e.shouldHaltCommand == true,
+              ),
+            ),
+          );
+        },
+      );
 
-        expect(path, '$projectPath/$kConfigFileName');
-      });
+      testWithOverrides(
+        'without configFilePath should return kConfigFileName',
+        () async {
+          final path = await configService.composeConfigFile();
+
+          expect(path, kConfigFileName);
+        },
+      );
+
+      testWithOverrides(
+        'without configFilePath and projectPath is NOT null should return kConfigFileName with projectPath',
+        () async {
+          final projectPath = 'example';
+
+          final path = await configService.composeConfigFile(
+            projectPath: projectPath,
+          );
+
+          expect(path, '$projectPath/$kConfigFileName');
+        },
+      );
     });
 
     group('loadConfig when called', () {
       testWithOverrides(
-          'should call readFileAsString on FileService and configs are set',
-          () async {
-        when(() => fileService.readFileAsString(filePath: customConfigFilePath))
-            .thenAnswer((i) async => '{}');
+        'should call readFileAsString on FileService and configs are set',
+        () async {
+          when(
+            () => fileService.readFileAsString(filePath: customConfigFilePath),
+          ).thenAnswer((i) async => '{}');
 
-        await configService.loadConfig(customConfigFilePath);
+          await configService.loadConfig(customConfigFilePath);
 
-        verify(
-          () => fileService.readFileAsString(filePath: customConfigFilePath),
-        ).called(1);
-        expect(configService.hasCustomConfig, isTrue);
-      });
+          verify(
+            () => fileService.readFileAsString(filePath: customConfigFilePath),
+          ).called(1);
+          expect(configService.hasCustomConfig, isTrue);
+        },
+      );
 
       testWithOverrides('should sanitize path', () async {
         final configToBeSanitize = {'services_path': 'lib/app/services/'};
-        when(() => fileService.readFileAsString(filePath: customConfigFilePath))
-            .thenAnswer(
-          (i) async => jsonEncode(configToBeSanitize),
-        );
+        when(
+          () => fileService.readFileAsString(filePath: customConfigFilePath),
+        ).thenAnswer((i) async => jsonEncode(configToBeSanitize));
         when(() => logger.warn(any())).thenAnswer((i) {});
 
         await configService.loadConfig(customConfigFilePath);
@@ -226,72 +254,83 @@ void main() {
         expect(configService.servicePath, 'app/services/');
       });
 
-      testWithOverrides('if file is malformed should throw FormatException',
-          () async {
-        when(() => fileService.readFileAsString(filePath: customConfigFilePath))
-            .thenAnswer((i) async => '{"services_path": app/services"}');
-        when(() => logger.warn(any())).thenAnswer((i) {});
+      testWithOverrides(
+        'if file is malformed should throw FormatException',
+        () async {
+          when(
+            () => fileService.readFileAsString(filePath: customConfigFilePath),
+          ).thenAnswer((i) async => '{"services_path": app/services"}');
+          when(() => logger.warn(any())).thenAnswer((i) {});
 
-        await configService.loadConfig(customConfigFilePath);
+          await configService.loadConfig(customConfigFilePath);
 
-        verify(() => logger.warn(kConfigFileMalformed)).called(1);
-      });
+          verify(() => logger.warn(kConfigFileMalformed)).called(1);
+        },
+      );
 
       testWithOverrides(
-          'if parsing fails for config should throw _TypeError or other error',
-          () async {
-        when(() => fileService.readFileAsString(filePath: customConfigFilePath))
-            .thenAnswer((i) async => '{"services_path": 4}');
-        when(() => logger.err(any())).thenAnswer((i) {});
+        'if parsing fails for config should throw _TypeError or other error',
+        () async {
+          when(
+            () => fileService.readFileAsString(filePath: customConfigFilePath),
+          ).thenAnswer((i) async => '{"services_path": 4}');
+          when(() => logger.err(any())).thenAnswer((i) {});
 
-        await configService.loadConfig(customConfigFilePath);
+          await configService.loadConfig(customConfigFilePath);
 
-        verify(() => logger.err(any())).called(1);
-      });
+          verify(() => logger.err(any())).called(1);
+        },
+      );
     });
 
     group('replaceCustomPaths when called', () {
-      testWithOverrides('without custom config should return same path',
-          () async {
-        final path = 'test/services/service_test.dart.stub';
-        when(() => fileService.readFileAsString(filePath: path)).thenAnswer(
-          (i) async => '{}',
-        );
+      testWithOverrides(
+        'without custom config should return same path',
+        () async {
+          final path = 'test/services/service_test.dart.stub';
+          when(
+            () => fileService.readFileAsString(filePath: path),
+          ).thenAnswer((i) async => '{}');
 
-        final customPath = configService.replaceCustomPaths(path);
+          final customPath = configService.replaceCustomPaths(path);
 
-        expect(customPath, path);
-        expect(configService.hasCustomConfig, false);
-      });
-
-      testWithOverrides('with custom config should return custom path',
-          () async {
-        final path = 'test/services/service_test.dart.stub';
-        when(() => fileService.readFileAsString(filePath: customConfigFilePath))
-            .thenAnswer((i) async => jsonEncode(customConfig.toJson()));
-
-        await configService.loadConfig(customConfigFilePath);
-        final customPath = configService.replaceCustomPaths(path);
-
-        expect(configService.hasCustomConfig, true);
-        expect(customPath, isNot(path));
-        expect(customPath, 'test/services/service/service_test.dart.stub');
-      });
+          expect(customPath, path);
+          expect(configService.hasCustomConfig, false);
+        },
+      );
 
       testWithOverrides(
-          'with custom dolphin app file path should return full dolphin_app file path from config',
-          () async {
-        final path = 'app/app.dart';
-        when(
-          () => fileService.readFileAsString(filePath: customConfigFilePath),
-        ).thenAnswer((i) async => jsonEncode(customConfig.toJson()));
+        'with custom config should return custom path',
+        () async {
+          final path = 'test/services/service_test.dart.stub';
+          when(
+            () => fileService.readFileAsString(filePath: customConfigFilePath),
+          ).thenAnswer((i) async => jsonEncode(customConfig.toJson()));
 
-        await configService.loadConfig(customConfigFilePath);
-        final customPath = configService.replaceCustomPaths(path);
+          await configService.loadConfig(customConfigFilePath);
+          final customPath = configService.replaceCustomPaths(path);
 
-        expect(customPath, isNot(path));
-        expect(customPath, 'app/main_app.dart');
-      });
+          expect(configService.hasCustomConfig, true);
+          expect(customPath, isNot(path));
+          expect(customPath, 'test/services/service/service_test.dart.stub');
+        },
+      );
+
+      testWithOverrides(
+        'with custom dolphin app file path should return full dolphin_app file path from config',
+        () async {
+          final path = 'app/app.dart';
+          when(
+            () => fileService.readFileAsString(filePath: customConfigFilePath),
+          ).thenAnswer((i) async => jsonEncode(customConfig.toJson()));
+
+          await configService.loadConfig(customConfigFilePath);
+          final customPath = configService.replaceCustomPaths(path);
+
+          expect(customPath, isNot(path));
+          expect(customPath, 'app/main_app.dart');
+        },
+      );
     });
 
     group('sanitizePath', () {
@@ -302,12 +341,13 @@ void main() {
       ];
       for (final testCase in testCases) {
         testWithOverrides(
-            'with path equals "${testCase.input}" should return "${testCase.output}"',
-            () async {
-          final importPath = configService.sanitizePath(testCase.input);
+          'with path equals "${testCase.input}" should return "${testCase.output}"',
+          () async {
+            final importPath = configService.sanitizePath(testCase.input);
 
-          expect(importPath, testCase.output);
-        });
+            expect(importPath, testCase.output);
+          },
+        );
       }
 
       final testCasesWithUpdatedFinder = [
@@ -316,141 +356,174 @@ void main() {
       ];
       for (final testCase in testCasesWithUpdatedFinder) {
         testWithOverrides(
-            'with path equals "${testCase.input}" and find equals "test/" should return "${testCase.output}"',
-            () async {
-          final importPath =
-              configService.sanitizePath(testCase.input, 'test/');
+          'with path equals "${testCase.input}" and find equals "test/" should return "${testCase.output}"',
+          () async {
+            final importPath = configService.sanitizePath(
+              testCase.input,
+              'test/',
+            );
 
-          expect(importPath, testCase.output);
-        });
+            expect(importPath, testCase.output);
+          },
+        );
       }
     });
 
     group('findAndLoadConfigFile when called', () {
-      testWithOverrides('with configFilePath should load all configs',
-          () async {
-        when(() => fileService.fileExists(filePath: customConfigFilePath))
-            .thenAnswer((i) async => true);
-        when(() => fileService.readFileAsString(filePath: customConfigFilePath))
-            .thenAnswer((i) async => jsonEncode(customConfig.toJson()));
+      testWithOverrides(
+        'with configFilePath should load all configs',
+        () async {
+          when(
+            () => fileService.fileExists(filePath: customConfigFilePath),
+          ).thenAnswer((i) async => true);
+          when(
+            () => fileService.readFileAsString(filePath: customConfigFilePath),
+          ).thenAnswer((i) async => jsonEncode(customConfig.toJson()));
 
-        await configService.findAndLoadConfigFile(
-          configFilePath: customConfigFilePath,
-        );
+          await configService.findAndLoadConfigFile(
+            configFilePath: customConfigFilePath,
+          );
 
-        verify(() => fileService.fileExists(filePath: customConfigFilePath))
-            .called(1);
-        verify(() =>
-                fileService.readFileAsString(filePath: customConfigFilePath))
-            .called(1);
-        expect(configService.hasCustomConfig, true);
-        expect(configService.serviceImportPath, customConfig.servicesPath);
-        expect(
-            configService.dolphinAppFilePath, customConfig.dolphinAppFilePath);
-        expect(configService.bottomSheetsPath, customConfig.bottomSheetsPath);
-        expect(configService.dialogsPath, customConfig.dialogsPath);
-        expect(configService.viewImportPath, customConfig.viewsPath);
-        expect(configService.viewPath, customConfig.viewsPath);
-        expect(configService.widgetPath, customConfig.widgetsPath);
-        expect(configService.lineLength, customConfig.lineLength);
-      });
+          verify(
+            () => fileService.fileExists(filePath: customConfigFilePath),
+          ).called(1);
+          verify(
+            () => fileService.readFileAsString(filePath: customConfigFilePath),
+          ).called(1);
+          expect(configService.hasCustomConfig, true);
+          expect(configService.serviceImportPath, customConfig.servicesPath);
+          expect(
+            configService.dolphinAppFilePath,
+            customConfig.dolphinAppFilePath,
+          );
+          expect(configService.bottomSheetsPath, customConfig.bottomSheetsPath);
+          expect(configService.dialogsPath, customConfig.dialogsPath);
+          expect(configService.viewImportPath, customConfig.viewsPath);
+          expect(configService.viewPath, customConfig.viewsPath);
+          expect(configService.widgetPath, customConfig.widgetsPath);
+          expect(configService.lineLength, customConfig.lineLength);
+        },
+      );
 
       testWithOverrides(
-          'with configFilePath and file does not exist then should throw ConfigFileNotFoundException with message kConfigFileNotFoundRetry',
-          () async {
-        when(() => fileService.fileExists(filePath: customConfigFilePath))
-            .thenAnswer((i) async => false);
+        'with configFilePath and file does not exist then should throw ConfigFileNotFoundException with message kConfigFileNotFoundRetry',
+        () async {
+          when(
+            () => fileService.fileExists(filePath: customConfigFilePath),
+          ).thenAnswer((i) async => false);
 
-        expect(
-          () => configService.findAndLoadConfigFile(
-              configFilePath: customConfigFilePath),
-          throwsA(predicate(
-            (e) =>
-                e is ConfigFileNotFoundException &&
-                e.message == kConfigFileNotFoundRetry &&
-                e.shouldHaltCommand == true,
-          )),
-        );
-      });
-
-      testWithOverrides(
-          'with configFilePath but got any other exception should log in error',
-          () async {
-        final someExceptionMessage = 'FileReadFailure';
-        when(() => fileService.fileExists(filePath: customConfigFilePath))
-            .thenThrow(Exception(someExceptionMessage));
-        when(() => logger.err(any())).thenAnswer((i) {});
-
-        await configService.findAndLoadConfigFile(
-            configFilePath: customConfigFilePath);
-
-        verify(() => logger.err(any())).called(1);
-      });
+          expect(
+            () => configService.findAndLoadConfigFile(
+              configFilePath: customConfigFilePath,
+            ),
+            throwsA(
+              predicate(
+                (e) =>
+                    e is ConfigFileNotFoundException &&
+                    e.message == kConfigFileNotFoundRetry &&
+                    e.shouldHaltCommand == true,
+              ),
+            ),
+          );
+        },
+      );
 
       testWithOverrides(
-          'without configFilePath and xdgConfigFile does not exist then should catch exception and log in detail',
-          () async {
-        when(() => fileService.fileExists(filePath: xdgConfigFilePath))
-            .thenAnswer((i) async => false);
-        when(() => logger.detail(any())).thenAnswer((i) {});
+        'with configFilePath but got any other exception should log in error',
+        () async {
+          final someExceptionMessage = 'FileReadFailure';
+          when(
+            () => fileService.fileExists(filePath: customConfigFilePath),
+          ).thenThrow(Exception(someExceptionMessage));
+          when(() => logger.err(any())).thenAnswer((i) {});
 
-        await configService.findAndLoadConfigFile();
+          await configService.findAndLoadConfigFile(
+            configFilePath: customConfigFilePath,
+          );
 
-        verify(() => logger.detail(kConfigFileNotFound)).called(1);
-      });
+          verify(() => logger.err(any())).called(1);
+        },
+      );
+
+      testWithOverrides(
+        'without configFilePath and xdgConfigFile does not exist then should catch exception and log in detail',
+        () async {
+          when(
+            () => fileService.fileExists(filePath: xdgConfigFilePath),
+          ).thenAnswer((i) async => false);
+          when(() => logger.detail(any())).thenAnswer((i) {});
+
+          await configService.findAndLoadConfigFile();
+
+          verify(() => logger.detail(kConfigFileNotFound)).called(1);
+        },
+      );
     });
 
     group('composeAndLoadConfigFile when called', () {
-      testWithOverrides('with configFilePath should load all configs',
-          () async {
-        when(() => fileService.fileExists(filePath: customConfigFilePath))
-            .thenAnswer((i) async => true);
-        when(() => fileService.readFileAsString(filePath: customConfigFilePath))
-            .thenAnswer((i) async => jsonEncode(customConfig.toJson()));
+      testWithOverrides(
+        'with configFilePath should load all configs',
+        () async {
+          when(
+            () => fileService.fileExists(filePath: customConfigFilePath),
+          ).thenAnswer((i) async => true);
+          when(
+            () => fileService.readFileAsString(filePath: customConfigFilePath),
+          ).thenAnswer((i) async => jsonEncode(customConfig.toJson()));
 
-        await configService.composeAndLoadConfigFile(
-          configFilePath: customConfigFilePath,
-        );
+          await configService.composeAndLoadConfigFile(
+            configFilePath: customConfigFilePath,
+          );
 
-        verify(() => fileService.fileExists(filePath: customConfigFilePath))
-            .called(1);
-        verify(() =>
-                fileService.readFileAsString(filePath: customConfigFilePath))
-            .called(1);
-        expect(configService.hasCustomConfig, true);
-      });
+          verify(
+            () => fileService.fileExists(filePath: customConfigFilePath),
+          ).called(1);
+          verify(
+            () => fileService.readFileAsString(filePath: customConfigFilePath),
+          ).called(1);
+          expect(configService.hasCustomConfig, true);
+        },
+      );
 
       testWithOverrides(
-          'with configFilePath and file does not exist then should throw ConfigFileNotFoundException with message kConfigFileNotFoundRetry',
-          () async {
-        when(() => fileService.fileExists(filePath: customConfigFilePath))
-            .thenAnswer((i) async => false);
+        'with configFilePath and file does not exist then should throw ConfigFileNotFoundException with message kConfigFileNotFoundRetry',
+        () async {
+          when(
+            () => fileService.fileExists(filePath: customConfigFilePath),
+          ).thenAnswer((i) async => false);
 
-        expect(
-          () => configService.composeAndLoadConfigFile(
-              configFilePath: customConfigFilePath),
-          throwsA(predicate(
-            (e) =>
-                e is ConfigFileNotFoundException &&
-                e.message == kConfigFileNotFoundRetry &&
-                e.shouldHaltCommand == true,
-          )),
-        );
-      });
+          expect(
+            () => configService.composeAndLoadConfigFile(
+              configFilePath: customConfigFilePath,
+            ),
+            throwsA(
+              predicate(
+                (e) =>
+                    e is ConfigFileNotFoundException &&
+                    e.message == kConfigFileNotFoundRetry &&
+                    e.shouldHaltCommand == true,
+              ),
+            ),
+          );
+        },
+      );
 
       testWithOverrides(
-          'with configFilePath but got any other exception should log in error',
-          () async {
-        final someExceptionMessage = 'FileReadFailure';
-        when(() => fileService.fileExists(filePath: customConfigFilePath))
-            .thenThrow(Exception(someExceptionMessage));
-        when(() => logger.err(any())).thenAnswer((i) {});
+        'with configFilePath but got any other exception should log in error',
+        () async {
+          final someExceptionMessage = 'FileReadFailure';
+          when(
+            () => fileService.fileExists(filePath: customConfigFilePath),
+          ).thenThrow(Exception(someExceptionMessage));
+          when(() => logger.err(any())).thenAnswer((i) {});
 
-        await configService.composeAndLoadConfigFile(
-            configFilePath: customConfigFilePath);
+          await configService.composeAndLoadConfigFile(
+            configFilePath: customConfigFilePath,
+          );
 
-        verify(() => logger.err(any())).called(1);
-      });
+          verify(() => logger.err(any())).called(1);
+        },
+      );
     });
 
     group('setWidgetsPath when called', () {
@@ -467,14 +540,16 @@ void main() {
         expect(configService.widgetPath, equals(Config().widgetsPath));
       });
 
-      testWithOverrides('without given path after update should remains same',
-          () {
-        configService.setWidgetsPath('test/app');
-        configService.setWidgetsPath(null);
+      testWithOverrides(
+        'without given path after update should remains same',
+        () {
+          configService.setWidgetsPath('test/app');
+          configService.setWidgetsPath(null);
 
-        expect(configService.widgetPath, 'test/app');
-        expect(configService.widgetPath, isNot(Config().widgetsPath));
-      });
+          expect(configService.widgetPath, 'test/app');
+          expect(configService.widgetPath, isNot(Config().widgetsPath));
+        },
+      );
     });
 
     testWithOverrides('exportConfig when called', () {

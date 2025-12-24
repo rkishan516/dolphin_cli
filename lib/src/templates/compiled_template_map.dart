@@ -8,107 +8,132 @@ Map<String, Map<String, DolphinTemplate>> kCompiledDolphinTemplates = {
     'mobile': DolphinTemplate(
       templateFiles: [
         TemplateFile(
-            relativeOutputPath: kAppMobileTemplatePubspecYamlStubPath,
-            content: kAppMobileTemplatePubspecYamlStubContent,
-            fileType: FileType.text),
+          relativeOutputPath: kAppMobileTemplatePubspecYamlStubPath,
+          content: kAppMobileTemplatePubspecYamlStubContent,
+          fileType: FileType.text,
+        ),
         TemplateFile(
-            relativeOutputPath: kAppMobileTemplateREADMEMdStubPath,
-            content: kAppMobileTemplateREADMEMdStubContent,
-            fileType: FileType.text),
+          relativeOutputPath: kAppMobileTemplateREADMEMdStubPath,
+          content: kAppMobileTemplateREADMEMdStubContent,
+          fileType: FileType.text,
+        ),
         TemplateFile(
-            relativeOutputPath: kAppMobileTemplateDolphinJsonStubPath,
-            content: kAppMobileTemplateDolphinJsonStubContent,
-            fileType: FileType.text),
+          relativeOutputPath: kAppMobileTemplateDolphinJsonStubPath,
+          content: kAppMobileTemplateDolphinJsonStubContent,
+          fileType: FileType.text,
+        ),
         TemplateFile(
-            relativeOutputPath: kAppMobileTemplateAnalysisOptionsYamlStubPath,
-            content: kAppMobileTemplateAnalysisOptionsYamlStubContent,
-            fileType: FileType.text),
+          relativeOutputPath: kAppMobileTemplateAnalysisOptionsYamlStubPath,
+          content: kAppMobileTemplateAnalysisOptionsYamlStubContent,
+          fileType: FileType.text,
+        ),
         TemplateFile(
-            relativeOutputPath: kAppMobileTemplateIntJsonStubPath,
-            content: kAppMobileTemplateIntJsonStubContent,
-            fileType: FileType.text),
+          relativeOutputPath: kAppMobileTemplateIntJsonStubPath,
+          content: kAppMobileTemplateIntJsonStubContent,
+          fileType: FileType.text,
+        ),
         TemplateFile(
-            relativeOutputPath: kAppMobileTemplateMainPath,
-            content: kAppMobileTemplateMainContent,
-            fileType: FileType.text),
+          relativeOutputPath: kAppMobileTemplateMainPath,
+          content: kAppMobileTemplateMainContent,
+          fileType: FileType.text,
+        ),
         TemplateFile(
-            relativeOutputPath: kAppMobileTemplatehomePageStatePath,
-            content: kAppMobileTemplatehomePageStateContent,
-            fileType: FileType.text),
+          relativeOutputPath: kAppMobileTemplatehomePageStatePath,
+          content: kAppMobileTemplatehomePageStateContent,
+          fileType: FileType.text,
+        ),
         TemplateFile(
-            relativeOutputPath: kAppMobileTemplatehomePageNotifierPath,
-            content: kAppMobileTemplatehomePageNotifierContent,
-            fileType: FileType.text),
+          relativeOutputPath: kAppMobileTemplatehomePageNotifierPath,
+          content: kAppMobileTemplatehomePageNotifierContent,
+          fileType: FileType.text,
+        ),
         TemplateFile(
-            relativeOutputPath: kAppMobileTemplatehomePagePath,
-            content: kAppMobileTemplatehomePageContent,
-            fileType: FileType.text),
+          relativeOutputPath: kAppMobileTemplatehomePagePath,
+          content: kAppMobileTemplatehomePageContent,
+          fileType: FileType.text,
+        ),
         TemplateFile(
-            relativeOutputPath: kAppMobileTemplatesplashPageNotifierPath,
-            content: kAppMobileTemplatesplashPageNotifierContent,
-            fileType: FileType.text),
+          relativeOutputPath: kAppMobileTemplatesplashPageNotifierPath,
+          content: kAppMobileTemplatesplashPageNotifierContent,
+          fileType: FileType.text,
+        ),
         TemplateFile(
-            relativeOutputPath: kAppMobileTemplatesplashPagePath,
-            content: kAppMobileTemplatesplashPageContent,
-            fileType: FileType.text),
+          relativeOutputPath: kAppMobileTemplatesplashPagePath,
+          content: kAppMobileTemplatesplashPageContent,
+          fileType: FileType.text,
+        ),
         TemplateFile(
-            relativeOutputPath: kAppMobileTemplatedeveloper_menuPagePath,
-            content: kAppMobileTemplatedeveloper_menuPageContent,
-            fileType: FileType.text),
+          relativeOutputPath: kAppMobileTemplatedeveloper_menuPagePath,
+          content: kAppMobileTemplatedeveloper_menuPageContent,
+          fileType: FileType.text,
+        ),
         TemplateFile(
-            relativeOutputPath: kAppMobileTemplatecommonThemeModeNotifierPath,
-            content: kAppMobileTemplatecommonThemeModeNotifierContent,
-            fileType: FileType.text),
+          relativeOutputPath: kAppMobileTemplatecommonThemeModeNotifierPath,
+          content: kAppMobileTemplatecommonThemeModeNotifierContent,
+          fileType: FileType.text,
+        ),
         TemplateFile(
-            relativeOutputPath: kAppMobileTemplatecommonLoggerViewPath,
-            content: kAppMobileTemplatecommonLoggerViewContent,
-            fileType: FileType.text),
+          relativeOutputPath: kAppMobileTemplatecommonLoggerViewPath,
+          content: kAppMobileTemplatecommonLoggerViewContent,
+          fileType: FileType.text,
+        ),
         TemplateFile(
-            relativeOutputPath: kAppMobileTemplatecommonLoggerServicePath,
-            content: kAppMobileTemplatecommonLoggerServiceContent,
-            fileType: FileType.text),
+          relativeOutputPath: kAppMobileTemplatecommonLoggerServicePath,
+          content: kAppMobileTemplatecommonLoggerServiceContent,
+          fileType: FileType.text,
+        ),
         TemplateFile(
-            relativeOutputPath: kAppMobileTemplatecommonPackageInfoServicePath,
-            content: kAppMobileTemplatecommonPackageInfoServiceContent,
-            fileType: FileType.text),
+          relativeOutputPath: kAppMobileTemplatecommonPackageInfoServicePath,
+          content: kAppMobileTemplatecommonPackageInfoServiceContent,
+          fileType: FileType.text,
+        ),
         TemplateFile(
-            relativeOutputPath:
-                kAppMobileTemplatecommonEnvironmentConfigServicePath,
-            content: kAppMobileTemplatecommonEnvironmentConfigServiceContent,
-            fileType: FileType.text),
+          relativeOutputPath:
+              kAppMobileTemplatecommonEnvironmentConfigServicePath,
+          content: kAppMobileTemplatecommonEnvironmentConfigServiceContent,
+          fileType: FileType.text,
+        ),
         TemplateFile(
-            relativeOutputPath:
-                kAppMobileTemplatecommonSharedPerferencesServicePath,
-            content: kAppMobileTemplatecommonSharedPerferencesServiceContent,
-            fileType: FileType.text),
+          relativeOutputPath:
+              kAppMobileTemplatecommonSharedPerferencesServicePath,
+          content: kAppMobileTemplatecommonSharedPerferencesServiceContent,
+          fileType: FileType.text,
+        ),
         TemplateFile(
-            relativeOutputPath: kAppMobileTemplatelibAppPath,
-            content: kAppMobileTemplatelibAppContent,
-            fileType: FileType.text),
+          relativeOutputPath: kAppMobileTemplatelibAppPath,
+          content: kAppMobileTemplatelibAppContent,
+          fileType: FileType.text,
+        ),
         TemplateFile(
-            relativeOutputPath: kAppMobileTemplateroutesAppRoutesPath,
-            content: kAppMobileTemplateroutesAppRoutesContent,
-            fileType: FileType.text),
+          relativeOutputPath: kAppMobileTemplateroutesAppRoutesPath,
+          content: kAppMobileTemplateroutesAppRoutesContent,
+          fileType: FileType.text,
+        ),
         TemplateFile(
-            relativeOutputPath: kAppMobileTemplateroutesAppRouterPath,
-            content: kAppMobileTemplateroutesAppRouterContent,
-            fileType: FileType.text),
+          relativeOutputPath: kAppMobileTemplateroutesAppRouterPath,
+          content: kAppMobileTemplateroutesAppRouterContent,
+          fileType: FileType.text,
+        ),
         TemplateFile(
-            relativeOutputPath: kAppMobileTemplateroutesAnalyticsObserverPath,
-            content: kAppMobileTemplateroutesAnalyticsObserverContent,
-            fileType: FileType.text),
+          relativeOutputPath: kAppMobileTemplateroutesAnalyticsObserverPath,
+          content: kAppMobileTemplateroutesAnalyticsObserverContent,
+          fileType: FileType.text,
+        ),
         TemplateFile(
-            relativeOutputPath: kAppMobileTemplateBuildYamlStubPath,
-            content: kAppMobileTemplateBuildYamlStubContent,
-            fileType: FileType.text),
+          relativeOutputPath: kAppMobileTemplateBuildYamlStubPath,
+          content: kAppMobileTemplateBuildYamlStubContent,
+          fileType: FileType.text,
+        ),
         TemplateFile(
-            relativeOutputPath: kAppMobileTemplateLaunchJsonStubPath,
-            content: kAppMobileTemplateLaunchJsonStubContent,
-            fileType: FileType.text),
+          relativeOutputPath: kAppMobileTemplateLaunchJsonStubPath,
+          content: kAppMobileTemplateLaunchJsonStubContent,
+          fileType: FileType.text,
+        ),
         TemplateFile(
-            relativeOutputPath: kAppMobileTemplateSettingsJsonStubPath,
-            content: kAppMobileTemplateSettingsJsonStubContent,
-            fileType: FileType.text),
+          relativeOutputPath: kAppMobileTemplateSettingsJsonStubPath,
+          content: kAppMobileTemplateSettingsJsonStubContent,
+          fileType: FileType.text,
+        ),
       ],
       modificationFiles: [],
     ),
@@ -117,9 +142,10 @@ Map<String, Map<String, DolphinTemplate>> kCompiledDolphinTemplates = {
     'empty': DolphinTemplate(
       templateFiles: [
         TemplateFile(
-            relativeOutputPath: kWidgetEmptyTemplateGenericWidgetPath,
-            content: kWidgetEmptyTemplateGenericWidgetContent,
-            fileType: FileType.text),
+          relativeOutputPath: kWidgetEmptyTemplateGenericWidgetPath,
+          content: kWidgetEmptyTemplateGenericWidgetContent,
+          fileType: FileType.text,
+        ),
       ],
       modificationFiles: [],
     ),
@@ -128,9 +154,10 @@ Map<String, Map<String, DolphinTemplate>> kCompiledDolphinTemplates = {
     'mini': DolphinTemplate(
       templateFiles: [
         TemplateFile(
-            relativeOutputPath: kSupabaseMiniTemplateSupabaseServicePath,
-            content: kSupabaseMiniTemplateSupabaseServiceContent,
-            fileType: FileType.text),
+          relativeOutputPath: kSupabaseMiniTemplateSupabaseServicePath,
+          content: kSupabaseMiniTemplateSupabaseServiceContent,
+          fileType: FileType.text,
+        ),
       ],
       modificationFiles: [
         ModificationFile(
@@ -169,17 +196,20 @@ import 'package:supabase_flutter/supabase_flutter.dart';''',
     'empty': DolphinTemplate(
       templateFiles: [
         TemplateFile(
-            relativeOutputPath: kDialogEmptyTemplateGenericDialogStatePath,
-            content: kDialogEmptyTemplateGenericDialogStateContent,
-            fileType: FileType.text),
+          relativeOutputPath: kDialogEmptyTemplateGenericDialogStatePath,
+          content: kDialogEmptyTemplateGenericDialogStateContent,
+          fileType: FileType.text,
+        ),
         TemplateFile(
-            relativeOutputPath: kDialogEmptyTemplateGenericDialogNotifierPath,
-            content: kDialogEmptyTemplateGenericDialogNotifierContent,
-            fileType: FileType.text),
+          relativeOutputPath: kDialogEmptyTemplateGenericDialogNotifierPath,
+          content: kDialogEmptyTemplateGenericDialogNotifierContent,
+          fileType: FileType.text,
+        ),
         TemplateFile(
-            relativeOutputPath: kDialogEmptyTemplateGenericDialogPath,
-            content: kDialogEmptyTemplateGenericDialogContent,
-            fileType: FileType.text),
+          relativeOutputPath: kDialogEmptyTemplateGenericDialogPath,
+          content: kDialogEmptyTemplateGenericDialogContent,
+          fileType: FileType.text,
+        ),
       ],
       modificationFiles: [],
     ),
@@ -188,9 +218,10 @@ import 'package:supabase_flutter/supabase_flutter.dart';''',
     'mini': DolphinTemplate(
       templateFiles: [
         TemplateFile(
-            relativeOutputPath: kFirebaseMiniTemplateFirebaseServicePath,
-            content: kFirebaseMiniTemplateFirebaseServiceContent,
-            fileType: FileType.text),
+          relativeOutputPath: kFirebaseMiniTemplateFirebaseServicePath,
+          content: kFirebaseMiniTemplateFirebaseServiceContent,
+          fileType: FileType.text,
+        ),
       ],
       modificationFiles: [],
     ),
@@ -199,17 +230,20 @@ import 'package:supabase_flutter/supabase_flutter.dart';''',
     'empty': DolphinTemplate(
       templateFiles: [
         TemplateFile(
-            relativeOutputPath: kViewEmptyTemplateGenericViewStatePath,
-            content: kViewEmptyTemplateGenericViewStateContent,
-            fileType: FileType.text),
+          relativeOutputPath: kViewEmptyTemplateGenericViewStatePath,
+          content: kViewEmptyTemplateGenericViewStateContent,
+          fileType: FileType.text,
+        ),
         TemplateFile(
-            relativeOutputPath: kViewEmptyTemplateGenericViewNotifierPath,
-            content: kViewEmptyTemplateGenericViewNotifierContent,
-            fileType: FileType.text),
+          relativeOutputPath: kViewEmptyTemplateGenericViewNotifierPath,
+          content: kViewEmptyTemplateGenericViewNotifierContent,
+          fileType: FileType.text,
+        ),
         TemplateFile(
-            relativeOutputPath: kViewEmptyTemplateGenericViewPath,
-            content: kViewEmptyTemplateGenericViewContent,
-            fileType: FileType.text),
+          relativeOutputPath: kViewEmptyTemplateGenericViewPath,
+          content: kViewEmptyTemplateGenericViewContent,
+          fileType: FileType.text,
+        ),
       ],
       modificationFiles: [
         ModificationFile(
@@ -251,9 +285,10 @@ Widget build(BuildContext context, GoRouterState state) => const {{viewName}}();
     'mini': DolphinTemplate(
       templateFiles: [
         TemplateFile(
-            relativeOutputPath: kAppwriteMiniTemplateAppwriteServicePath,
-            content: kAppwriteMiniTemplateAppwriteServiceContent,
-            fileType: FileType.text),
+          relativeOutputPath: kAppwriteMiniTemplateAppwriteServicePath,
+          content: kAppwriteMiniTemplateAppwriteServiceContent,
+          fileType: FileType.text,
+        ),
       ],
       modificationFiles: [
         ModificationFile(
@@ -272,9 +307,10 @@ Widget build(BuildContext context, GoRouterState state) => const {{viewName}}();
     'empty': DolphinTemplate(
       templateFiles: [
         TemplateFile(
-            relativeOutputPath: kServiceEmptyTemplateGenericServicePath,
-            content: kServiceEmptyTemplateGenericServiceContent,
-            fileType: FileType.text),
+          relativeOutputPath: kServiceEmptyTemplateGenericServicePath,
+          content: kServiceEmptyTemplateGenericServiceContent,
+          fileType: FileType.text,
+        ),
       ],
       modificationFiles: [],
     ),
@@ -283,18 +319,20 @@ Widget build(BuildContext context, GoRouterState state) => const {{viewName}}();
     'empty': DolphinTemplate(
       templateFiles: [
         TemplateFile(
-            relativeOutputPath: kBottomSheetEmptyTemplateGenericSheetStatePath,
-            content: kBottomSheetEmptyTemplateGenericSheetStateContent,
-            fileType: FileType.text),
+          relativeOutputPath: kBottomSheetEmptyTemplateGenericSheetStatePath,
+          content: kBottomSheetEmptyTemplateGenericSheetStateContent,
+          fileType: FileType.text,
+        ),
         TemplateFile(
-            relativeOutputPath:
-                kBottomSheetEmptyTemplateGenericSheetNotifierPath,
-            content: kBottomSheetEmptyTemplateGenericSheetNotifierContent,
-            fileType: FileType.text),
+          relativeOutputPath: kBottomSheetEmptyTemplateGenericSheetNotifierPath,
+          content: kBottomSheetEmptyTemplateGenericSheetNotifierContent,
+          fileType: FileType.text,
+        ),
         TemplateFile(
-            relativeOutputPath: kBottomSheetEmptyTemplateGenericSheetPath,
-            content: kBottomSheetEmptyTemplateGenericSheetContent,
-            fileType: FileType.text),
+          relativeOutputPath: kBottomSheetEmptyTemplateGenericSheetPath,
+          content: kBottomSheetEmptyTemplateGenericSheetContent,
+          fileType: FileType.text,
+        ),
       ],
       modificationFiles: [],
     ),

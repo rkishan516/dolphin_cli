@@ -14,34 +14,34 @@ publish_to: 'none'
 version: 0.1.0
 
 environment:
-  sdk: '>=3.8.0 <4.0.0'
+  sdk: '>=3.10.1 <4.0.0'
 
 dependencies:
   equatable: ^2.0.7
   flex_color_scheme: ^8.2.0
   flutter:
     sdk: flutter
-  flutter_riverpod: ^2.6.1
+  flutter_riverpod: ^3.0.3
   freezed_annotation: ^3.0.0
-  go_router: ^15.1.2
+  go_router: ^17.0.1
   json_annotation: ^4.9.0
-  package_info_plus: ^8.3.0
-  riverpod_annotation: ^2.6.1
+  package_info_plus: ^9.0.0
+  riverpod_annotation: ^3.0.3
   shared_preferences: ^2.5.3
   supercharged: ^2.1.1
-  talker_flutter: ^4.7.6
+  talker_flutter: ^5.1.9
 
 dev_dependencies:
-  build_runner: ^2.4.15
+  build_runner: ^2.10.4
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
-  freezed: ^3.0.6
-  go_router_builder: ^2.9.0
+  freezed: ^3.2.3
+  go_router_builder: ^4.1.3
   json_serializable: ^6.9.5
-  mockito: ^5.4.5
-  riverpod_generator: ^2.6.5
-  riverpod_lint: ^2.6.5
+  mockito: ^5.6.1
+  riverpod_generator: ^3.0.3
+  riverpod_lint: ^3.0.3
 
 flutter:
   uses-material-design: true
@@ -205,8 +205,8 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final homePageState = ref.watch(homePageNotifierProvider);
-    final notifier = ref.watch(homePageNotifierProvider.notifier);
+    final homePageState = ref.watch(homePageProvider);
+    final notifier = ref.watch(homePageProvider.notifier);
 
     return Scaffold(
       body: SafeArea(
@@ -295,7 +295,7 @@ class _SplashPageState extends ConsumerState<SplashPage> {
   void initState() {
     super.initState();
     SchedulerBinding.instance.addPostFrameCallback((_) {
-      ref.watch(splashPageNotifierProvider.notifier).runStartUpLogic();
+      ref.watch(splashPageProvider.notifier).runStartUpLogic();
     });
   }
 
@@ -591,7 +591,7 @@ class MainApp extends ConsumerWidget {
         scheme: FlexScheme.blueM3,
         useMaterial3: true,
       ),
-      themeMode: ref.watch(themeModeNotifierProvider),
+      themeMode: ref.watch(themeModeProvider),
       routerConfig: ref.watch(navigatorProvider),
       builder: (context, child) {
         return _VersionOverlay(
@@ -751,7 +751,7 @@ final GlobalKey<NavigatorState> appNavigatorKey = GlobalKey<NavigatorState>();
 
 @riverpod
 GoRouter navigator(Ref ref) {
-  final router = ref.watch(routerNotifierProvider.notifier);
+  final router = ref.watch(routerProvider.notifier);
 
   List<NavigatorObserver>? observers = [
     DolphinAnalyticsNavigatorObserver(),

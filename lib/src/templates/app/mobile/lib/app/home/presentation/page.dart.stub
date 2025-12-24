@@ -7,8 +7,8 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final homePageState = ref.watch(homePageNotifierProvider);
-    final notifier = ref.watch(homePageNotifierProvider.notifier);
+    final homePageState = ref.watch(homePageProvider);
+    final notifier = ref.watch(homePageProvider.notifier);
 
     return Scaffold(
       body: SafeArea(

@@ -26,12 +26,7 @@ class GenerateCommand extends DolphinCommand {
         negatable: true,
         help: kCommandHelpDeleteConflictingOutputs,
       )
-      ..addFlag(
-        ksWatch,
-        abbr: 'w',
-        defaultsTo: false,
-        help: kCommandHelpWatch,
-      );
+      ..addFlag(ksWatch, abbr: 'w', defaultsTo: false, help: kCommandHelpWatch);
   }
 
   @override

@@ -38,10 +38,7 @@ const String ksBackend = 'backend';
 
 /// A list of strings that are used to run the run build_runner
 /// [build or watch] --delete-conflicting-outputs command.
-const List<String> buildRunnerArguments = [
-  ksRun,
-  ksBuildRunner,
-];
+const List<String> buildRunnerArguments = [ksRun, ksBuildRunner];
 
 /// A list of strings that are used to run the pub get command.
 const List<String> pubGetArguments = [ksPub, ksGet];
@@ -49,18 +46,14 @@ const List<String> pubGetArguments = [ksPub, ksGet];
 const List<String> pubAddArguments = [ksPub, ksAdd];
 
 /// A list of strings that are used to run the pub global list command.
-const List<String> pubGlobalListArguments = [
-  ksPub,
-  ksGlobal,
-  ksList,
-];
+const List<String> pubGlobalListArguments = [ksPub, ksGlobal, ksList];
 
 /// A list of strings that are used to run the pub global activate command.
 const List<String> pubGlobalActivateArguments = [
   ksPub,
   ksGlobal,
   ksActivate,
-  ksDolphinCli
+  ksDolphinCli,
 ];
 
 /// A list of strings that are used to run the analyze command.

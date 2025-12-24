@@ -25,8 +25,10 @@ class TemplateHelper {
     required String extension,
   }) {
     return filePaths
-        .where((element) =>
-            element.uri.pathSegments.last.split('.').last == extension)
+        .where(
+          (element) =>
+              element.uri.pathSegments.last.split('.').last == extension,
+        )
         .toList();
   }
 
@@ -38,11 +40,11 @@ class TemplateHelper {
   }
 
   /// Returns the name of the template file without the extensions
-  String getTemplateFileNameOnly(
-          {required FileSystemEntity templateFilePath}) =>
-      pathService
-          .basename(templateFilePath.path)
-          .replaceFirst('.dart.stub', '');
+  String getTemplateFileNameOnly({
+    required FileSystemEntity templateFilePath,
+  }) => pathService
+      .basename(templateFilePath.path)
+      .replaceFirst('.dart.stub', '');
 
   /// Returns the name of the feature folder
   String getTemplateFeatureName({required FileSystemEntity templateFilePath}) {
@@ -55,8 +57,9 @@ class TemplateHelper {
   String getTemplateFolderName({required String templateFilePath}) =>
       pathService.basename(templateFilePath);
 
-  Future<List<String>> getTemplateTypesFromTemplate(
-      {required String templateDirectoryPath}) async {
+  Future<List<String>> getTemplateTypesFromTemplate({
+    required String templateDirectoryPath,
+  }) async {
     final foldersInDirectory = await fileService.getFoldersInDirectory(
       directoryPath: templateDirectoryPath,
     );
@@ -109,8 +112,9 @@ class TemplateHelper {
     for (final modificationFile in modificationFiles) {
       final fileContent = await File(modificationFile.path).readAsString();
 
-      final compiledModificationItem =
-          CompiledFileModification.fromJson(json.decode(fileContent));
+      final compiledModificationItem = CompiledFileModification.fromJson(
+        json.decode(fileContent),
+      );
 
       templateModificationItems.add(compiledModificationItem);
     }
@@ -140,41 +144,46 @@ class TemplateHelper {
       final templateFileNameOnly = getTemplateFileNameOnly(
         templateFilePath: templateFile,
       );
-      final featureName =
-          getTemplateFeatureName(templateFilePath: templateFile);
+      final featureName = getTemplateFeatureName(
+        templateFilePath: templateFile,
+      );
 
-      final fileType =
-          templateFileNameOnly.contains('png') ? FileType.image : FileType.text;
+      final fileType = templateFileNameOnly.contains('png')
+          ? FileType.image
+          : FileType.text;
 
       final templateFileNameRecase = ReCase(templateFileNameOnly);
 
-      final relativeTemplateFilePath =
-          templateFile.path.split(templateFolderName).last.replaceFirst(
-                pathService.separator,
-                '',
-              );
+      final relativeTemplateFilePath = templateFile.path
+          .split(templateFolderName)
+          .last
+          .replaceFirst(pathService.separator, '');
 
       String templateFileContent;
 
       if (fileType == FileType.image) {
-        final fileData =
-            await fileService.readAsBytes(filePath: templateFile.path);
+        final fileData = await fileService.readAsBytes(
+          filePath: templateFile.path,
+        );
 
         templateFileContent = base64Encode(fileData);
       } else {
-        templateFileContent =
-            await fileService.readFileAsString(filePath: templateFile.path);
+        templateFileContent = await fileService.readFileAsString(
+          filePath: templateFile.path,
+        );
       }
 
-      templateItemsToRender.add(CompliledTemplateFile(
-        featureName: featureName,
-        templateType: templateType.pascalCase,
-        name: templateNameRecase.pascalCase,
-        fileName: templateFileNameRecase.pascalCase,
-        path: relativeTemplateFilePath,
-        content: templateFileContent,
-        fileType: fileType.name,
-      ));
+      templateItemsToRender.add(
+        CompliledTemplateFile(
+          featureName: featureName,
+          templateType: templateType.pascalCase,
+          name: templateNameRecase.pascalCase,
+          fileName: templateFileNameRecase.pascalCase,
+          path: relativeTemplateFilePath,
+          content: templateFileContent,
+          fileType: fileType.name,
+        ),
+      );
     }
 
     return templateItemsToRender;

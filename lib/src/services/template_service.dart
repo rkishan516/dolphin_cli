@@ -56,28 +56,30 @@ class TemplateService {
       );
 
       for (var templateType in templateTypes) {
-        final templateItemsToRender =
-            await templateHelper.getTemplateItemsToRender(
-          templateName: templateName,
-          templateType: templateType,
-        );
+        final templateItemsToRender = await templateHelper
+            .getTemplateItemsToRender(
+              templateName: templateName,
+              templateType: templateType,
+            );
 
         allTemplateItems.addAll(templateItemsToRender);
 
-        final templateModificationsToApply =
-            await templateHelper.getTemplateModificationsToApply(
-          templateName: templateName,
-          templateType: templateType,
-        );
+        final templateModificationsToApply = await templateHelper
+            .getTemplateModificationsToApply(
+              templateName: templateName,
+              templateType: templateType,
+            );
 
-        compiledCreateCommand = compiledCreateCommand.copyWith(templates: [
-          ...compiledCreateCommand.templates,
-          CompiledTemplate(
-            type: templateType,
-            files: templateItemsToRender,
-            modificationFiles: templateModificationsToApply,
-          )
-        ]);
+        compiledCreateCommand = compiledCreateCommand.copyWith(
+          templates: [
+            ...compiledCreateCommand.templates,
+            CompiledTemplate(
+              type: templateType,
+              files: templateItemsToRender,
+              modificationFiles: templateModificationsToApply,
+            ),
+          ],
+        );
       }
 
       dolphinTemplates.add(compiledCreateCommand);
@@ -88,8 +90,9 @@ class TemplateService {
       'templateItems': allTemplateItems.map((e) => e.toJson()).toList(),
     };
 
-    final allTemplateItemsContent =
-        outputTemplate.renderString(templateItemsData);
+    final allTemplateItemsContent = outputTemplate.renderString(
+      templateItemsData,
+    );
 
     await fileService.writeStringFile(
       file: File(path.join(templatesPath, 'compiled_templates.dart')),
@@ -147,7 +150,8 @@ class TemplateService {
     required String templateType,
   }) async {
     // Get the template that we want to render
-    final template = kCompiledDolphinTemplates[templateName]![templateType] ??
+    final template =
+        kCompiledDolphinTemplates[templateName]![templateType] ??
         DolphinTemplate(templateFiles: []);
 
     await writeOutTemplateFiles(
@@ -238,10 +242,7 @@ class TemplateService {
     final recaseName = ReCase(name);
     final modifiedOutputPath = configService
         .replaceCustomPaths(inputTemplatePath)
-        .replaceAll(
-          'generic',
-          recaseName.snakeCase,
-        )
+        .replaceAll('generic', recaseName.snakeCase)
         .replaceFirst('.stub', '');
 
     if (hasOutputFolder) {
@@ -287,11 +288,14 @@ class TemplateService {
 
     if (renderFunction == null) {
       throw Exception(
-          'No render function has been defined for the template $templateName. Please define a render function before running the command again.');
+        'No render function has been defined for the template $templateName. Please define a render function before running the command again.',
+      );
     }
 
-    Map<String, String> renderDataForTemplate =
-        renderFunction(nameRecase, featureName: featureName);
+    Map<String, String> renderDataForTemplate = renderFunction(
+      nameRecase,
+      featureName: featureName,
+    );
 
     final packageName = templateName == kTemplateNameApp ? name : null;
 
@@ -338,7 +342,8 @@ class TemplateService {
 
       if (!fileExists) {
         logger.warn(
-            'Modification not applied. The file $modificationPath does not exist');
+          'Modification not applied. The file $modificationPath does not exist',
+        );
         throw InvalidDolphinStructureException(kInvalidDolphinStructureAppFile);
       }
 
@@ -348,7 +353,8 @@ class TemplateService {
 
       if (!fileContent.contains(fileToModify.modificationIdentifier)) {
         logger.warn(
-            'Modification not applied. The identifier `${fileToModify.modificationIdentifier}` does not exist in the file.');
+          'Modification not applied. The identifier `${fileToModify.modificationIdentifier}` does not exist in the file.',
+        );
       }
 
       final updatedFileContent = templateModificationFileContent(
@@ -377,9 +383,7 @@ class TemplateService {
       );
     }
 
-    await processService.runFormat(
-      appName: outputPath,
-    );
+    await processService.runFormat(appName: outputPath);
   }
 
   String templateModificationName({
@@ -388,10 +392,7 @@ class TemplateService {
     required String templateName,
     String? featureName,
   }) {
-    final template = Template(
-      modificationName,
-      lenient: true,
-    );
+    final template = Template(modificationName, lenient: true);
 
     final templateRenderData = getTemplateRenderData(
       templateName: templateName,
@@ -411,10 +412,7 @@ class TemplateService {
     required String templateName,
     String? featureName,
   }) {
-    final template = Template(
-      modificationTemplate,
-      lenient: true,
-    );
+    final template = Template(modificationTemplate, lenient: true);
 
     final templateRenderData = getTemplateRenderData(
       templateName: templateName,

@@ -12,7 +12,7 @@ final GlobalKey<NavigatorState> appNavigatorKey = GlobalKey<NavigatorState>();
 
 @riverpod
 GoRouter navigator(Ref ref) {
-  final router = ref.watch(routerNotifierProvider.notifier);
+  final router = ref.watch(routerProvider.notifier);
 
   List<NavigatorObserver>? observers = [
     DolphinAnalyticsNavigatorObserver(),
